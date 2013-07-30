@@ -1,0 +1,31 @@
+<h1>Listing answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Ask</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.name %></td>
+        <td><%= answer.email %></td>
+        <td><%= answer.ask %></td>
+        <td><%= link_to 'Show', answer %></td>
+        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer', new_answer_path %>
