@@ -1,4 +1,10 @@
 Mentor::Application.routes.draw do
+  get "static/index"
+  get "static/about"
+  get "static/mentors"
+  get "static/mentees"
+  get "static/prep"
+  get "static/resources"
   resources :answers
 
   resources :asks
