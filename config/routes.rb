@@ -1,14 +1,14 @@
 Mentor::Application.routes.draw do
+  resources :answers
+
+  resources :asks
+
   get "static/index"
   get "static/about"
   get "static/mentors"
   get "static/mentees"
   get "static/prep"
   get "static/resources"
-  resources :answers
-
-  resources :asks
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
