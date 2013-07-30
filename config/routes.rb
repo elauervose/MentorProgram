@@ -3,12 +3,12 @@ Mentor::Application.routes.draw do
 
   resources :asks
 
-  get "static/index"
-  get "static/about"
-  get "static/mentors"
-  get "static/mentees"
-  get "static/prep"
-  get "static/resources"
+  root to: 'static#index'
+  get "about", to: 'static#about'
+  get "mentors", to: 'static#mentors'
+  get "mentees", to: 'static#mentees'
+  get "prep", to: 'static#prep'
+  get "resources", to: 'static#resources'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -49,7 +49,7 @@ Mentor::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
