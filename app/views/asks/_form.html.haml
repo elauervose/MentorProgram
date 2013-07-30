@@ -1,0 +1,31 @@
+= form_for @ask do |f|
+  - if @ask.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ask.errors.count, "error")} prohibited this ask from being saved:"
+      %ul
+        - @ask.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :days
+    = f.text_field :days
+  .field
+    = f.label :times
+    = f.text_field :times
+  .field
+    = f.label :project_desc
+    = f.text_field :project_desc
+  .field
+    = f.label :category
+    = f.text_field :category
+  .actions
+    = f.submit 'Save'
