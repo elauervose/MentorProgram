@@ -16,7 +16,6 @@ String.prototype.repeat = function(num) {
   };
 
   $(function() {
-  
     // Todo list
     $(".todo li").click(function() {
         $(this).toggleClass("todo-done");
@@ -62,7 +61,7 @@ String.prototype.repeat = function(num) {
 
     // Switch
     $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
-    
+
   });
-  
+
 })(jQuery);
