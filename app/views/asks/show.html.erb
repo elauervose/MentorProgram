@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ask.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @ask.email %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @ask.location %>
+</p>
+
+<p>
+  <strong>Days:</strong>
+  <%= @ask.days %>
+</p>
+
+<p>
+  <strong>Times:</strong>
+  <%= @ask.times %>
+</p>
+
+<p>
+  <strong>Project desc:</strong>
+  <%= @ask.project_desc %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @ask.category %>
+</p>
+
+<%= link_to 'Edit', edit_ask_path(@ask) %> |
+<%= link_to 'Back', asks_path %>
