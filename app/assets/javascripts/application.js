@@ -1,3 +1,17 @@
+//= require 'jquery-1.8.3.min.js'
+//= require 'jquery-ui-1.10.3.custom.min.js'
+//= require 'jquery.ui.touch-punch.min.js'
+//= require 'bootstrap.min.js'
+//= require 'bootstrap-select.js'
+//= require 'bootstrap-switch.js'
+//= require 'flatui-checkbox.js'
+//= require 'flatui-radio.js'
+//= require 'jquery.tagsinput.js'
+//= require 'jquery.placeholder.js'
+//= require 'jquery.stacktable.js'
+//= require 'video.js'
+//= require_tree .
+
 // Some general UI pack related JS
 // Extend JS String with repeat method
 String.prototype.repeat = function(num) {
@@ -16,6 +30,7 @@ String.prototype.repeat = function(num) {
   };
 
   $(function() {
+
     // Todo list
     $(".todo li").click(function() {
         $(this).toggleClass("todo-done");
