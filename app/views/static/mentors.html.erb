@@ -3,10 +3,10 @@
     Become a Mentor<small>Give back to the community by mentoring new coders on byte-sized projects.</small>
   </h1>
   <br>
-  <div class="btn btn-large btn-success pull-right">Find A Mentee! »</div>
-</div>
+  <div class="btn btn-large btn-success pull-right">Find A Mentee! »</div><!-- Header -->
+</div><!-- Header -->
 
-<div class="row">
+<div class="row"><!-- Explanatory text header row -->
   <div class="span12">
     <h1>How it works ..</h1>
     <p class="lead">
@@ -14,14 +14,15 @@
     </p>
     <div class="btn btn-large btn-info">Help Me Prep for a Session »</div>
   </div>
-</div>
+</div><!-- Explanatory text header ROW -->
+<hr>
 
 <div class="row">
   <div class="span12">
     <h1>Find Your Mentee</h1>
     <p class="lead">Select from the menues below to find people seeking mentors.</p>
-  </div>
-</div>
+  </div><!-- Header row for mentee search table -->
+</div><!-- Header row for mentee search table ROW -->
 
 <div class="row">
   <div class="span12">
@@ -64,8 +65,8 @@
       <option value="6">?</option>
       <option value="7">?</option>
     </select>
-  </div>
-</div>
+  </div><!-- Mentee List (table) --><!-- Dropdown buttons for Mentee search ROW --> 
+</div><!-- Dropdown buttons for Mentee search ROW --> 
 
 <div class="row">
   <div class="span12">
@@ -77,6 +78,7 @@
         <th>Time(s)</th>
         <th>Project Type</th>
         <th>Project Description</th>
+        <th>Sign Up To Mentor</th>
       </tr>
       <tr>
         <td>Erica</td>
@@ -85,17 +87,52 @@
         <td>After 5pm</td>
         <td>Beginner JS</td>
         <td>I have a bootstrap HTML page that needs JS enabled</td>
-      </tr>
+        <td>
+          <div>
+            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Sign Up! »</a>
+        </td><!-- Mentor Sign-up modal Button -->
+      </tr><!-- Mentee Data -->
       <tr>
-        <td colspan="6">
-          <h4 class="pull-left">Sign Up To Mentor</h4>
-          <div class="input-append">
-            <input id="mentor_name" type="text" placeholder="Name">
-            <input id="mentor_email" type="text" placeholder="email address">
-            <button class="btn" type="button">Go!</button>
-          </div>
-        </td>
-      </tr>
+        <td>Erica</td>
+        <td>Inner SE</td>
+        <td>M,W,TH</td>
+        <td>After 5pm</td>
+        <td>Beginner JS</td>
+        <td>I have a bootstrap HTML page that needs JS enabled</td>
+        <td>
+          <div>
+            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Sign Up! »</a>
+        </td><!-- Mentor Sign-up modal button-->
+      </tr><!-- Mentee Data -->
     </table>
-  </div>
-</div>
+  </div><!-- Mentee List (table) --><!-- Table with Mentee List ROW -->
+</div><!-- Table with Mentee List ROW -->
+
+<div class="row"><!-- Modal (shared) --> 
+  <div class="modal fade" id="myModal">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           <h3 class="modal-title">We Love Our Mentors!</h3>
+         </div>
+         <div class="modal-body">
+          <p class="lead"><strong>You are about to become a mentor for one very lucky mentee!</strong></p>
+          <p class="lead">
+            It's so easy! Just enter your name and email and hit "Go". <br>You and your new mentee will immediately receive an email notification so you can connect and schedule your three mentor sessions.<br>
+          </p>
+           <div class="input-append">
+             <input id="mentor_name" type="text" placeholder="Name">
+             <input class="span4 form-control" id="mentor_email" type="text" placeholder="email address">
+           </div><!-- input-append -->
+           <p class="lead"><em><strong>Placeholder Captcha Here</strong></em></p>
+           <img src="mentor_program/app/assets/images/placekitten.jpg" class="img-thumbnail">
+          <div><!-- modal-body -->
+         <div class="modal-footer">
+           <a href="#" class="btn">Close</a>
+           <a href="#" class="btn btn-primary">Go! »</a>
+         </div><!-- Modal-footer -->
+       </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div><!-- Modal (shared) Row -->
