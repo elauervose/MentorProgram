@@ -38,7 +38,7 @@
   <div class="container">
     <div>
       <h1>Mentor Request Form</h1>
-      <p><class="lead">Complete the form below to provide information about what you are working on so a mentor can find you.</span></p>
+      <p class="lead"><em>Please complete the form below with information about what you are working on. <br>The more info you provide, the easier it will be for mentors to be able to can find you.</em></p>
       <br>
       <div>
         <input type="text" id="mentee_name" placeholder="Name">
@@ -46,386 +46,406 @@
         <hr>
       </div>
     </div><!-- Mentor request form - name, email -->
+
     <div>
-      <p class="lead"><em>This is the button group form you asked for</em></p>
-      <p class="lead span3">Preferred meeting locations:</p>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary">
-          <input type="checkbox">Inner SE
-        </label>
-        <label class="btn btn-primary">
-          <input type="checkbox">Inner NE
-        </label>
-        <label class="btn btn-primary">
-          <input type="checkbox">Downtown
-        </label>
-        <label class="btn btn-primary">
-          <input type="checkbox">Old Town & Pearl 
-        </label>
-        <label class="btn btn-primary">
-          <input type="checkbox">NW
-        </label>
-        <label class="btn btn-primary">
-          <input type="checkbox">SW
-        </label>
-      </div>
+      <p class="lead"><em>Please select your preferred meeting location(s).</em></p>
+        <div class="row well">
+          <div class="span3">
+            <label class="checkbox" for="location1">
+              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location1" data-toggle="checkbox">
+              Inner SE
+            </label>
+            <label class="checkbox" for="location2">
+              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location2" data-toggle="checkbox">
+              Inner NE
+            </label>
+          </div>
+          <div class="span3">
+            <label class="checkbox" for="location3">
+              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location3" data-toggle="checkbox">
+              Downtown
+            </label>
+            <label class="checkbox" for="location4">
+              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location4" data-toggle="checkbox">
+              Old Town & The Pearl
+            </label>
+          </div>
+          <div class="span3">
+            <label class="checkbox" for="location5">
+              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location5" data-toggle="checkbox">
+              Inner NW
+            </label>
+            <label class="checkbox" for="location6">
+              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location6" data-toggle="checkbox">
+              Inner SW
+            </label>
+          </div>
+        </div>
       <hr>
-    </div><!-- Mentor request preferred meeting location -->
-  
-    <div class="span8">
-      <p class="lead"><em>These are the checkboxes I prefer</em></p>
-      <table class="table table-striped">
-        <tr>
-          <td><p class="lead span2">Preferred Meeting Locations</p></td>
+    </div><!-- Preferred meeting location -->  
+
+    <div>
+      <p class="lead"><em>Please select days & times you are available to meet.</em></p>
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Monday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="monday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday1" data-toggle="checkbox">
+            Anytime
+          </label>
+           <label class="checkbox" for="monday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday2" data-toggle="checkbox">
+             Unavailable
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="monday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
+          </label>
+          <label class="checkbox" for="monday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday4" data-toggle="checkbox">
+           Before 9am 
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="monday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
+          </td>
           <td>
-            <div>
-              <label class="checkbox" for="location1">
-                <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location1" data-toggle="checkbox">
-                Inner SE
-              </label>
-              <label class="checkbox" for="location2">
-                <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location2" data-toggle="checkbox">
-                Inner NE
-              </label>
-            </td>
-            <td>
-              <label class="checkbox" for="location3">
-                <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location3" data-toggle="checkbox">
-                Downtown
-              </label>
-              <label class="checkbox" for="location4">
-                <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location4" data-toggle="checkbox">
-                Old Town & The Pearl
-              </label>
-            </td>
-            <td>
-              <label class="checkbox" for="location5">
-                <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location5" data-toggle="checkbox">
-                Inner NW
-              </label>
-              <label class="checkbox" for="location6">
-                <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="location6" data-toggle="checkbox">
-                Inner SW
-              </label>
+          <label class="checkbox" for="monday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday6" data-toggle="checkbox">
+           Lunchtime 
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="monday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="monday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
+        </div>
+        <div class="row">
+          <div class="span2">
+          </div>
+        </div>
+      </div><!-- Monday -->
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Tuesday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="tuesday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday1" data-toggle="checkbox">
+            Anytime
+          </label>
+           <label class="checkbox" for="tuesday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday2" data-toggle="checkbox">
+             Unavailable
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="tuesday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
+          </label>
+          <label class="checkbox" for="tuesday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday4" data-toggle="checkbox">
+           Before 9am 
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="tuesday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
+          </td>
+          <td>
+          <label class="checkbox" for="tuesday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday6" data-toggle="checkbox">
+           Lunchtime 
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="tuesday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="tuesday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
+        </div>
+        <div class="row">
+          <div class="span2">
+          </div>
+        </div>
+      </div><!-- Tuesday -->
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Wednesday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="wednesday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday1" data-toggle="checkbox">
+            Anytime
+          </label>
+           <label class="checkbox" for="wednesday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday2" data-toggle="checkbox">
+             Unavailable
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="wednesday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
+          </label>
+          <label class="checkbox" for="wednesday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday4" data-toggle="checkbox">
+           Before 9am 
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="wednesday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
+          </td>
+          <td>
+          <label class="checkbox" for="wednesday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday6" data-toggle="checkbox">
+           Lunchtime
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="wednesday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="wednesday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="wednesday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
+
+        </div>
+        <div class="row">
+          <div class="span2">
+          </div>
+        </div>
+      </div><!-- Wednesday -->
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Thursday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="thursday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday1" data-toggle="checkbox">
+            Anytime
+          </label>
+           <label class="checkbox" for="thursday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday2" data-toggle="checkbox">
+             Unavailable
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="thursday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
+          </label>
+          <label class="checkbox" for="thursday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday4" data-toggle="checkbox">
+           Before 9am 
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="thursday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
+          </td>
+          <td>
+          <label class="checkbox" for="thursday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday6" data-toggle="checkbox">
+           Lunchtime 
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="thursday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="thursday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="thursday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
             </div>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- This is what I think you asked for -->
-    <div class="span12">
-      <p class="lead"><em>This is the button group form you asked for</em></p>
-      <table class="table table-striped">
-        <tr>
-          <td><h4>Monday</h4></td>
-          <td>
-            <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-info" for="monday">
-              <input type="checkbox" id="monday">Anytime
-            </label>
-            <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">Mornings
-            </label>
-            <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">Afternoons
-            </label>
-              <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">Evenings
-            </label>
-            <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">Before 9am
-            </label>
-            <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">Lunchtime
-            </label>
-            <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">After 5pm
-            </label>
-              <label class="btn btn-info btn-mini" for="monday">
-              <input type="checkbox" id="monday">Unavailable
-            </label>
-          </div>
-          </td>      
-        </tr><!-- Monday -->
-        <tr>
-          <td><h4>Tuesday</h4></td>
-          <td>
-            <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-info" for="tuesday">
-              <input type="checkbox" id="tuesday">Anytime
-            </label>
-            <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">Mornings
-            </label>
-            <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">Afternoons
-            </label>
-              <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">Evenings
-            </label>
-            <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">Before 9am
-            </label>
-            <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">Lunchtime
-            </label>
-            <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">After 5pm
-            </label>
-              <label class="btn btn-info btn-mini" for="tuesday">
-              <input type="checkbox" id="tuesday">Unavailable
-            </label>
-          </div>
-          </td>  
-        </tr><!-- Tuesday -->
-        <tr>
-          <td><h4>Wednesday</h4></td>
-          <td>
-          <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-info" for="wednesday">
-            <input type="checkbox" id="wednesday">Anytime
+            <div class="row">
+              <div class="span2">
+              </div>
+            </div>
+      </div><!-- Thursday -->
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Friday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="friday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday1" data-toggle="checkbox">
+            Anytime
           </label>
-          <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">Mornings
-          </label>
-          <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">Afternoons
-          </label>
-            <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">Evenings
-          </label>
-          <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">Before 9am
-          </label>
-          <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">Lunchtime
-          </label>
-          <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">After 5pm
-          </label>
-            <label class="btn btn-info btn-mini" for="wednesday">
-            <input type="checkbox" id="wednesday">Unavailable
-          </label>
-          </div>
-          </td> 
-        </tr><!-- Wednesday -->
-        <tr>
-        <td><h4>Thursday</h4></td>
-          <td>
-            <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-info" for="thursday">
-              <input type="checkbox" id="thursday">Anytime
-            </label>
-            <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">Mornings
-            </label>
-            <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">Afternoons
-            </label>
-              <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">Evenings
-            </label>
-            <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">Before 9am
-            </label>
-            <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">Lunchtime
-            </label>
-            <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">After 5pm
-            </label>
-              <label class="btn btn-info btn-mini" for="thursday">
-              <input type="checkbox" id="thursday">Unavailable
-            </label>
-          </div>
-          </td> 
-        </tr><!-- Thursday -->
-        <tr>
-        <td><h4>Friday</h4></td>
-        <td>
-          <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-info" for="friday">
-            <input type="checkbox" id="friday">Anytime
-          </label>
-          <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">Mornings
-          </label>
-          <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">Afternoons
-          </label>
-            <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">Evenings
-          </label>
-          <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">Before 9am
-          </label>
-          <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">Lunchtime
-          </label>
-          <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">After 5pm
-          </label>
-            <label class="btn btn-info btn-mini" for="friday">
-            <input type="checkbox" id="friday">Unavailable
+           <label class="checkbox" for="friday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday2" data-toggle="checkbox">
+             Unavailable
           </label>
         </div>
-        </td> 
-        </tr><!-- Friday -->
-        <tr>
-          <td><h4>Saturday</h4></td>
-          <td>
-            <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-info" for="saturday">
-              <input type="checkbox" id="saturday">Anytime
-            </label>
-            <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">Mornings
-            </label>
-            <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">Afternoons
-            </label>
-              <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">Evenings
-            </label>
-            <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">Before 9am
-            </label>
-            <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">Lunchtime
-            </label>
-            <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">After 5pm
-            </label>
-              <label class="btn btn-info btn-mini" for="saturday">
-              <input type="checkbox" id="saturday">Unavailable
-            </label>
-          </div>
-          </td> 
-        </tr><!-- Saturday -->
-        <tr>
-        <td><h4>Sunday</h4></td>
-        <td>
-          <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-info" for="sunday">
-            <input type="checkbox" id="sunday">Anytime
+        <div class="span2">
+          <label class="checkbox" for="friday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
           </label>
-          <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">Mornings
-          </label>
-          <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">Afternoons
-          </label>
-            <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">Evenings
-          </label>
-          <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">Before 9am
-          </label>
-          <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">Lunchtime
-          </label>
-          <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">After 5pm
-          </label>
-            <label class="btn btn-info btn-mini" for="sunday">
-            <input type="checkbox" id="sunday">Unavailable
+          <label class="checkbox" for="friday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday4" data-toggle="checkbox">
+           Before 9am 
           </label>
         </div>
-        </td> 
-        </tr><!-- Sunday -->
-      </table><!-- Table with button groups to select days & times -->
-    </div>
-
-    <!-- This is what I prefer -->
-    <div class="span9">
-      <p class="lead"><em>These are the checkboxes I prefer</em></p>
-      <table class="table table-striped">
-        <tr>
-          <td><h3>Monday</h3></td>
-          <td>
-            <label class="checkbox" for="monday1">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday1" data-toggle="checkbox">
-              Anytime
-            </label>
-            <label class="checkbox" for="monday2">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday2" data-toggle="checkbox">
-              Unavailable
-           </label>
-           </td>
-           <td>
-            <label class="checkbox" for="monday3">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday3" data-toggle="checkbox">
-              Mornings
-            </label>
-            <label class="checkbox" for="monday4">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday4" data-toggle="checkbox">
-             Afternoons 
-            </label>
-            <label class="checkbox" for="monday5">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday5" data-toggle="checkbox">
-             Evenings
-            </label>
-            </td>
-            <td>
-            <label class="checkbox" for="monday6">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday6" data-toggle="checkbox">
-             Before 9am 
-            </label>
-            <label class="checkbox" for="monday7">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday7" data-toggle="checkbox">
-             Lunchtime 
-            </label>
-            <label class="checkbox" for="monday8">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="monday8" data-toggle="checkbox">
-             After 5pm 
-            </label>
+        <div class="span2">
+          <label class="checkbox" for="friday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
           </td>
-        </tr><!-- Monday -->
-        <tr>
-          <td><h3>Tuesday</h3></td>
           <td>
-            <label class="checkbox" for="tuesday1">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday1" data-toggle="checkbox">
-              Anytime
-            </label>
-            <label class="checkbox" for="tuesday2">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday2" data-toggle="checkbox">
-              Unavailable
-           </label>
-           </td>
-           <td>
-            <label class="checkbox" for="tuesday3">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday3" data-toggle="checkbox">
-              Mornings
-            </label>
-            <label class="checkbox" for="tuesday4">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday4" data-toggle="checkbox">
-             Afternoons 
-            </label>
-            <label class="checkbox" for="tuesday5">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday5" data-toggle="checkbox">
-             Evenings
-            </label>
-            </td>
-            <td>
-            <label class="checkbox" for="tuesday6">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday6" data-toggle="checkbox">
-             Before 9am 
-            </label>
-            <label class="checkbox" for="tuesday7">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday7" data-toggle="checkbox">
-             Lunchtime 
-            </label>
-            <label class="checkbox" for="tuesday8">
-              <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="tuesday8" data-toggle="checkbox">
-             After 5pm 
-            </label>
+          <label class="checkbox" for="friday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday6" data-toggle="checkbox">
+           Lunchtime 
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="friday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="friday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="friday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
+        </div>
+        <div class="row">
+          <div class="span2">
+          </div>
+        </div>
+      </div><!-- Friday -->
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Saturday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="saturday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday1" data-toggle="checkbox">
+            Anytime
+          </label>
+           <label class="checkbox" for="saturday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday2" data-toggle="checkbox">
+             Unavailable
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="saturday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
+          </label>
+          <label class="checkbox" for="saturday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday4" data-toggle="checkbox">
+           Before 9am 
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="saturday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
           </td>
-        </tr><!-- Tuesday -->
-      </table>
-    </div>
-
+          <td>
+          <label class="checkbox" for="saturday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday6" data-toggle="checkbox">
+           Lunchtime 
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="saturday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="saturday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="saturday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
+        </div>
+        <div class="row">
+          <div class="span2">
+          </div>
+        </div>
+      </div><!-- Saturday -->
+      <div class="row well well-small">
+        <div class="span2">
+          <h2>Sunday</h2>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="sunday1">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday1" data-toggle="checkbox">
+            Anytime
+          </label>
+           <label class="checkbox" for="sunday2">
+             <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday2" data-toggle="checkbox">
+             Unavailable
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="sunday3">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday3" data-toggle="checkbox">
+            <small>Any Morning Time</small>
+          </label>
+          <label class="checkbox" for="sunday4">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday4" data-toggle="checkbox">
+           Before 9am 
+          </label>
+        </div>
+        <div class="span2">
+          <label class="checkbox" for="sunday5">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday5" data-toggle="checkbox">
+           <small>Any Afternoon Time</small>
+          </label>
+          </td>
+          <td>
+          <label class="checkbox" for="sunday6">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday6" data-toggle="checkbox">
+           Lunchtime 
+          </label>
+        </div>
+        <div class="span3">
+          <label class="checkbox" for="sunday7">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday7" data-toggle="checkbox">
+           <small>Any Evening Time</small> 
+          </label>
+          <label class="checkbox" for="sunday8">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="sunday8" data-toggle="checkbox">
+           After 5pm 
+          </label>
+        </div>
+        <div class="row">
+          <div class="span2">
+          </div>
+        </div>
+      </div><!-- Sunday -->
+      <hr>
+    </div><!-- Day & Time availability -->
   </div><!-- Container -->
 
 
