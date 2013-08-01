@@ -10,13 +10,22 @@ describe Ask do
   it { should respond_to :answered }
   it { should respond_to :answer }
   it { should respond_to :locations }
+  it { should respond_to :categories }
 
   describe "locations" do
     let(:location) { FactoryGirl.create :location }
-    it "should be add a location" do
+    it "should add a location" do
       ask.locations << location
       expect(ask.locations).to include(location)
     end
   end
 
+  describe "categories" do
+    let(:category) { FactoryGirl.create :category }
+
+    it "should add a category" do
+      ask.categories  << category
+      expect(ask.categories).to include(category)
+    end
+  end
 end

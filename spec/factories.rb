@@ -18,4 +18,8 @@ FactoryGirl.define do
   factory :location do
     sequence(:name) { |n| "location_#{n}" }
   end
+
+  factory :category do
+    sequence(:name) { |n| "category_#{n}" }
+  end
 end

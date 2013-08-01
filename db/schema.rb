@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801202405) do
+ActiveRecord::Schema.define(version: 20130801204348) do
 
   create_table "answers", force: true do |t|
     t.string   "name"
@@ -33,12 +33,25 @@ ActiveRecord::Schema.define(version: 20130801202405) do
     t.boolean  "answered"
   end
 
+  create_table "asks_categories", force: true do |t|
+    t.integer "ask_id"
+    t.integer "category_id"
+  end
+
+  add_index "asks_categories", ["ask_id", "category_id"], name: "index_asks_categories_on_ask_id_and_category_id", unique: true
+
   create_table "asks_locations", force: true do |t|
     t.integer "ask_id"
     t.integer "location_id"
   end
 
   add_index "asks_locations", ["ask_id", "location_id"], name: "index_asks_locations_on_ask_id_and_location_id", unique: true
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.string   "name"
