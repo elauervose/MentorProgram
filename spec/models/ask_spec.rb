@@ -9,4 +9,14 @@ describe Ask do
   it { should respond_to :email_updates }
   it { should respond_to :answered }
   it { should respond_to :answer }
+  it { should respond_to :locations }
+
+  describe "locations" do
+    let(:location) { FactoryGirl.create :location }
+    it "should be add a location" do
+      ask.locations << location
+      expect(ask.locations).to include(location)
+    end
+  end
+
 end

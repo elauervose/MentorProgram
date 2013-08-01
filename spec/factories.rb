@@ -15,4 +15,7 @@ FactoryGirl.define do
     association :ask
   end
 
+  factory :location do
+    sequence(:name) { |n| "location_#{n}" }
+  end
 end
