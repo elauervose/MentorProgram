@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801204348) do
+ActiveRecord::Schema.define(version: 20130801210822) do
 
   create_table "answers", force: true do |t|
     t.string   "name"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(version: 20130801204348) do
 
   add_index "asks_locations", ["ask_id", "location_id"], name: "index_asks_locations_on_ask_id_and_location_id", unique: true
 
+  create_table "asks_meetup_times", force: true do |t|
+    t.integer "ask_id"
+    t.integer "meetup_time_id"
+  end
+
+  add_index "asks_meetup_times", ["ask_id", "meetup_time_id"], name: "index_asks_meetup_times_on_ask_id_and_meetup_time_id", unique: true
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -55,6 +62,13 @@ ActiveRecord::Schema.define(version: 20130801204348) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetup_times", force: true do |t|
+    t.string   "day"
+    t.string   "period"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
