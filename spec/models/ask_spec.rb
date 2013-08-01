@@ -8,4 +8,5 @@ describe Ask do
   it { should respond_to :description }
   it { should respond_to :email_updates }
   it { should respond_to :answered }
+  it { should respond_to :answer }
 end
