@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Ask do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:ask) { FactoryGirl.build :ask }
+
+  it { should respond_to :name }
+  it { should respond_to :email }
+  it { should respond_to :description }
+  it { should respond_to :email_updates }
+  it { should respond_to :answered }
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130730013924) do
+ActiveRecord::Schema.define(version: 20130801034549) do
 
   create_table "answers", force: true do |t|
     t.string   "name"
@@ -21,18 +21,16 @@ ActiveRecord::Schema.define(version: 20130730013924) do
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["ask_id"], name: "index_answers_on_ask_id", using: :btree
+  add_index "answers", ["ask_id"], name: "index_answers_on_ask_id"
 
   create_table "asks", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "location"
-    t.string   "days"
-    t.string   "times"
-    t.string   "project_desc"
-    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.boolean  "email_updates"
+    t.boolean  "answered"
   end
 
 end
