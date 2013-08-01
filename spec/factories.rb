@@ -8,4 +8,11 @@ FactoryGirl.define do
     email_updates true
     answered false
   end
+
+  factory :answer do
+    sequence(:name) { |n| "mentor #{n}" }
+    sequence(:email) { |n| "mentor_#{n}" }
+    association :ask
+  end
+
 end
