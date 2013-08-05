@@ -9,6 +9,7 @@ Mentor::Application.routes.draw do
   get "mentees", to: 'static#mentees'
   get "prep", to: 'static#prep'
   get "resources", to: 'static#resources'
+  get "asks/new", to: 'asks#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
