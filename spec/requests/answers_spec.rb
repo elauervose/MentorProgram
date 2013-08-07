@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe "Answers" do
-  describe "GET /answers" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get answers_path
-      response.status.should be(200)
+  describe "mentor signup page" do
+    before { visit '/mentors/sign_up' }
+    it "shows the mentor form" do
+      expect(page).to have_selector 'h1', text: "Find Your Mentee"
+    end
+    it "has a table of available mentees" do
+      expect(page).to have_selector 'table.mentees'
     end
   end
 end

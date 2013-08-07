@@ -12,9 +12,12 @@ class AnswersController < ApplicationController
   def show
   end
 
+  def sign_up
+    @asks = Ask.all
+  end
+
   # GET /answers/new
   def new
-    @answer = Answer.new
   end
 
   # GET /answers/1/edit

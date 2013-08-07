@@ -40,6 +40,9 @@ end
 group :development do
   gem 'pry'
   gem 'pry-doc'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :test do
