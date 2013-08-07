@@ -15,6 +15,9 @@ class AsksController < ApplicationController
   # GET /asks/new
   def new
     @ask = Ask.new
+    @locations = Location.all
+    @meetups = MeetupTime.all
+    @categories = Category.all
   end
 
   # GET /asks/1/edit
@@ -25,10 +28,16 @@ class AsksController < ApplicationController
   # POST /asks.json
   def create
     @ask = Ask.new(ask_params)
+    @locations = params["ask"]["locations"]
+    @meetups = params["ask"]["meetup_times"]
+    @categories = params["ask"]["categories"]
+    @locations.each { |location| @ask.locations << Location.find(location) }
+    @meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
+    @categories.each { |category| @ask.categories << Category.find(category) }
 
     respond_to do |format|
       if @ask.save
-        format.html { redirect_to @ask, notice: 'Ask was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Ask was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ask }
       else
         format.html { render action: 'new' }
@@ -69,6 +78,6 @@ class AsksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ask_params
-      params.require(:ask).permit(:name, :email, :location, :days, :times, :project_desc, :category)
+      params.require(:ask).permit(:name, :email, :description)
     end
 end
