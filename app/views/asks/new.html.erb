@@ -20,12 +20,12 @@
   <p class="lead"><em>Please complete the form below with information about what you are working on. <br>The more info you provide, the easier it will be for mentors to be able to can find you.</em></p>
   <br>
 </div><!-- Header Row for Mentor Request Form -->
-<%= form_for @ask do |f| %>
+<%= form_for @ask, class: "form-inline col-lg-4" do |f| %>
 <div><!-- Mentor request form - Input for name & email -->
   <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
   <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
-    <hr>
 </div><!-- Mentor request form - Input for name & email -->
+<hr>
 <div><!-- Mentor request form - Input for Preferred meeting location -->
   <p class="lead"><em>Please select your preferred meeting location(s).</em></p>
     <div class="row well">
@@ -44,9 +44,8 @@
       <% end %>
 
 
-  <hr>
 </div><!-- Mentor request form - Input for Preferred meeting location -->
-
+  <hr>
 <div><!-- Mentor request form - Input for Day & Time availability -->
   <p class="lead"><em>Please select days & times you are available to meet.</em></p>
   <% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].each do |day| %>
@@ -61,7 +60,11 @@
         <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span>
         <% meetup = @meetups.where("period = ?", time).where("day = ?", day).first %>
         <%= f.check_box "meetup_times", {multiple: true, "data-toggle" => "checkbox"}, meetup.id, nil %>
-        <%= time %>
+        <% if time.length > 11 %>
+          <small><%= time %></small>
+        <% else %>
+          <%= time %>
+        <% end %>
       </label>
     <% if i.odd? %> </div> <% end %>
     <% end %>
