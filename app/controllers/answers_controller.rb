@@ -18,6 +18,10 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
+    @ask = Ask.find(params[:ask_id])
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   # GET /answers/1/edit

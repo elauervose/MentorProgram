@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "Answers" do
+  let!(:ask) { FactoryGirl.create(:ask) }
   describe "mentor signup page" do
     before { visit '/mentors/sign_up' }
     it "shows the mentor form" do

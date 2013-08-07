@@ -100,7 +100,7 @@
           <td><%= ask.description %></td>
           <td>
             <div>
-              <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Sign Up! »</a>
+              <a data-toggle="modal" data-remote="<%= new_answer_path(ask_id: ask.id) %>" href="#myModal" id="<%= "ask_signup_#{ask.id}" %>" class="btn btn-primary btn-mini mentor-signup">Sign Up! »</a>
             </td>
       <% end %>
       </tr>
@@ -117,21 +117,9 @@
            <h3 class="modal-title">We Love Our Mentors!</h3>
          </div>
          <div class="modal-body">
-          <p class="lead"><strong>You are about to become a mentor for one very lucky mentee!</strong></p>
-          <p class="lead">
-            It's so easy! Just enter your name and email and hit "Go". <br>You and your new mentee will immediately receive an email notification so you can connect and schedule your three mentor sessions.<br>
-          </p>
-           <div class="input-append">
-             <input id="mentor_name" type="text" placeholder="Name">
-             <input class="span4 form-control" id="mentor_email" type="text" placeholder="email address">
-           </div><!-- input-append -->
-           <p class="lead"><em><strong>Placeholder Captcha Here</strong></em></p>
-           <img src="mentor_program/app/assets/images/placekitten.jpg" class="img-thumbnail">
+
           <div><!-- modal-body -->
-         <div class="modal-footer">
-           <a href="#" class="btn">Close</a>
-           <a href="#" class="btn btn-primary">Go! »</a>
-         </div><!-- Modal-footer -->
+
        </div><!-- /.modal-content -->
      </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
