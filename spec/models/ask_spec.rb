@@ -38,4 +38,22 @@ describe Ask do
       expect(ask.meetup_times).to include(meetup)
     end
   end
+
+  describe "when answered" do
+    let(:answer) { FactoryGirl.attributes_for(:answer, ask: ask) }
+
+    before do
+      ask.save!
+      ask.create_answer(answer)
+    end
+
+    it "should have an answer" do
+      expect(ask.answer).to_not be_nil
+    end
+    #its(:answered) { should be_true }
+    it "should be answered" do
+      ask.reload
+      expect(ask.answered?).to eq(true)
+    end
+  end
 end
