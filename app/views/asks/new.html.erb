@@ -1,5 +1,114 @@
-<h1>New ask</h1>
+<div class="hero-unit"><!-- Header -->
+  <h1 class="demo-logo">Find a Mentor<small>Get help on projects & learn to code in byte-sized steps!</small></h1>
+  <br>
+  <div class="btn btn-large btn-success span2 offset8">Sign Me Up! »</div>
+</div><!-- Header -->
 
-<%= render 'form' %>
+<div class="row"><!-- Explanatory text ROW -->
+  <div class="span12">
+    <h1>How it works ..</h1>
+    <p class="lead">Velit pop-up McSweeney's swag, fashion axe aliqua craft beer ethnic yr cornhole. Cornhole laborum commodo adipisicing, Brooklyn odio actually. Eu consequat american apparel cred, veniam labore mollit mustache. Mustache food truck artisan banh mi. Try-hard occaecat pug, helvetica cliche polaroid tote bag. Officia pour-over salvia, organic lo-fi mlkshk ut tofu. 8-bit incididunt placeat wayfarers mixtape, literally four loko in forage tousled gluten-free nulla. <br><strong><a hreff=" ">Mentor Session Guidelines & Cheatsheet</a></strong></p>
+    <div>
+      <div class="btn btn-mini btn-info">Help Me Find A Project »</div>
+    </div>
+  </div>
+</div><!-- Explanatory text ROW -->
+<hr>
 
-<%= link_to 'Back', asks_path %>
+<div><!--Header Row for Mentor Request Form -->
+  <h1>Mentor Request Form</h1>
+  <p class="lead"><em>Please complete the form below with information about what you are working on. <br>The more info you provide, the easier it will be for mentors to be able to can find you.</em></p>
+  <br>
+</div><!-- Header Row for Mentor Request Form -->
+<%= form_for @ask, class: "form-inline col-lg-4" do |f| %>
+<div><!-- Mentor request form - Input for name & email -->
+  <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+  <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+</div><!-- Mentor request form - Input for name & email -->
+<hr>
+<div><!-- Mentor request form - Input for Preferred meeting location -->
+  <p class="lead"><em>Please select your preferred meeting location(s).</em></p>
+    <div class="row well">
+      <% @locations.each_with_index do |location, i| %>
+        <% if i.even? %>
+          <div class="span3">
+          <% end %>
+          <label class="checkbox" for="<%= location.name %>">
+            <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span>
+            <%= f.check_box "locations", {multiple: true, "data-toggle" => "checkbox"}, location.id, nil %>
+            <%= location.name %>
+          </label>
+          <% if i.odd? %>
+            </div>
+          <% end %>
+      <% end %>
+
+
+</div><!-- Mentor request form - Input for Preferred meeting location -->
+  <hr>
+<div><!-- Mentor request form - Input for Day & Time availability -->
+  <p class="lead"><em>Please select days & times you are available to meet.</em></p>
+  <% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].each do |day| %>
+  <div class="row well well-small">
+    <div class="span2">
+      <h2><%= day %></h2>
+    </div>
+    <% ["Anytime", "Unavailable", "Any Morning Time", "Before 9am",
+      "Any Afternoon Time", "Lunchtime", "Any Evening Time", "After 5pm"].each_with_index do |time, i| %>
+    <% if i.even? %><div class="span2"><% end %>
+      <label class="checkbox" for="<%= day + "-" + time %>">
+        <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span>
+        <% meetup = @meetups.where("period = ?", time).where("day = ?", day).first %>
+        <%= f.check_box "meetup_times", {multiple: true, "data-toggle" => "checkbox"}, meetup.id, nil %>
+        <% if time.length > 11 %>
+          <small><%= time %></small>
+        <% else %>
+          <%= time %>
+        <% end %>
+      </label>
+    <% if i.odd? %> </div> <% end %>
+    <% end %>
+    </div>
+  <% end %>
+  <hr>
+</div><!-- Mentor request form - Input for Day & Time availability -->
+
+<div class="row"><!-- Mentor request form: Input for Project Category/Description -->
+  <div class="span4">
+    <h4>Select a category for the project you are working on</h4>
+    <% @categories.each do |category| %>
+      <label class="checkbox" for="<%= category.name%>">
+        <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span>
+        <%= f.check_box "categories", {multiple: true, "data-toggle" => "checkbox"}, category.id, nil %>
+        <%= category.name %>
+      </label>
+    <% end %>
+
+        <!-- The next line does not yet create a new category, need to add that code -->
+        <input type="text" class="form-control" placeholder="Other">
+  </div>
+  <div class="span8">
+    <h4>Please write a 2-3 sentence description of your project so mentors can evaluate whether they can help you.</h4>
+    <%= f.text_area "description", class: "span8", rows: "8" %>
+  </div><!--Mentor request form: Input for Project Category & Description -->
+</div><!-- Mentor request form - Input for Project Category/Description -->
+
+<br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+
+<div class="row"><!-- Captcha Placeholder-->
+  <div class="span4">
+    <p class="lead"><em><strong>Placeholder Captcha Here</strong></em></p>
+    <img src="mentor_program/app/assets/images/placekitten.jpg" class="img-thumbnail">
+  </div>
+</div><!-- Captcha Placeholder ROW -->
+
+<br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+
+<div class="row"><!-- Mentor request form - Submit Button -->
+  <div class="span4 lead">
+    <%= f.submit "Submit Mentor Request Form »", class: "btn btn-large btn-block btn-info" %>
+  </div>
+</div><!-- Mentor request form - Submit Button -->
+
+<% end %>
+<br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
