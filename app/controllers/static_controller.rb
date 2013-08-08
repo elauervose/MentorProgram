@@ -16,4 +16,12 @@ class StaticController < ApplicationController
 
   def resources
   end
+
+  def thank_you_mentor
+    render :thank_you_mentor
+  end
+
+  def thank_you_mentee
+    render :thank_you_mentee
+  end  
 end
