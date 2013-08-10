@@ -12,6 +12,25 @@ describe Ask do
   it { should respond_to :locations }
   it { should respond_to :categories }
   it { should respond_to :meetup_times }
+  it { should be_valid }
+
+  describe "validations" do
+    it "should require a name" do
+      ask.name = ""
+      expect(ask).to_not be_valid
+    end
+    it "should require a valid email address" do
+      %w{ not_an_email @invalid.com personATplaceDOTcom
+        guy@place.123 }.each do |invalid_email|
+        ask.email = invalid_email
+        expect(ask).to_not be_valid
+        end
+    end
+    it "should require a description" do
+      ask.description = ""
+      expect(ask).to_not be_valid
+    end
+  end
 
   describe "locations" do
     let(:location) { FactoryGirl.create :location }
@@ -50,7 +69,6 @@ describe Ask do
     it "should have an answer" do
       expect(ask.answer).to_not be_nil
     end
-    #its(:answered) { should be_true }
     it "should be answered" do
       ask.reload
       expect(ask.answered?).to eq(true)
