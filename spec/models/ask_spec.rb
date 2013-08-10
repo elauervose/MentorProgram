@@ -19,6 +19,10 @@ describe Ask do
       ask.name = ""
       expect(ask).to_not be_valid
     end
+    it "should require an email address" do
+      ask.email = ""
+      expect(ask).to_not be_valid
+    end
     it "should require a valid email address" do
       %w{ not_an_email @invalid.com personATplaceDOTcom
         guy@place.123 }.each do |invalid_email|
