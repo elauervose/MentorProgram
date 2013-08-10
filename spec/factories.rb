@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :answer do
     sequence(:name) { |n| "mentor #{n}" }
-    sequence(:email) { |n| "mentor_#{n}" }
+    sequence(:email) { |n| "mentor_#{n}@example.com" }
     association :ask
   end
 
