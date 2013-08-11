@@ -1,19 +1,20 @@
-
-          <p class="lead"><strong>You are about to become a mentor for one very lucky mentee!</strong></p>
-          <p class="lead">
-            It's so easy! Just enter your name and email and hit "Go". <br>You and your new mentee will immediately receive an email notification so you can connect and schedule your three mentor sessions.<br>
-          </p>
-         <%= form_for @ask.build_answer do |f| %>
-           <div class="input-append">
-              <%= f.text_field :name, placeholder: "Name" %>
-              <%= f.email_field :email, placeholder: "email address" %>
-           </div><!-- input-append -->
-           <p class="lead"><em><strong>Placeholder Captcha Here</strong></em></p>
-           <img src="mentor_program/app/assets/images/placekitten.jpg" class="img-thumbnail">
-         <div class="modal-footer">
-           <a href="#" class="btn">Close</a>
-           <%= f.submit "Go! »", class: "btn btn-primary" %>
-         <% end %>
-         </div><!-- Modal-footer -->
-
-
+<p class="lead">
+  <strong>
+    You are about to become a mentor for one very lucky mentee!
+  </strong>
+</p>
+<p class="lead">
+  It's so easy! Just enter your name and email and hit "Go".<br>
+  You and your new mentee will immediately receive an email notification so you can connect and schedule your three mentor sessions.<br>
+</p>
+<%= form_for @ask.build_answer do |f| %>
+  <div class="input-append">
+    <%= f.text_field :name, placeholder: "Name" %>
+    <%= f.email_field :email, placeholder: "email address" %>
+  </div>
+  <%= render '/shared/captcha' %>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <%= f.submit "Go! »", class: "btn btn-primary" %>
+  </div>
+<% end %>

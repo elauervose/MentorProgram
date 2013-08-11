@@ -15,7 +15,7 @@
       <div>
         <%= link_to 'Sign Up! »', '#myModal',
           'data-toggle' => "modal",
-          'data-remote' => new_answer_path(ask_id: ask),
+          'data-remote' => new_answer_path(ask_id: ask.id),
           id: "ask_signup_#{ask.id}",
           class: "btn btn-primary btn-mini mentor-signup" %>
       </div>
