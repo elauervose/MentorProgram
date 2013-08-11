@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe "Asks" do
   describe "request form" do
+    before :all do
+      load "#{Rails.root}/db/seeds.rb"
+    end
     before { visit new_ask_path }
     it "show the request form" do
       expect(page).to have_selector 'h1', text: "Mentor Request Form"
@@ -27,6 +30,10 @@ describe "Asks" do
 
       it "should create a new ask" do
         expect(Ask.find_by(name: "Test User")).to_not be_nil
+      end
+      it "should redirect to the mentee thank you page" do
+        expect(page).to have_selector 'h3',
+          text: "your request for a mentor has been received"
       end
     end
   end

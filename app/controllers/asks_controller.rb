@@ -37,7 +37,7 @@ class AsksController < ApplicationController
 
     respond_to do |format|
       if @ask.save
-        format.html { redirect_to root_path, notice: 'Ask was successfully created.' }
+        format.html { redirect_to thank_you_mentee_path }
         format.json { render action: 'show', status: :created, location: @ask }
       else
         format.html { render action: 'new' }

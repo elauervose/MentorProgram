@@ -14,6 +14,8 @@ locations = ["Inner SE", "Inner NE", "Downtown", "Old Town & The Pearl",
 categories = ["Basic Web", "HTML/CSS", "Github/Heroku/Command Line",
   "Beginning JavaScript", "Beginning Ruby", "Sinatra", "APIs"]
 
+DatabaseCleaner.clean_with(:truncation, only:
+                           ['meetup_times', 'categories', 'locations'])
 
 #create meetup_times
 days.each do |day|

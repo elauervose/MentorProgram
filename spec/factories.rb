@@ -23,6 +23,7 @@ FactoryGirl.define do
     sequence(:name) { |n| "category_#{n}" }
   end
 
+  Days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday}
   factory :meetup_time do
     day "Tuesday"
     period "Evening"
