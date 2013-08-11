@@ -1,0 +1,24 @@
+<% days = %w{ Monday Tuesday Wednesday Thursday Friday Saturday Sunday } %>
+<% @asks.each do |ask| %>
+  <tr id="ask_<%=ask.id %>">
+    <td><%= ask.name %></td>
+    <td><%= ask.locations.map {|l| l.name}.join ', ' %></td>
+    <% days.each do |day| %>
+      <td>
+        <% times = ask.meetup_times.where("day = ?", day) %>
+        <%= times.map {|t| t.period}.join ', ' %>
+      </td>
+    <% end %>
+    <td><%= ask.categories.map {|c| c.name}.join ', ' %></td>
+    <td><%= ask.description %></td>
+    <td>
+      <div>
+        <%= link_to 'Sign Up! »', '#myModal',
+          'data-toggle' => "modal",
+          'data-remote' => new_answer_path(ask_id: ask),
+          id: "ask_signup_#{ask.id}",
+          class: "btn btn-primary btn-mini mentor-signup" %>
+      </div>
+    </td>
+  </tr>
+<% end %>
