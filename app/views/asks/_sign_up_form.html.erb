@@ -1,0 +1,30 @@
+<%= form_for @ask, class: "form-inline col-lg-4" do |f| %>
+  <div class="row">
+    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+    <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+  </div>
+  <hr>
+  <%= render 'locations', f: f %>
+  <hr>
+  <%= render 'times', f: f %>
+  <div class="row">
+    <%= render 'categories', f: f %>
+    <div class="span8">
+      <h4>Please write a 2-3 sentence description of your project so mentors can evaluate whether they can help you.</h4>
+      <%= f.text_area "description", class: "span8", rows: "8" %>
+    </div>
+  </div>
+  <br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+
+  <%= render '/shared/captcha' %>
+
+  <br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+
+  <div class="row">
+    <div class="span4 lead">
+      <%= f.submit "Submit Mentor Request Form »",
+        class: "btn btn-large btn-block btn-info" %>
+    </div>
+  </div>
+
+<% end %>

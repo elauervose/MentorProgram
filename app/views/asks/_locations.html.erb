@@ -1,0 +1,22 @@
+<div class="row"><!-- Mentor request form - Input for Preferred meeting location -->
+  <p class="lead"><em>Please select your preferred meeting location(s).</em></p>
+  <div class="row well">
+    <% @locations.each_with_index do |location, i| %>
+      <% if i.even? %>
+        <div class="span3">
+      <% end %>
+      <label class="checkbox" for="<%= location.name %>">
+        <span class="icons">
+          <span class="first-icon fui-checkbox-unchecked"></span>
+          <span class="second-icon fui-checkbox-checked"></span>
+        </span>
+        <%= f.check_box "locations", {multiple: true,
+          "data-toggle" => "checkbox"}, location.id, nil %>
+        <%= location.name %>
+      </label>
+      <% if i.odd? %>
+        </div>
+      <% end %>
+    <% end %>
+</div><!-- Mentor request form - Input for Preferred meeting location -->
+

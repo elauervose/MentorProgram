@@ -1,0 +1,17 @@
+<div class="span4">
+  <h4>Select a category for the project you are working on</h4>
+  <% @categories.each do |category| %>
+    <label class="checkbox" for="<%= category.name %>">
+      <span class="icons">
+        <span class="first-icon fui-checkbox-unchecked"></span>
+        <span class="second-icon fui-checkbox-checked"></span>
+      </span>
+      <%= f.check_box "categories",
+        {multiple: true, "data-toggle" => "checkbox"}, category.id, nil %>
+      <%= category.name %>
+    </label>
+  <% end %>
+<!-- The does not yet create a new category, need to add that code -->
+  <input type="text" class="form-control" placeholder="Other">
+</div>
+

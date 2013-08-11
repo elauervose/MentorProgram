@@ -1,0 +1,36 @@
+<% days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday} %>
+<% times = ["Anytime", "Unavailable", "Any Morning Time", "Before 9am",
+  "Any Afternoon Time", "Lunchtime", "Any Evening Time", "After 5pm"] %>
+<div class="row">
+  <p class="lead">
+    <em>Please select days & times you are available to meet.</em>
+  </p>
+  <% days.each do |day| %>
+  <div class="row well well-small">
+    <div class="span2">
+      <h2><%= day %></h2>
+    </div>
+    <% times.each_with_index do |time, i| %>
+      <% if i.even? %><div class="span2"><% end %>
+      <label class="checkbox" for="<%= day + "-" + time %>">
+        <span class="icons">
+          <span class="first-icon fui-checkbox-unchecked"></span>
+          <span class="second-icon fui-checkbox-checked"></span>
+        </span>
+        <% meetup = @meetups.where("period = ?", time).
+          where("day = ?", day).first %>
+          <%= f.check_box "meetup_times",
+            {multiple: true, "data-toggle" => "checkbox"}, meetup.id, nil %>
+        <% if time.length > 11 %>
+          <small><%= time %></small>
+        <% else %>
+          <%= time %>
+        <% end %>
+      </label>
+      <% if i.odd? %> </div> <% end %>
+    <% end %>
+    </div>
+  <% end %>
+  <hr>
+</div>
+
