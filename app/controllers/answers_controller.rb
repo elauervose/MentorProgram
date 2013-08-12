@@ -31,7 +31,8 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
+    @ask = Ask.find(answer_params[:ask_id])
+    @answer = @ask.build_answer(answer_params)
 
     respond_to do |format|
       if @answer.save

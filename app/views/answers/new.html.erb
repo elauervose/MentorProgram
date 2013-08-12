@@ -9,12 +9,13 @@
 </p>
 <%= form_for @ask.build_answer do |f| %>
   <div class="input-append">
+    <%= f.hidden_field :ask_id, value: @ask.id %>
     <%= f.text_field :name, placeholder: "Name" %>
     <%= f.email_field :email, placeholder: "email address" %>
   </div>
   <%= render '/shared/captcha' %>
   <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
     <%= f.submit "Go! »", class: "btn btn-primary" %>
   </div>
 <% end %>
