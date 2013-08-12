@@ -47,7 +47,7 @@ describe Ask do
   describe "categories" do
     let(:category) { FactoryGirl.create :category }
 
-    it "should add a category" do
+    it "should add the category ask" do
       ask.categories  << category
       expect(ask.categories).to include(category)
     end

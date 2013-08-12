@@ -15,6 +15,7 @@ class AsksController < ApplicationController
   # GET /asks/new
   def new
     @ask = Ask.new
+    @ask.categories.build
     @locations = Location.all
     @meetups = MeetupTime.all
     @categories = Category.all
@@ -78,6 +79,7 @@ class AsksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ask_params
-      params.require(:ask).permit(:name, :email, :description)
+      params.require(:ask).permit(:name, :email, :description,
+                                 categories_attributes: [:name])
     end
 end
