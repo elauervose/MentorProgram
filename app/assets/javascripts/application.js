@@ -12,6 +12,12 @@
 //= require 'video.js'
 //= require_tree .
 
+// clears the modal body on mentor signup page; this should be moved
+// to a better location once location of this page is finalized
+$('#myModal').on('hidden', function () {
+  $(this).removeData('modal');
+});
+
 // Some general UI pack related JS
 // Extend JS String with repeat method
 String.prototype.repeat = function(num) {
