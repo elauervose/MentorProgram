@@ -6,16 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-days = %w{Sunday Monday Tuesday Wednesday Thursday Friday Saturday}
-periods = ["Anytime", "Any Morning Time", "Any Afternoon Time",
-  "Any Evening Time", "Unavailable", "Before 9am", "Lunchtime", "After 5pm"]
+days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday }
+periods = ["Any", "Morning", "Afternoon", "Evening", "None"]
 locations = ["Inner SE", "Inner NE", "Downtown", "Old Town & The Pearl",
   "Inner NW", "Inner SW"]
 categories = ["Basic Web", "HTML/CSS", "Github/Heroku/Command Line",
   "Beginning JavaScript", "Beginning Ruby", "Sinatra", "APIs"]
 
-DatabaseCleaner.clean_with(:truncation, only:
-                           ['meetup_times', 'categories', 'locations'])
+DatabaseCleaner.clean_with(:truncation)
 
 #create meetup_times
 days.each do |day|
