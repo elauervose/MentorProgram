@@ -32,8 +32,8 @@ describe "Asks" do
         expect(Ask.find_by(name: "Test User")).to_not be_nil
       end
       it "should redirect to the mentee thank you page" do
-        expect(page).to have_selector 'h3',
-          text: "your request for a mentor has been received"
+        expect(page).to have_selector 'h2',
+          text: "Your request for a mentor has been received"
       end
     end
   end
