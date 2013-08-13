@@ -15,24 +15,42 @@ describe Ask do
   it { should be_valid }
 
   describe "validations" do
-    it "should require a name" do
-      ask.name = ""
-      expect(ask).to_not be_valid
-    end
-    it "should require an email address" do
-      ask.email = ""
-      expect(ask).to_not be_valid
-    end
-    it "should require a valid email address" do
-      %w{ not_an_email @invalid.com personATplaceDOTcom
-        guy@place.123 }.each do |invalid_email|
-        ask.email = invalid_email
+    describe "on name" do
+      it "should prevent a blank name" do
+        ask.name = ""
         expect(ask).to_not be_valid
-        end
+      end
+      it "should prevent too long a name" do
+        ask.name = "a"*51
+        expect(ask).to_not be_valid
+      end
     end
-    it "should require a description" do
-      ask.description = ""
-      expect(ask).to_not be_valid
+    describe "on email" do
+      it "should prevent a blank email address" do
+        ask.email = ""
+        expect(ask).to_not be_valid
+      end
+      it "should prevent an valid email address" do
+        %w{ not_an_email @invalid.com personATplaceDOTcom
+          guy@place.123 }.each do |invalid_email|
+          ask.email = invalid_email
+          expect(ask).to_not be_valid
+          end
+      end
+      it "should prevent too long an email address" do
+        ask.email = "a"*245 + "@example.com"
+        expect(ask).to_not be_valid
+      end
+    end
+    describe "on desciption" do
+      it "should prevent an empty description" do
+        ask.description = ""
+        expect(ask).to_not be_valid
+      end
+      it "should prevent too long a description" do
+        ask.description = "a"*301
+        expect(ask).to_not be_valid
+      end
     end
   end
 
