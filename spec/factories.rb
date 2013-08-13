@@ -6,7 +6,6 @@ FactoryGirl.define do
       to tech to find mentors interested in helping them go through
       three 1-2 hour sessions and help them iwth their problems"
     email_updates true
-    answered false
   end
 
   factory :answer do

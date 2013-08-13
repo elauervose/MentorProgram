@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
   end
 
   def sign_up
-    @asks = Ask.all
+    @asks = Ask.not_answered
   end
 
   # GET /answers/new

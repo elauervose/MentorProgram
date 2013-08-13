@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801210822) do
+ActiveRecord::Schema.define(version: 20130813012838) do
 
   create_table "answers", force: true do |t|
     t.string   "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20130801210822) do
     t.datetime "updated_at"
     t.text     "description"
     t.boolean  "email_updates"
-    t.boolean  "answered"
+    t.boolean  "answered",      default: false
   end
 
   create_table "asks_categories", force: true do |t|
