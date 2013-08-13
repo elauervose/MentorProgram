@@ -11,7 +11,9 @@
       <%= category.name %>
     </label>
   <% end %>
-<!-- The does not yet create a new category, need to add that code -->
-  <input type="text" class="form-control" placeholder="Other">
-</div>
+  <%= f.fields_for :categories do |category_fields| %>
+    <%= category_fields.text_field :name, class: "form-control",
+      placeholder: "Other" %>
+  <% end %>
 
+</div>
