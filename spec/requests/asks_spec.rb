@@ -50,9 +50,20 @@ describe "Asks" do
       click_button "Submit Mentor Request Form"
     }.to change(Category, :count).by(1)
    end
+   it "should not create an official category" do
+     category = Category.last
+     expect(category.official?).to be_false
+   end
    it "should associate the new category with the ask" do
      click_button "Submit Mentor Request Form"
      expect(Ask.last.categories.find_by name: "new category").to_not be_nil
+   end
+   it "should not be visible to other visits to the page" do
+     click_button "Submit Mentor Request Form"
+     unofficial_category = Category.last
+     visit new_ask_path
+     expect(page).to_not have_selector(
+       "input#ask_categories_#{unofficial_category.id}")
    end
   end
 

@@ -18,7 +18,7 @@ class AsksController < ApplicationController
     @ask.categories.build
     @locations = Location.all
     @meetups = MeetupTime.all
-    @categories = Category.all
+    @categories = Category.admin_created
   end
 
   # GET /asks/1/edit

@@ -23,5 +23,5 @@ days.each do |day|
 end
 
 locations.each { |location| Location.create(name: location) }
-categories.each { |category| Category.create(name: category) }
+categories.each { |category| Category.create(name: category, official: true) }
 
