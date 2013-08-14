@@ -67,13 +67,6 @@ describe Ask do
           expect(@ask).to_not be_valid
         end
       end
-      describe "on categories" do
-        it "should require at least one meetup time" do
-          @ask.meetup_times << meetup
-          @ask.locations << location
-          expect(@ask).to_not be_valid
-        end
-      end
       describe "on meetup times" do
         it "should erquire at least one meetup time" do
           @ask.categories << category
