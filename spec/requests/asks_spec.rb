@@ -30,11 +30,33 @@ describe "Asks" do
           text: "Your request for a mentor has been received"
       end
     end
-    describe "without checked options" do
+    context "without checked options" do
       before do
         fill_in "Name", with: "Test User"
         fill_in "Email", with: "text@example.com"
         fill_in "ask_description", with: "What I want to learn about"
+      end
+
+      it "rerenders the form" do
+        click_button "Submit Mentor Request Form"
+        expect(page).to have_selector 'h1', text: "Mentor Request Form"
+      end
+      it "does not create a new ask" do
+        expect { click_button "Submit Mentor Request Form" }.
+          to_not change(Ask, :count)
+      end
+      context "with a user created category" do
+        it "does not create the new category" do
+          expect { click_button "Submit Mentor Request Form" }.
+            to_not change(Category, :count)
+        end
+        it "submits successfully with only a user created category" do
+          check "Downtown"
+          check "ask_meetup_times_6"
+          click_button "Submit Mentor Request Form"
+          expect(page).to have_selector 'h2',
+            text: "Your request for a mentor has been received"
+        end
       end
     end
   end
