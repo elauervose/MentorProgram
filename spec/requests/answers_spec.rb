@@ -2,8 +2,16 @@ require 'spec_helper'
 
 describe "Answers" do
   let!(:ask) { FactoryGirl.create(:ask) }
+
+  describe "routes" do
+    it "should direct '/mentors' to answers#sign_up" do
+      visit '/mentors'
+      expect(page).to have_selector 'h1', text: 'Become a Mentor'
+    end
+  end
+
   describe "mentor signup page" do
-    before { visit '/mentors/sign_up' }
+    before { visit mentors_sign_up_path }
 
     it "shows the mentor form" do
       expect(page).to have_selector 'h1', text: "Find Your Mentee"
@@ -18,7 +26,7 @@ describe "Answers" do
   
   describe "answering a request" do
     before do
-      visit '/mentors/sign_up'
+      visit mentors_sign_up_path
       click_link 'answer_ask_1'
     end
     it "should take me to the new answer page" do
@@ -64,7 +72,7 @@ describe "Answers" do
       answered_mentee = FactoryGirl.create(:ask)
       answered_mentee.answered = true
       answered_mentee.save
-      visit '/mentors/sign_up'
+      visit mentors_sign_up_path
       expect(page).to_not have_selector "tr#ask_#{answered_mentee.id}"
     end
   end

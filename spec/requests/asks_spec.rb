@@ -4,6 +4,14 @@ describe "Asks" do
   before :all do
     load "#{Rails.root}/db/seeds.rb"
   end
+
+  describe "routes" do
+    it "should direct '/mentees' to ask#new" do
+      visit '/mentees'
+      expect(page).to have_selector 'h1', text: 'Find a Mentor'
+    end 
+  end
+
   describe "request form" do
     before { visit new_ask_path }
     it "show the request form" do

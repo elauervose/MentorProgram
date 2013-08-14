@@ -16,20 +16,6 @@ describe StaticController do
     end
   end
 
-  describe "GET 'mentors'" do
-    it "returns http success" do
-      get 'mentors'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'mentees'" do
-    it "returns http success" do
-      get 'mentees'
-      response.should be_success
-    end
-  end
-
   describe "GET 'prep'" do
     it "returns http success" do
       get 'prep'
