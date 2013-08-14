@@ -52,6 +52,36 @@ describe Ask do
         expect(ask).to_not be_valid
       end
     end
+    describe "of association" do
+      let(:location) { FactoryGirl.create :location }
+      let(:meetup) { FactoryGirl.create :meetup_time }
+      let(:category) { FactoryGirl.create :category }
+      before do
+        @ask = Ask.new(name: "test", email: "test@example.com",
+                       description: "text")
+      end
+      describe "on locations" do
+        it "should require at least one location" do
+          @ask.meetup_times << meetup
+          @ask.categories << category
+          expect(@ask).to_not be_valid
+        end
+      end
+      describe "on categories" do
+        it "should require at least one meetup time" do
+          @ask.meetup_times << meetup
+          @ask.locations << location
+          expect(@ask).to_not be_valid
+        end
+      end
+      describe "on meetup times" do
+        it "should erquire at least one meetup time" do
+          @ask.categories << category
+          @ask.locations << location
+          expect(@ask).to_not be_valid
+        end
+      end
+    end
   end
 
   describe "locations" do

@@ -10,6 +10,9 @@ class Ask < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     length: { maximum: 256}
+  validates :locations, presence: true
+  validates :meetup_times, presence: true
+  validates :categories, presence: true
 
   scope :not_answered, -> { where answered: false }
  end

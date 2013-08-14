@@ -6,6 +6,9 @@ FactoryGirl.define do
       to tech to find mentors interested in helping them go through
       three 1-2 hour sessions and help them iwth their problems"
     email_updates true
+    locations {[FactoryGirl.create(:location)]}
+    meetup_times {[FactoryGirl.create(:meetup_time)]}
+    categories {[FactoryGirl.create(:category)]}
   end
 
   factory :answer do

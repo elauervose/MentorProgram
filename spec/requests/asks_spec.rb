@@ -30,6 +30,13 @@ describe "Asks" do
           text: "Your request for a mentor has been received"
       end
     end
+    describe "without checked options" do
+      before do
+        fill_in "Name", with: "Test User"
+        fill_in "Email", with: "text@example.com"
+        fill_in "ask_description", with: "What I want to learn about"
+      end
+    end
   end
   describe "with new category" do
     before do
@@ -51,6 +58,7 @@ describe "Asks" do
     }.to change(Category, :count).by(1)
    end
    it "should not create an official category" do
+     click_button "Submit Mentor Request Form"
      category = Category.last
      expect(category.official?).to be_false
    end
