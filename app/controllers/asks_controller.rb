@@ -39,19 +39,13 @@ class AsksController < ApplicationController
       categories.each { |category| @ask.categories << Category.find(category) }
     end
 
-    respond_to do |format|
-      if @ask.save
-        format.html { redirect_to thank_you_mentee_path }
-        format.json { render action: 'show', status: :created, location: @ask }
-      else
-        format.html do
-          @locations = Location.all
-          @meetups = MeetupTime.all
-          @categories = Category.admin_created
-          render action: 'new' 
-        end
-        format.json { render json: @ask.errors, status: :unprocessable_entity }
-      end
+    if @ask.save
+      redirect_to thank_you_mentee_path
+    else
+      @locations = Location.all
+      @meetups = MeetupTime.all
+      @categories = Category.admin_created
+      render action: 'new' 
     end
   end
 

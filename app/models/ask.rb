@@ -12,7 +12,6 @@ class Ask < ActiveRecord::Base
     length: { maximum: 256}
   validates :locations, presence: true
   validates :meetup_times, presence: true
-  validates :categories, presence: true
 
   scope :not_answered, -> { where answered: false }
  end
