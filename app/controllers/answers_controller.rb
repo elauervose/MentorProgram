@@ -32,7 +32,7 @@ class AnswersController < ApplicationController
     @answer = @ask.build_answer(answer_params)
 
     if @answer.save
-      redirect_to @answer, notice: 'Answer was successfully created.'
+      redirect_to thank_you_mentor_path
     else
       render action: 'new'
     end

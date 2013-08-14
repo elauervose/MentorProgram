@@ -40,6 +40,11 @@ describe "Answers" do
           ask.reload
           expect(ask.answered?).to be_true
         end
+        it "should redirect to the mentors thank you page" do
+          click_button "Go! »"
+          expect(page).to have_selector "h1",
+            text: "Thank You For Being A Mentor"
+        end
       end
       context "with invalid information" do
         it "should rerender the form" do
