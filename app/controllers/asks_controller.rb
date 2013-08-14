@@ -18,7 +18,7 @@ class AsksController < ApplicationController
     @ask.categories.build
     @locations = Location.all
     @meetups = MeetupTime.all
-    @categories = Category.all
+    @categories = Category.admin_created
   end
 
   # GET /asks/1/edit
@@ -29,19 +29,27 @@ class AsksController < ApplicationController
   # POST /asks.json
   def create
     @ask = Ask.new(ask_params)
-    @locations = params["ask"]["locations"]
-    @meetups = params["ask"]["meetup_times"]
-    @categories = params["ask"]["categories"]
-    @locations.each { |location| @ask.locations << Location.find(location) }
-    @meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
-    @categories.each { |category| @ask.categories << Category.find(category) }
+    if locations = params["ask"]["locations"]
+      locations.each { |location| @ask.locations << Location.find(location) }
+    end
+    if meetups = params["ask"]["meetup_times"]
+      meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
+    end
+    if categories = params["ask"]["categories"]
+      categories.each { |category| @ask.categories << Category.find(category) }
+    end
 
     respond_to do |format|
       if @ask.save
         format.html { redirect_to thank_you_mentee_path }
         format.json { render action: 'show', status: :created, location: @ask }
       else
-        format.html { render action: 'new' }
+        format.html do
+          @locations = Location.all
+          @meetups = MeetupTime.all
+          @categories = Category.admin_created
+          render action: 'new' 
+        end
         format.json { render json: @ask.errors, status: :unprocessable_entity }
       end
     end

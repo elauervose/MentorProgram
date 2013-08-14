@@ -14,8 +14,5 @@
     <%= f.email_field :email, placeholder: "email address" %>
   </div>
   <%= render '/shared/captcha' %>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
-    <%= f.submit "Go! »", class: "btn btn-primary" %>
-  </div>
+  <%= f.submit "Go! »", class: "btn btn-primary" %>
 <% end %>

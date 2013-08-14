@@ -19,9 +19,6 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @ask = Ask.find(params[:ask_id])
-    respond_to do |format|
-      format.js { render layout: false }
-    end
   end
 
   # GET /answers/1/edit
@@ -34,14 +31,10 @@ class AnswersController < ApplicationController
     @ask = Ask.find(answer_params[:ask_id])
     @answer = @ask.build_answer(answer_params)
 
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @answer }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    if @answer.save
+      redirect_to thank_you_mentor_path
+    else
+      render action: 'new'
     end
   end
 

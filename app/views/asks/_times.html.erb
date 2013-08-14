@@ -1,6 +1,5 @@
 <% days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday} %>
-<% times = ["Anytime", "Unavailable", "Any Morning Time", "Before 9am",
-  "Any Afternoon Time", "Lunchtime", "Any Evening Time", "After 5pm"] %>
+<% times = ["Any", "None", "Morning", "Afternoon", "Evening"] %>
 <div class="row">
   <p class="lead">
     <em>Please select days & times you are available to meet.</em>
@@ -27,7 +26,11 @@
           <%= time %>
         <% end %>
       </label>
-      <% if i.odd? %> </div> <% end %>
+      <% if i.odd? %>
+        </div>
+      <% elsif i == times.size - 1 %>
+        </div>
+      <% end %>
     <% end %>
     </div>
   <% end %>

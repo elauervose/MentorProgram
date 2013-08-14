@@ -13,11 +13,8 @@
     <td><%= ask.description %></td>
     <td>
       <div>
-        <%= link_to 'Sign Up! »', '#myModal',
-          'data-toggle' => "modal",
-          'data-remote' => new_answer_path(ask_id: ask.id),
-          id: "ask_signup_#{ask.id}",
-          class: "btn btn-primary btn-mini mentor-signup" %>
+        <%= link_to 'Sign Up! »', new_answer_path(ask_id: ask.id),
+          id: "answer_ask_#{ask.id}" %>
       </div>
     </td>
   </tr>
