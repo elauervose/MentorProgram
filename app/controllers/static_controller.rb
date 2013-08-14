@@ -5,6 +5,9 @@ class StaticController < ApplicationController
   def about
   end
 
+  def table_test
+  end
+
   def mentors
   end
 

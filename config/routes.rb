@@ -5,6 +5,7 @@ Mentor::Application.routes.draw do
 
   root to: 'static#index'
   get "about", to: 'static#about'
+  get "table_test", to: 'static#table_test'
   get "mentors", to: 'static#mentors'
   get "mentees", to: 'static#mentees'
   get "prep", to: 'static#prep'
