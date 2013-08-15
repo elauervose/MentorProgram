@@ -68,6 +68,9 @@ describe "Answers" do
           expect(page).to have_selector "p",
             text: "You are about to become a mentor for one very lucky mentee"
         end
+        it "should display a message about why information ws not valid" do
+          expect(page).to have_selector 'div.error_explanation'
+        end
         it "should not create a new answer" do
           expect { click_button "Go! »"}.to_not change(Answer, :count)
         end

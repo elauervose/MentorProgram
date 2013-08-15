@@ -8,6 +8,7 @@
   You and your new mentee will immediately receive an email notification so you can connect and schedule your three mentor sessions.<br>
 </p>
 <%= form_for @ask.build_answer do |f| %>
+  <%= render '/shared/error_messages', object: @answer %>
   <div class="input-append">
     <%= f.hidden_field :ask_id, value: @ask.id %>
     <%= f.text_field :name, placeholder: "Name" %>
