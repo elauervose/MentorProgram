@@ -16,11 +16,19 @@ describe "Answers" do
     it "shows the mentor form" do
       expect(page).to have_selector 'h1', text: "Find Your Mentee"
     end
-    it "has a table for mentee asks" do
-      expect(page).to have_selector 'table.mentees'
-    end
-    it "contains a row for the mentee ask" do
-      expect(page).to have_selector "tr#ask_#{ask.id}"
+    describe "table of mentee asks" do
+      it "should be present on page" do
+        expect(page).to have_selector 'table.mentees'
+      end
+      it "contains a row for the mentee ask" do
+        expect(page).to have_selector "tr#ask_#{ask.id}"
+      end
+      it "has a link to become a mentor" do
+        expect(page).to have_link "answer_ask_#{ask.id}"
+      end
+      it "has a link to the full details of the request" do
+        expect(page).to have_link "See Availability", href: ask_path(ask)
+      end
     end
   end
   
