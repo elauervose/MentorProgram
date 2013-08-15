@@ -45,7 +45,7 @@ class AsksController < ApplicationController
       @locations = Location.all
       @meetups = MeetupTime.all
       @categories = Category.admin_created
-      render action: 'new' 
+      render action: 'new'
     end
   end
 

@@ -38,6 +38,15 @@ describe "Asks" do
           text: "Your request for a mentor has been received"
       end
     end
+    context "when information fails validations" do
+      before { click_button "Submit Mentor Request Form" }
+      it "should rerender the form" do
+        expect(page).to have_selector 'h1', text: "Mentor Request Form"
+      end
+      it "should display a message about why information was not valid" do
+        expect(page).to have_selector 'div.error_explanation'
+      end
+    end
     context "without checked options" do
       before do
         fill_in "Name", with: "Test User"
