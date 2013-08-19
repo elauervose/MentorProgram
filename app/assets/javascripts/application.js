@@ -12,6 +12,16 @@
 //= require 'video.js'
 //= require_tree .
 
+// Me playing around with flat ui drop downs
+
+$('select#location_filter').on('change', function() {
+  // The get request currently causes the filter dropdowns from being created
+  $.get(this.action,
+    data: { 'location': 'option:selected').val() }
+  console.log($('option:selected').val()); // this is the value I want!
+});
+
+
 // clears the modal body on mentor signup page; this should be moved
 // to a better location once location of this page is finalized
 $('#myModal').on('hidden', function () {

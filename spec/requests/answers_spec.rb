@@ -30,6 +30,35 @@ describe "Answers" do
         expect(page).to have_link "See Availability", href: ask_path(ask)
       end
     end
+
+    describe "filtering asks" do
+      context "by location" do
+        let!(:other_ask) { FactoryGirl.create :ask }
+        before do
+          visit mentors_sign_up_path
+        end
+
+        it "should have a dropdown menu for locations", js: true do
+          expect(page).to have_css "button#location_filter"
+        end
+        it "should have options to filter each location", js: true do
+          expect(page).to have_link "#{ask.locations.first.name}"
+          expect(page).to have_link "#{other_ask.locations.first.name}"
+        end
+        describe "selecting a filter" do
+          it "should show asks with the selected location" do
+            expect(page).to have_selector "tr#ask_#{ask.id}"
+          end
+          it "should not show asks without the selected location" do
+            expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
+          end
+        end
+      end
+    end
+            
+
+
+
   end
   
   describe "answering a request" do

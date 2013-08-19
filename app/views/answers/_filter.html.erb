@@ -1,14 +1,10 @@
 <div class="row">
   <div class="span12">
     <h5>Search by:</h5>
-    <select name="herolist" style="display: none;">
-      <option value="0">Location</option>
-      <option value="1">Inner SE</option>
-      <option value="2">Inner NE</option>
-      <option value="3">Downtown</option>
-      <option value="4">NW & Pearl</option>
-      <option value="5">SW</option>
-    </select>
+    <%= select_tag 'herolist',
+      options_from_collection_for_select(@locations, 'id', 'name'),
+      prompt: "Location", name: 'herolist', style: 'display: none;',
+      id: 'location_filter' %>
     <select name="herolist" style="display: none;">
       <option value="0">Day</option>
       <option value="1">Monday</option>

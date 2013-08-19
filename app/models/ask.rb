@@ -14,4 +14,11 @@ class Ask < ActiveRecord::Base
   validates :meetup_times, presence: true
 
   scope :not_answered, -> { where answered: false }
+  scope :with_location, ->(location) do
+    if location
+    joins(:locations).where('locations.id' => location)
+    else
+      all
+    end
+  end
  end

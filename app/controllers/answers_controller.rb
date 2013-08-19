@@ -13,7 +13,8 @@ class AnswersController < ApplicationController
   end
 
   def sign_up
-    @asks = Ask.not_answered
+    @locations = Location.all
+    @asks = Ask.not_answered.with_location(params[:location])
   end
 
   # GET /answers/new
