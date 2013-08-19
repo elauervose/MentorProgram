@@ -15,6 +15,9 @@ class AnswersController < ApplicationController
   def sign_up
     @locations = Location.all
     @asks = Ask.not_answered.with_location(params[:location])
+    if params[:location]
+      render '_asks_table', layout: false
+    end
   end
 
   # GET /answers/new

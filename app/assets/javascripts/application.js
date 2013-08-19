@@ -16,10 +16,19 @@
 
 $('select#location_filter').on('change', function() {
   // The get request currently causes the filter dropdowns from being created
-  $.get(this.action,
-    data: { 'location': 'option:selected').val() }
-  console.log($('option:selected').val()); // this is the value I want!
+  $.ajax(this.action, {
+    type: 'GET',
+    data: { "location": $('option:selected').val()},
+    dataType: 'html',
+    success: function(result) {
+      $('#mentees_table').html(result);
+      console.log($('option:selected').val());
+      console.log(result);},
+    contentType: 'application/json'
+  });
 });
+    //console.log($('option:selected').val());
+   // this is the value I want!
 
 
 // clears the modal body on mentor signup page; this should be moved
