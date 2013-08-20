@@ -163,6 +163,7 @@ describe "Answers" do
             text: "You are about to become a mentor for one very lucky mentee"
         end
         it "should display a message about why information ws not valid" do
+          click_button "Go! »"
           expect(page).to have_selector 'div.error_explanation'
         end
         it "should not create a new answer" do
