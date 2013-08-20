@@ -163,6 +163,15 @@ describe Ask do
         other_meetup = FactoryGirl.create :meetup_time
         expect(Ask.with_time(other_meetup)).to_not include ask
       end
+      context "when time is 'Any'" do
+        it "should be included no matter what time Asks is scoped to" do
+          meetup = FactoryGirl.create :meetup_time, period: "Any"
+          ask.meetup_times.delete_all
+          ask.meetup_times << meetup 
+          ask.save
+          expect(Ask.with_time("Morning")).to include ask
+        end
+      end
     end
     describe "'with_filters'" do
       let(:location) { ask.locations.first }

@@ -102,6 +102,17 @@ describe "Answers" do
             click_link "#{ask.meetup_times.first.period}"
             expect(page).to have_selector "tr#ask_#{ask.id}"
           end
+          it "should show asks with time of 'any' when a time selected",
+            js: true do
+            meetup = FactoryGirl.create :meetup_time, period: 'Any'
+            ask.meetup_times.delete_all
+            ask.meetup_times << meetup
+            ask.save
+            visit mentors_sign_up_path
+            click_link "Morning"
+            expect(page).to have_selector "tr#ask_#{ask.id}"
+          end
+
           it "should not show asks without the selected time", js: true do
             click_link "#{ask.meetup_times.first.period}"
             expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
@@ -109,7 +120,7 @@ describe "Answers" do
         end
       end
       context 'by more than one filter' do
-        it "should filter out aks that do not meet all conditions", js: true do
+        it "should filter out asks that do not meet all conditions", js: true do
           category = ask.categories.first
           category.official = true
           category.save

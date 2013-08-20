@@ -39,7 +39,8 @@ class Ask < ActiveRecord::Base
     if time.blank?
       all
     else
-      joins(:meetup_times).where('meetup_times.period' => time)
+      joins(:meetup_times).
+        where("meetup_times.period = ? OR meetup_times.period = 'Any'", time)
     end
   end
 
