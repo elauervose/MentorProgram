@@ -16,9 +16,36 @@ class Ask < ActiveRecord::Base
   scope :not_answered, -> { where answered: false }
   scope :with_location, ->(location) do
     if location
-    joins(:locations).where('locations.id' => location)
+      joins(:locations).where('locations.id' => location)
     else
       all
     end
   end
+  scope :with_category, ->(category) do
+    if category
+      joins(:categories).where('categories.id' => category)
+    else
+      all
+    end
+  end
+  scope :with_day, ->(day) do
+    if day
+      joins(:meetup_times).where('meetup_times.day' => day)
+    else
+      all
+    end
+  end
+  scope :with_time, ->(time) do
+    if time
+      joins(:meetup_times).where('meetup_times.period' => time)
+    else
+      all
+    end
+  end
+
+  scope :with_filters, ->(location, category, day, time) do
+    with_location(location).with_category(category).with_day(day)
+      .with_time(time)
+  end
+
  end

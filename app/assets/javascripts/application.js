@@ -15,21 +15,51 @@
 // Me playing around with flat ui drop downs
 
 $('select#location_filter').on('change', function() {
-  // The get request currently causes the filter dropdowns from being created
   $.ajax(this.action, {
     type: 'GET',
     data: { "location": $('option:selected').val()},
     dataType: 'html',
     success: function(result) {
-      $('#mentees_table').html(result);
-      console.log($('option:selected').val());
-      console.log(result);},
+      $('#mentees_table').html(result);},
     contentType: 'application/json'
   });
 });
-    //console.log($('option:selected').val());
-   // this is the value I want!
 
+$('select#category_filter').on('change', function() {
+  var context = $('select#category_filter')
+  $.ajax(this.action, {
+    type: 'GET',
+    data: { "category": context.find('option:selected').val()},
+    dataType: 'html',
+    success: function(result) {
+      $('#mentees_table').html(result);},
+    contentType: 'application/json'
+  });
+});
+
+$('select#day_filter').on('change', function() {
+  var context = $('select#day_filter')
+  $.ajax(this.action, {
+    type: 'GET',
+    data: { "day": context.find('option:selected').val()},
+    dataType: 'html',
+    success: function(result) {
+      $('#mentees_table').html(result);},
+    contentType: 'application/json'
+  });
+});
+
+$('select#time_filter').on('change', function() {
+  var context = $('select#time_filter')
+  $.ajax(this.action, {
+    type: 'GET',
+    data: { "time": context.find('option:selected').val()},
+    dataType: 'html',
+    success: function(result) {
+      $('#mentees_table').html(result);},
+    contentType: 'application/json'
+  });
+});
 
 // clears the modal body on mentor signup page; this should be moved
 // to a better location once location of this page is finalized

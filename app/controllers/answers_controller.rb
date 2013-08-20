@@ -14,8 +14,10 @@ class AnswersController < ApplicationController
 
   def sign_up
     @locations = Location.all
-    @asks = Ask.not_answered.with_location(params[:location])
-    if params[:location]
+    @categories = Category.admin_created
+    @asks = Ask.not_answered.with_filters(params[:location], params[:category],
+                                         params[:day], params[:time])
+    if params[:location] || params[:category] || params[:day] || params[:time]
       render '_asks_table', layout: false
     end
   end

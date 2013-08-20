@@ -32,12 +32,11 @@ describe "Answers" do
     end
 
     describe "filtering asks" do
+      let!(:other_ask) { FactoryGirl.create :ask }
+      before do
+        visit mentors_sign_up_path
+      end
       context "by location" do
-        let!(:other_ask) { FactoryGirl.create :ask }
-        before do
-          visit mentors_sign_up_path
-        end
-
         it "should have a dropdown menu for locations", js: true do
           expect(page).to have_css "button#location_filter"
         end
@@ -52,11 +51,64 @@ describe "Answers" do
           end
         end
       end
+      context "by category" do
+        let!(:user_category) { FactoryGirl.create(:category) }
+        before do
+          ask.categories.first.official = true
+          ask.save
+          other_ask.categories.first.official = true
+          other_ask.save
+          visit mentors_sign_up_path
+        end
+        it "should have a dropdown menu for categories", js: true do
+          user_category
+          expect(page).to have_css "button#category_filter"
+        end
+        it "should not have a link for a user category", js: true do
+          expect(page).to_not have_link "#{user_category.name}"
+        end
+        describe "selecting a filter" do
+          it "should show asks with the selected category", js: true do
+            click_link "#{ask.categories.first.name}"
+            expect(page).to have_selector "tr#ask_#{ask.id}"
+          end
+          it "should not show asks without the selected category", js: true do
+            click_link "#{ask.categories.first.name}"
+            expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
+          end
+        end
+      end
+      context "by day" do
+        it "should have a dropdown menu for days", js: true do
+          expect(page).to have_css "button#day_filter"
+        end
+        describe "selecting a filter" do
+          it "should show asks with the selected day", js: true do
+            click_link "#{ask.meetup_times.first.day}"
+            expect(page).to have_selector "tr#ask_#{ask.id}"
+          end
+          it "should not show asks without the selected day", js: true do
+            click_link "#{ask.meetup_times.first.day}"
+            expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
+          end
+        end
+      end
+      context "by time" do
+        it "should have a dropdown menu for times", js: true do
+          expect(page).to have_css "button#time_filter"
+        end
+        describe "selecting a filter" do
+          it "should show asks with the selected time", js: true do
+            click_link "#{ask.meetup_times.first.period}"
+            expect(page).to have_selector "tr#ask_#{ask.id}"
+          end
+          it "should not show asks without the selected time", js: true do
+            click_link "#{ask.meetup_times.first.period}"
+            expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
+          end
+        end
+      end
     end
-            
-
-
-
   end
   
   describe "answering a request" do
