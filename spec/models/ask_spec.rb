@@ -125,4 +125,57 @@ describe Ask do
       expect(intro_email.to).to include(ask.answer.email)
     end
   end
+
+  describe "scopes" do
+    before { ask.save }
+    describe "'with_location'" do
+      it "should be included when Asks scoped to its location" do
+        expect(Ask.with_location(ask.locations.first)).to include ask
+      end
+      it "should not be included when Asks scoped to a different location" do
+        other_location = FactoryGirl.create :location
+        expect(Ask.with_location(other_location)).to_not include ask
+      end
+    end
+    describe "'with_category'" do
+      it "should be included when Asks scoped to its category" do
+        expect(Ask.with_category(ask.categories.first)).to include ask
+      end
+      it "should not be included when Asks scoped to a different category" do
+        other_category = FactoryGirl.create :category
+        expect(Ask.with_category(other_category)).to_not include ask
+      end
+    end
+    describe "'with_day'" do
+      it "should be included when Asks scoped to its day" do
+        expect(Ask.with_day(ask.meetup_times.first.day)).to include ask
+      end
+      it "should not be included when Asks scoped to a different day" do
+        other_meetup = FactoryGirl.create :meetup_time
+        expect(Ask.with_day(other_meetup)).to_not include ask
+      end
+    end
+    describe "'with_time'" do
+      it "should be included when Asks scoped to its time" do
+        expect(Ask.with_time(ask.meetup_times.first.period)).to include ask
+      end
+      it "should not be included when Asks scoped to a different time" do
+        other_meetup = FactoryGirl.create :meetup_time
+        expect(Ask.with_time(other_meetup)).to_not include ask
+      end
+    end
+    describe "'with_filters'" do
+      let(:location) { ask.locations.first }
+      let(:category) { ask.categories.first }
+      let(:day) { ask.meetup_times.first.day }
+      let(:time) { ask.meetup_times.first.period }
+
+      it "should be included when Asks scoped to at least 1 of its attr" do
+        expect(Ask.with_filters(location,"","","")).to include ask
+      end
+      it "should be included when Asks scopred to all its attr" do
+        expect(Ask.with_filters(location, category, day, time)).to include ask
+      end
+    end
+  end
 end

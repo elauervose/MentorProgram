@@ -108,6 +108,21 @@ describe "Answers" do
           end
         end
       end
+      context 'by more than one filter' do
+        it "should filter out aks that do not meet all conditions", js: true do
+          category = ask.categories.first
+          category.official = true
+          category.save
+          other_ask.categories << category
+          other_ask.save
+          visit mentors_sign_up_path
+          click_link "#{ask.categories.first.name}"
+          expect(page).to have_selector "tr#ask_#{other_ask.id}"
+          click_link "#{ask.locations.first.name}"
+          expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
+          expect(page).to have_selector "tr#ask_#{ask.id}"
+        end
+      end
     end
   end
   

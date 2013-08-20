@@ -12,50 +12,18 @@
 //= require 'video.js'
 //= require_tree .
 
-// Me playing around with flat ui drop downs
-
-$('select#location_filter').on('change', function() {
+// Updates table of mentee requests when filter conditions selected
+$('select.filter').on('change', function() {
+  var place = $('select#location_filter').find('option:selected').val();
+  var category = $('select#category_filter').find('option:selected').val();
+  var day = $('select#day_filter').find('option:selected').val();
+  var time = $('select#time_filter').find('option:selected').val();
   $.ajax(this.action, {
     type: 'GET',
-    data: { "location": $('option:selected').val()},
+    data: { 'location': place, 'category': category, 'day': day, 'time': time },
     dataType: 'html',
     success: function(result) {
-      $('#mentees_table').html(result);},
-    contentType: 'application/json'
-  });
-});
-
-$('select#category_filter').on('change', function() {
-  var context = $('select#category_filter')
-  $.ajax(this.action, {
-    type: 'GET',
-    data: { "category": context.find('option:selected').val()},
-    dataType: 'html',
-    success: function(result) {
-      $('#mentees_table').html(result);},
-    contentType: 'application/json'
-  });
-});
-
-$('select#day_filter').on('change', function() {
-  var context = $('select#day_filter')
-  $.ajax(this.action, {
-    type: 'GET',
-    data: { "day": context.find('option:selected').val()},
-    dataType: 'html',
-    success: function(result) {
-      $('#mentees_table').html(result);},
-    contentType: 'application/json'
-  });
-});
-
-$('select#time_filter').on('change', function() {
-  var context = $('select#time_filter')
-  $.ajax(this.action, {
-    type: 'GET',
-    data: { "time": context.find('option:selected').val()},
-    dataType: 'html',
-    success: function(result) {
+      console.log(result);
       $('#mentees_table').html(result);},
     contentType: 'application/json'
   });
