@@ -40,8 +40,10 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '<= 1.0.1'
 end
+
+gem 'whenever', require: false
 
 group :development do
   gem 'pry'
@@ -49,6 +51,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'addressable'
 end
 
 group :test do

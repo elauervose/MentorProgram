@@ -4,5 +4,6 @@ class NotificationMailer < ActionMailer::Base
   def create_response(mentor, mentee)
     mail to: [mentor,mentee], subject: 'Mentor and Mentee Introduction'
   end
+
 end
 

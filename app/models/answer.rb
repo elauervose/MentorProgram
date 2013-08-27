@@ -6,6 +6,15 @@ class Answer < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     length: {maximum: 256}
 
+  def self.solicit_feedback
+    answers_to_solicit = where("created_at > ? AND created_at < ?",
+                         1.month.ago - 1.day, 1.month.ago + 1.day)
+    answers_to_solicit.each do |answer|
+      FeedbackMailer.solicit_feedback_from_mentor(answer).deliver
+      FeedbackMailer.solicit_feedback_from_mentee(answer.ask).deliver
+    end
+  end
+
   private
 
   def answer
