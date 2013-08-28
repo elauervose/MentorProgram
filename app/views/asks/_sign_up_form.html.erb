@@ -1,4 +1,5 @@
-<%= form_for @ask, class: "form-inline col-lg-4" do |f| %>
+<%= form_for @ask, url: { action: 'create', anchor: 'form_anchor' },
+  class: "form-inline col-lg-4" do |f| %>
   <%= render '/shared/error_messages', object: @ask %>
   <div class="row"">
     <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
