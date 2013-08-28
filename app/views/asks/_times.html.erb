@@ -4,15 +4,13 @@
   <p class="lead">
     <em>Please select days & times you are available to meet.</em>
   </p>
-  <% days.each do |day| %>
   <div class="row well well-small">
-    <div class="span2">
-      <h2><%= day %></h2>
-    </div>
+  <% days.each do |day| %>
+    <div class="span">
+    <h2><%= day %></h2>
     <% times.each_with_index do |time, i| %>
-      <% if i.even? %><div class="span2"><% end %>
       <label class="checkbox" for="<%= day + "-" + time %>">
-        <span class="icons">
+        <span class="icons inline">
           <span class="first-icon fui-checkbox-unchecked"></span>
           <span class="second-icon fui-checkbox-checked"></span>
         </span>
@@ -20,20 +18,12 @@
           where("day = ?", day).first %>
           <%= f.check_box "meetup_times",
             {multiple: true, "data-toggle" => "checkbox"}, meetup.id, nil %>
-        <% if time.length > 11 %>
-          <small><%= time %></small>
-        <% else %>
           <%= time %>
-        <% end %>
       </label>
-      <% if i.odd? %>
-        </div>
-      <% elsif i == times.size - 1 %>
-        </div>
-      <% end %>
     <% end %>
     </div>
   <% end %>
+  </div>
   <hr>
 </div>
 
