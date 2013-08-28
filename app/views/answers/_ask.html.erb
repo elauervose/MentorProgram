@@ -1,4 +1,7 @@
 <% days = %w{ Monday Tuesday Wednesday Thursday Friday Saturday Sunday } %>
+<% if @asks.empty? %>
+  <tr><td>There are currently no requests that fit your parameters</td></tr>
+<% end %>
 <% @asks.each do |ask| %>
   <tr id="ask_<%=ask.id %>">
     <td><%= ask.name %></td>

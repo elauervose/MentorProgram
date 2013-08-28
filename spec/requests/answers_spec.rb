@@ -134,6 +134,16 @@ describe "Answers" do
           expect(page).to have_selector "tr#ask_#{ask.id}"
         end
       end
+      context 'when no asks meet the filter', js: true do
+        it 'should display a table row stating no mentee fit the parameters' do
+          other_category = FactoryGirl.create :category
+          visit mentors_sign_up_path
+          click_link "#{other_category.name}"
+          expect(page).to have_selector "tr",
+            text: "There are currently no requests that
+              fit your parameters"
+        end
+      end
     end
   end
   
