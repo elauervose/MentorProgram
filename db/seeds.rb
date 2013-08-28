@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday }
-periods = ["Any", "Morning", "Afternoon", "Evening", "None"]
+periods = ["Morning", "Afternoon", "Evening"]
 locations = ["Inner SE", "Inner NE", "Downtown", "Old Town & The Pearl",
   "Inner NW", "Inner SW"]
 categories = ["Basic Web", "HTML/CSS", "Github/Heroku/Command Line",
