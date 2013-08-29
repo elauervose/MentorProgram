@@ -13,6 +13,7 @@ class Ask < ActiveRecord::Base
   validates :locations, presence: true
   validates :meetup_times, presence: true
 
+  default_scope { order "created_at DESC" }
   scope :not_answered, -> { where answered: false }
   scope :with_location, ->(location) do
     if location.blank?

@@ -128,6 +128,12 @@ describe Ask do
 
   describe "scopes" do
     before { ask.save }
+    describe "default scope" do
+      it "should order asks by descending creation time (newest first)" do
+        other_ask = FactoryGirl.create :ask
+        expect(Ask.all.first.name).to eq(other_ask.name)
+      end
+    end
     describe "'with_location'" do
       it "should be included when Asks scoped to its location" do
         expect(Ask.with_location(ask.locations.first)).to include ask
@@ -162,15 +168,6 @@ describe Ask do
       it "should not be included when Asks scoped to a different time" do
         other_meetup = FactoryGirl.create :meetup_time
         expect(Ask.with_time(other_meetup)).to_not include ask
-      end
-      context "when time is 'Any'" do
-        it "should be included no matter what time Asks is scoped to" do
-          meetup = FactoryGirl.create :meetup_time, period: "Any"
-          ask.meetup_times.delete_all
-          ask.meetup_times << meetup 
-          ask.save
-          expect(Ask.with_time("Morning")).to include ask
-        end
       end
     end
     describe "'with_filters'" do
