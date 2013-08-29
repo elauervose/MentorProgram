@@ -32,7 +32,7 @@ class Ask < ActiveRecord::Base
     if day.blank?
       all
     else
-      joins(:meetup_times).where('meetup_times.day' => day)
+      joins(:meetup_times).where('meetup_times.day' => day).uniq
     end
   end
   scope :with_time, ->(time) do
@@ -40,7 +40,7 @@ class Ask < ActiveRecord::Base
       all
     else
       joins(:meetup_times).
-        where("meetup_times.period = ? OR meetup_times.period = 'Any'", time)
+        where('meetup_times.period' => time).uniq
     end
   end
 
