@@ -38,7 +38,7 @@ describe "Asks" do
           text: "Your request for a mentor has been received"
       end
     end
-    context "checkboxes on form rerender" do
+    context "selections on form rerender" do
       describe "for locations" do
         specify "should have selected location still selected" do
           check "Inner SE"
@@ -47,10 +47,17 @@ describe "Asks" do
         end
       end
       describe "for meetup times" do
-        specify" should have selected times still selected" do
+        specify "should have selected times still selected" do
           check "ask_meetup_times_6"
           click_button "Submit Mentor Request Form"
           expect(page).to have_checked_field "ask_meetup_times_6"
+        end
+      end
+      describe "for categories" do
+        specify "should have selected categories still selected" do
+          check "Basic Web"
+          click_button "Submit Mentor Request Form"
+          expect(page).to have_checked_field "Basic Web"
         end
       end
     end

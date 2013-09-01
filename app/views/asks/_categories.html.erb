@@ -6,8 +6,12 @@
         <span class="first-icon fui-checkbox-unchecked"></span>
         <span class="second-icon fui-checkbox-checked"></span>
       </span>
+      <% if params[:ask] && params[:ask][:categories] %>
+        <% checked = params[:ask][:categories].include?(category.id.to_s) %>
+      <% end %>
       <%= f.check_box "categories",
-        {multiple: true, "data-toggle" => "checkbox"}, category.id, nil %>
+        {multiple: true, "data-toggle" => "checkbox", checked: checked},
+        category.id, nil %>
       <%= category.name %>
     </label>
   <% end %>
