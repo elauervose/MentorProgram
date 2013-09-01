@@ -46,6 +46,13 @@ describe "Asks" do
           expect(page).to have_checked_field "Inner SE"
         end
       end
+      describe "for meetup times" do
+        specify" should have selected times still selected" do
+          check "ask_meetup_times_6"
+          click_button "Submit Mentor Request Form"
+          expect(page).to have_checked_field "ask_meetup_times_6"
+        end
+      end
     end
     context "when information fails validations" do
       before { click_button "Submit Mentor Request Form" }

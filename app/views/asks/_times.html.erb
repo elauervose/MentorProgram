@@ -16,8 +16,12 @@
         </span>
         <% meetup = @meetups.where("period = ?", time).
           where("day = ?", day).first %>
+        <% if params[:ask] && params[:ask][:meetup_times] %>
+          <% checked = params[:ask][:meetup_times].include?(meetup.id.to_s) %>
+        <% end %>
           <%= f.check_box "meetup_times",
-            {multiple: true, "data-toggle" => "checkbox"}, meetup.id, nil %>
+            {multiple: true, "data-toggle" => "checkbox", checked: checked},
+            meetup.id, nil %>
           <%= time %>
       </label>
     <% end %>
