@@ -10,8 +10,11 @@
           <span class="first-icon fui-checkbox-unchecked"></span>
           <span class="second-icon fui-checkbox-checked"></span>
         </span>
+        <% if params[:ask] && params[:ask][:locations] %>
+          <% checked = params[:ask][:locations].include?(location.id.to_s) %>
+        <% end %>
         <%= f.check_box "locations", {multiple: true,
-          "data-toggle" => "checkbox"}, location.id, nil %>
+          "data-toggle" => "checkbox", checked: checked}, location.id, nil %>
         <%= location.name %>
       </label>
       <% if i.odd? %>

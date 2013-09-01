@@ -38,7 +38,15 @@ describe "Asks" do
           text: "Your request for a mentor has been received"
       end
     end
-
+    context "checkboxes on form rerender" do
+      describe "for locations" do
+        specify "should have selected location still selected" do
+          check "Inner SE"
+          click_button "Submit Mentor Request Form"
+          expect(page).to have_checked_field "Inner SE"
+        end
+      end
+    end
     context "when information fails validations" do
       before { click_button "Submit Mentor Request Form" }
       it "should rerender the form" do
