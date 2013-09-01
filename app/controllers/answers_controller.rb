@@ -37,7 +37,7 @@ class AnswersController < ApplicationController
     @ask = Ask.find(answer_params[:ask_id])
     @answer = @ask.build_answer(answer_params)
 
-    if @answer.save
+    if valid_recaptcha? && @answer.save
       redirect_to thank_you_mentor_path
     else
       render action: 'new'
@@ -78,4 +78,10 @@ class AnswersController < ApplicationController
     def answer_params
       params.require(:answer).permit(:name, :email, :ask_id)
     end
+    
+    def valid_recaptcha?
+      verify_recaptcha(model: @answer,
+                       message: "Captcha verification failed, please try again")
+    end
+
 end

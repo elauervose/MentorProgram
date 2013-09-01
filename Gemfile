@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 gem 'whenever', require: false
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development do
   gem 'pry'

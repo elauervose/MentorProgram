@@ -39,7 +39,7 @@ class AsksController < ApplicationController
       categories.each { |category| @ask.categories << Category.find(category) }
     end
 
-    if @ask.save
+    if  valid_recaptcha? && @ask.save
       redirect_to thank_you_mentee_path
     else
       @locations = Location.all
@@ -83,5 +83,10 @@ class AsksController < ApplicationController
     def ask_params
       params.require(:ask).permit(:name, :email, :description,
                                  categories_attributes: [:name])
+    end
+
+    def valid_recaptcha?
+      verify_recaptcha(model: @ask,
+                       message: "Captcha verification failed, please try again")
     end
 end

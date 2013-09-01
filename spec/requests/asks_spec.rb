@@ -38,6 +38,7 @@ describe "Asks" do
           text: "Your request for a mentor has been received"
       end
     end
+
     context "when information fails validations" do
       before { click_button "Submit Mentor Request Form" }
       it "should rerender the form" do
