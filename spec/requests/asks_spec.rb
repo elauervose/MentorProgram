@@ -40,24 +40,36 @@ describe "Asks" do
     end
     context "selections on form rerender" do
       describe "for locations" do
-        specify "should have selected location still selected" do
+        it "should have selected location still selected" do
           check "Inner SE"
           click_button "Submit Mentor Request Form"
           expect(page).to have_checked_field "Inner SE"
         end
       end
       describe "for meetup times" do
-        specify "should have selected times still selected" do
+        it "should have selected times still selected" do
           check "ask_meetup_times_6"
           click_button "Submit Mentor Request Form"
           expect(page).to have_checked_field "ask_meetup_times_6"
         end
       end
       describe "for categories" do
-        specify "should have selected categories still selected" do
+        it "should have selected categories still selected" do
           check "Basic Web"
           click_button "Submit Mentor Request Form"
           expect(page).to have_checked_field "Basic Web"
+        end
+        it "should retain value of user created category" do
+          fill_in "Other", with: "new category"
+          click_button "Submit Mentor Request Form"
+          expect(page).to have_field "ask_categories_attributes_0_name",
+            with: "new category", visible: true
+        end
+        specify "there are no additional input fields added" do
+          check "Basic Web"
+          fill_in "Other", with: "new category"
+          click_button "Submit Mentor Request Form"
+          expect(page).to_not have_field "ask_categories_attributes_1_name"
         end
       end
     end
@@ -89,13 +101,6 @@ describe "Asks" do
         it "does not create the new category" do
           expect { click_button "Submit Mentor Request Form" }.
             to_not change(Category, :count)
-        end
-        it "submits successfully with only a user created category" do
-          check "Downtown"
-          check "ask_meetup_times_6"
-          click_button "Submit Mentor Request Form"
-          expect(page).to have_selector 'h2',
-            text: "Your request for a mentor has been received"
         end
       end
     end

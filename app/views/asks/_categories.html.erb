@@ -15,9 +15,13 @@
       <%= category.name %>
     </label>
   <% end %>
-  <%= f.fields_for :categories do |category_fields| %>
+  <% if params[:ask] && params[:ask][:categories_attributes] %>
+    <% custom_category_name = 
+      params[:ask][:categories_attributes]["0"][:name] %>
+  <% end %>
+  <%= f.fields_for :categories,
+    Category.new(name: custom_category_name) do |category_fields| %>
     <%= category_fields.text_field :name, class: "form-control",
       placeholder: "Other" %>
   <% end %>
-
 </div>
