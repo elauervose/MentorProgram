@@ -4,7 +4,13 @@ class AsksController < ApplicationController
   # GET /asks
   # GET /asks.json
   def index
-    @asks = Ask.all
+    @locations = Location.all
+    @categories = Category.admin_created
+    @asks = Ask.not_answered.with_filters(params[:location], params[:category],
+                                         params[:day], params[:time])
+    if params[:location] || params[:category] || params[:day] || params[:time]
+      render '_asks_table', layout: false
+    end
   end
 
   # GET /asks/1

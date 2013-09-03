@@ -10,6 +10,10 @@ describe "Asks" do
       visit '/mentees'
       expect(page).to have_selector 'h1', text: 'Find a Mentor'
     end 
+    it "should direct'/mentors' to ask#index" do
+      visit '/mentors'
+      expect(page).to have_selector 'h1', text: 'Become a Mentor'
+    end
   end
 
   describe "new ask" do
@@ -234,17 +238,6 @@ describe "Asks" do
             click_link "#{ask.meetup_times.first.period}"
             expect(page).to have_selector "tr#ask_#{ask.id}"
           end
-          it "should show asks with time of 'any' when a time selected",
-            js: true do
-            meetup = FactoryGirl.create :meetup_time, period: 'Any'
-            ask.meetup_times.delete_all
-            ask.meetup_times << meetup
-            ask.save
-            visit mentors_sign_up_path
-            click_link "Morning"
-            expect(page).to have_selector "tr#ask_#{ask.id}"
-          end
-
           it "should not show asks without the selected time", js: true do
             click_link "#{ask.meetup_times.first.period}"
             expect(page).to_not have_selector "tr#ask_#{other_ask.id}"

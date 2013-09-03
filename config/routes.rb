@@ -6,7 +6,7 @@ Mentor::Application.routes.draw do
   root to: 'static#index'
   get "about", to: 'static#about'
   get "table_test", to: 'static#table_test'
-  get "mentors", to: 'answers#sign_up', as: 'mentors_sign_up'
+  get "mentors", to: 'asks#index', as: 'mentors_sign_up'
   get "mentees", to: 'asks#new'
   get "prep", to: 'static#prep'
   get "resources", to: 'static#resources'
