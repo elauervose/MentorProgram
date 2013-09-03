@@ -6,5 +6,9 @@
     <th>Availability</th>
     <th>Sign Up To Mentor</th>
   </tr>
-  <%= render 'ask' %>
+  <% if @asks.empty? %>
+    <tr><td>There are currently no requests that fit your parameters</td></tr>
+  <% else %>
+    <%= render 'ask' %>
+  <% end %>
 </table>

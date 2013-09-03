@@ -1,11 +1,7 @@
-<% days = %w{ Monday Tuesday Wednesday Thursday Friday Saturday Sunday } %>
-<% if @asks.empty? %>
-  <tr><td>There are currently no requests that fit your parameters</td></tr>
-<% end %>
 <% @asks.each do |ask| %>
   <tr id="ask_<%=ask.id %>">
     <td><%= ask.name %></td>
-    <td><%= ask.categories.map {|c| c.name}.join ', ' %></td>
+    <td><%= ask.categories.map {|category| category.name}.join ', ' %></td>
     <td><%= ask.description %></td>
     <td>
       <%= link_to "See Availability", ask_path(ask), class: "btn btn-info" %>
