@@ -9,7 +9,7 @@ class AsksController < ApplicationController
     @asks = Ask.not_answered.with_filters(params[:location], params[:category],
                                          params[:day], params[:time])
     if params[:location] || params[:category] || params[:day] || params[:time]
-      render '_asks_table', layout: false
+      render '_asks', layout: false
     end
   end
 

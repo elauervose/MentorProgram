@@ -12,16 +12,6 @@ class AnswersController < ApplicationController
   def show
   end
 
-  def sign_up
-    @locations = Location.all
-    @categories = Category.admin_created
-    @asks = Ask.not_answered.with_filters(params[:location], params[:category],
-                                         params[:day], params[:time])
-    if params[:location] || params[:category] || params[:day] || params[:time]
-      render '_asks_table', layout: false
-    end
-  end
-
   # GET /answers/new
   def new
     @ask = Ask.find(params[:ask_id])
