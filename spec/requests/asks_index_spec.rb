@@ -35,10 +35,12 @@ describe Ask do
         end
         describe "selecting a filter" do
           it "should show asks with the selected location", js: true do
+            click_button "location_filter"
             click_link "#{ask.locations.first.name}"
             expect(page).to have_selector "tr#ask_#{ask.id}"
           end
           it "should not show asks without the selected location", js: true do
+            click_button "location_filter"
             click_link "#{ask.locations.first.name}"
             expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
           end
@@ -62,10 +64,12 @@ describe Ask do
         end
         describe "selecting a filter" do
           it "should show asks with the selected category", js: true do
+            click_button "category_filter"
             click_link "#{ask.categories.first.name}"
             expect(page).to have_selector "tr#ask_#{ask.id}"
           end
           it "should not show asks without the selected category", js: true do
+            click_button "category_filter"
             click_link "#{ask.categories.first.name}"
             expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
           end
@@ -77,10 +81,12 @@ describe Ask do
         end
         describe "selecting a filter" do
           it "should show asks with the selected day", js: true do
+            click_button "day_filter"
             click_link "#{ask.meetup_times.first.day}"
             expect(page).to have_selector "tr#ask_#{ask.id}"
           end
           it "should not show asks without the selected day", js: true do
+            click_button "day_filter"
             click_link "#{ask.meetup_times.first.day}"
             expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
           end
@@ -92,10 +98,12 @@ describe Ask do
         end
         describe "selecting a filter" do
           it "should show asks with the selected time", js: true do
+            click_button "time_filter"
             click_link "#{ask.meetup_times.first.period}"
             expect(page).to have_selector "tr#ask_#{ask.id}"
           end
           it "should not show asks without the selected time", js: true do
+            click_button "time_filter"
             click_link "#{ask.meetup_times.first.period}"
             expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
           end
@@ -109,8 +117,10 @@ describe Ask do
           other_ask.categories << category
           other_ask.save
           visit mentors_sign_up_path
+          click_button "category_filter"
           click_link "#{ask.categories.first.name}"
           expect(page).to have_selector "tr#ask_#{other_ask.id}"
+          click_button "location_filter"
           click_link "#{ask.locations.first.name}"
           expect(page).to_not have_selector "tr#ask_#{other_ask.id}"
           expect(page).to have_selector "tr#ask_#{ask.id}"
@@ -118,12 +128,14 @@ describe Ask do
       end
       context 'when no asks meet the filter', js: true do
         it 'should display a table row stating no mentee fit the parameters' do
-          other_category = FactoryGirl.create :category
+          other_category = FactoryGirl.create(:category, official: true)
           visit mentors_sign_up_path
+          click_button "category_filter"
           click_link "#{other_category.name}"
-          expect(page).to have_selector "tr",
-            text: "There are currently no requests that
-              fit your parameters"
+          #click_link "#{other_category.name}"
+          expect(page).to have_selector "td",
+            text: "There are currently no requests that " +
+              "fit your parameters"
         end
       end
     end
