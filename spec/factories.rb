@@ -23,11 +23,10 @@ FactoryGirl.define do
 
   factory :category do
     sequence(:name) { |n| "category_#{n}" }
+    official false
   end
 
   Days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday}
-  # The period none and any are special cases and if a test requires it, it
-  # should set the value manually
   Periods = ["Morning", "Afternoon", "Evening"]
   factory :meetup_time do
     sequence(:day) { |n| Days[n % Days.size] }
