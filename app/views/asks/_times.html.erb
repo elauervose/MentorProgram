@@ -1,9 +1,13 @@
 <% days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday} %>
 <% times = ["Morning", "Afternoon", "Evening"] %>
 <div class="row">
-  <p class="lead">
-    <em>Please select days & times you are available to meet.</em>
-  </p>
+  <div class="span12">
+    <p class="lead">
+      <em>Please select days & times you are available to meet.</em>
+    </p>
+  </div>
+</div>
+<div class="span12">
   <div class="row well well-small">
   <% days.each do |day| %>
     <div class="span">
@@ -17,7 +21,8 @@
         <% meetup = @meetups.where("period = ?", time).
           where("day = ?", day).first %>
           <% if params[:ask] && params[:ask][:meetup_times] %>
-            <% checked = params[:ask][:meetup_times].include?(meetup.id.to_s) %>
+            <% checked = params[:ask][:meetup_times].
+              include?(meetup.id.to_s) %>
           <% end %>
           <%= f.check_box "meetup_times",
             {multiple: true, "data-toggle" => "checkbox", checked: checked},
@@ -28,6 +33,5 @@
     </div>
   <% end %>
   </div>
-  <hr>
 </div>
-
+<hr>

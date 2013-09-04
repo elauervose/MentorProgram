@@ -1,9 +1,11 @@
 <%= form_for @ask, url: { action: 'create', anchor: 'form_anchor' },
   class: "form-inline col-lg-4" do |f| %>
   <%= render '/shared/error_messages', object: @ask %>
-  <div class="row"">
-    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
-    <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+  <div class="row">
+    <div class="span12">
+      <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
   </div>
   <hr>
   <%= render 'locations', f: f %>

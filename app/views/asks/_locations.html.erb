@@ -1,5 +1,11 @@
-<div class="row"><!-- Mentor request form - Input for Preferred meeting location -->
-  <p class="lead"><em>Please select your preferred meeting location(s).</em></p>
+<div class="row">
+  <div class="span12">
+    <p class="lead">
+      <em>Please select your preferred meeting location(s).</em>
+    </p>
+  </div>
+</div>
+<div class="span12">
   <div class="row well">
     <% @locations.each_with_index do |location, i| %>
       <% if i.even? %>
@@ -22,5 +28,5 @@
       <% end %>
     <% end %>
   </div>
-</div><!-- Mentor request form - Input for Preferred meeting location -->
+</div>
 
