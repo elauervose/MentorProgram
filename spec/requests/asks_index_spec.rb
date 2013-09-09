@@ -4,31 +4,32 @@ describe Ask do
     
   describe "index" do
     let!(:ask) { FactoryGirl.create :ask }
-    before { visit mentors_sign_up_path }
 
-    it "shows the mentor form" do
-      expect(page).to have_selector 'h1', text: "Find Your Mentee"
-    end
-    describe "table of mentee asks" do
-      it "should be present on page" do
-        expect(page).to have_selector 'table.mentees'
+    describe "page content" do
+      before { visit mentors_sign_up_path }
+
+      it "shows the mentor form" do
+        expect(page).to have_selector 'h1', text: "Find Your Mentee"
       end
-      it "contains a row for the mentee ask" do
-        expect(page).to have_selector "tr#ask_#{ask.id}"
-      end
-      it "has a link to become a mentor" do
-        expect(page).to have_link "answer_ask_#{ask.id}"
-      end
-      it "has a link to the full details of the request" do
-        expect(page).to have_link "See Availability", href: ask_path(ask)
+      describe "table of mentee asks" do
+        it "should be present on page" do
+          expect(page).to have_selector 'table.mentees'
+        end
+        it "contains a row for the mentee ask" do
+          expect(page).to have_selector "tr#ask_#{ask.id}"
+        end
+        it "has a link to become a mentor" do
+          expect(page).to have_link "answer_ask_#{ask.id}"
+        end
+        it "has a link to the full details of the request" do
+          expect(page).to have_link "See Availability", href: ask_path(ask)
+        end
       end
     end
 
     describe "filtering asks" do
       let!(:other_ask) { FactoryGirl.create :ask }
-      before do
-        visit mentors_sign_up_path
-      end
+      before { visit mentors_sign_up_path }
       context "by location" do
         it "should have a dropdown menu for locations", js: true do
           expect(page).to have_css "button#location_filter"
@@ -51,12 +52,9 @@ describe Ask do
         before do
           ask.categories.first.official = true
           ask.save
-          other_ask.categories.first.official = true
-          other_ask.save
           visit mentors_sign_up_path
         end
         it "should have a dropdown menu for categories", js: true do
-          user_category
           expect(page).to have_css "button#category_filter"
         end
         it "should not have a link for a user category", js: true do
@@ -76,6 +74,7 @@ describe Ask do
         end
       end
       context "by day" do
+        before { visit mentors_sign_up_path }
         it "should have a dropdown menu for days", js: true do
           expect(page).to have_css "button#day_filter"
         end
@@ -93,6 +92,7 @@ describe Ask do
         end
       end
       context "by time" do
+        before { visit mentors_sign_up_path }
         it "should have a dropdown menu for times", js: true do
           expect(page).to have_css "button#time_filter"
         end
@@ -132,7 +132,6 @@ describe Ask do
           visit mentors_sign_up_path
           click_button "category_filter"
           click_link "#{other_category.name}"
-          #click_link "#{other_category.name}"
           expect(page).to have_selector "td",
             text: "There are currently no requests that " +
               "fit your parameters"
