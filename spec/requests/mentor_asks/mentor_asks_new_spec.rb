@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ask do
+describe MentorAsk do
 
   before :all do
       days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday }
@@ -12,12 +12,12 @@ describe Ask do
       end
     end
 
-  describe "new ask" do
+  describe "new mentor_ask" do
     let!(:location) { FactoryGirl.create :location }
     let!(:meetup_time) { MeetupTime.first }
     let!(:category) { FactoryGirl.create(:category, official: true )}
 
-    before { visit new_ask_path }
+    before { visit new_mentor_ask_path }
     it "show the request form" do
       expect(page).to have_selector 'h1', text: "Mentor Request Form"
     end
@@ -32,8 +32,8 @@ describe Ask do
         click_button "Submit Mentor Request Form"
       end
 
-      it "should create a new ask" do
-        expect(Ask.find_by(name: "Test User")).to_not be_nil
+      it "should create a new mentor_ask" do
+        expect(MentorAsk.find_by(name: "Test User")).to_not be_nil
       end
       it "should redirect to the mentee thank you page" do
         expect(page).to have_selector 'h2',
@@ -96,9 +96,9 @@ describe Ask do
         click_button "Submit Mentor Request Form"
         expect(page).to have_selector 'h1', text: "Mentor Request Form"
       end
-      it "does not create a new ask" do
+      it "does not create a new mentor_ask" do
         expect { click_button "Submit Mentor Request Form" }.
-          to_not change(Ask, :count)
+          to_not change(MentorAsk, :count)
       end
       context "with a user created category" do
         it "does not create the new category" do
@@ -128,14 +128,14 @@ describe Ask do
         category = Category.last
         expect(category.official?).to be_false
       end
-      it "should associate the new category with the ask" do
+      it "should associate the new category with the mentor_ask" do
         click_button "Submit Mentor Request Form"
-        expect(Ask.last.categories.find_by name: "new category").to_not be_nil
+        expect(MentorAsk.last.categories.find_by name: "new category").to_not be_nil
       end
       it "should not be visible to other visits to the page" do
         click_button "Submit Mentor Request Form"
         unofficial_category = Category.last
-        visit new_ask_path
+        visit new_mentor_ask_path
         expect(page).to_not have_selector(
            "input#ask_categories_#{unofficial_category.id}")
       end

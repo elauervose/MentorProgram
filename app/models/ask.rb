@@ -1,9 +1,6 @@
 class Ask < ActiveRecord::Base
   has_one :answer
   has_and_belongs_to_many :locations
-  has_and_belongs_to_many :categories
-  accepts_nested_attributes_for :categories, reject_if:
-    proc { |attributes| attributes['name'].blank? }
   has_and_belongs_to_many :meetup_times
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 300 }
@@ -22,13 +19,6 @@ class Ask < ActiveRecord::Base
       joins(:locations).where('locations.id' => location)
     end
   end
-  scope :with_category, ->(category) do
-    if category.blank?
-      all
-    else
-      joins(:categories).where('categories.id' => category)
-    end
-  end
   scope :with_day, ->(day) do
     if day.blank?
       all
@@ -45,7 +35,7 @@ class Ask < ActiveRecord::Base
     end
   end
 
-  scope :with_filters, ->(location, category, day, time) do
+  scope :with_filters, ->(location, day, time) do
     with_location(location).with_category(category).with_day(day)
       .with_time(time)
   end

@@ -142,15 +142,6 @@ describe Ask do
         expect(Ask.with_location(other_location)).to_not include ask
       end
     end
-    describe "'with_category'" do
-      it "should be included when Asks scoped to its category" do
-        expect(Ask.with_category(ask.categories.first)).to include ask
-      end
-      it "should not be included when Asks scoped to a different category" do
-        other_category = FactoryGirl.create :category
-        expect(Ask.with_category(other_category)).to_not include ask
-      end
-    end
     describe "'with_day'" do
       it "should be included when Asks scoped to its day" do
         expect(Ask.with_day(ask.meetup_times.first.day)).to include ask
@@ -171,15 +162,14 @@ describe Ask do
     end
     describe "'with_filters'" do
       let(:location) { ask.locations.first }
-      let(:category) { ask.categories.first }
       let(:day) { ask.meetup_times.first.day }
       let(:time) { ask.meetup_times.first.period }
 
       it "should be included when Asks scoped to at least 1 of its attr" do
-        expect(Ask.with_filters(location,"","","")).to include ask
+        expect(Ask.with_filters(location,"","")).to include ask
       end
       it "should be included when Asks scopred to all its attr" do
-        expect(Ask.with_filters(location, category, day, time)).to include ask
+        expect(Ask.with_filters(location, day, time)).to include ask
       end
     end
   end
