@@ -1,5 +1,5 @@
 class MentorAsk < Ask
-  has_and_belongs_to_many :categories
+  has_and_belongs_to_many :categories, foreign_key: 'ask_id'
   accepts_nested_attributes_for :categories, reject_if:
     proc { |attributes| attributes['name'].blank? }
 

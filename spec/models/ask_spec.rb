@@ -10,7 +10,6 @@ describe Ask do
   it { should respond_to :answered }
   it { should respond_to :answer }
   it { should respond_to :locations }
-  it { should respond_to :categories }
   it { should respond_to :meetup_times }
   it { should be_valid }
 
@@ -55,7 +54,6 @@ describe Ask do
     describe "of association" do
       let(:location) { FactoryGirl.create :location }
       let(:meetup) { FactoryGirl.create :meetup_time }
-      let(:category) { FactoryGirl.create :category }
       before do
         @ask = Ask.new(name: "test", email: "test@example.com",
                        description: "text")
@@ -63,13 +61,11 @@ describe Ask do
       describe "on locations" do
         it "should require at least one location" do
           @ask.meetup_times << meetup
-          @ask.categories << category
           expect(@ask).to_not be_valid
         end
       end
       describe "on meetup times" do
         it "should erquire at least one meetup time" do
-          @ask.categories << category
           @ask.locations << location
           expect(@ask).to_not be_valid
         end
@@ -82,15 +78,6 @@ describe Ask do
     it "should add a location" do
       ask.locations << location
       expect(ask.locations).to include(location)
-    end
-  end
-
-  describe "categories" do
-    let(:category) { FactoryGirl.create :category }
-
-    it "should add the category ask" do
-      ask.categories  << category
-      expect(ask.categories).to include(category)
     end
   end
 

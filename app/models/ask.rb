@@ -36,8 +36,7 @@ class Ask < ActiveRecord::Base
   end
 
   scope :with_filters, ->(location, day, time) do
-    with_location(location).with_category(category).with_day(day)
-      .with_time(time)
+    with_location(location).with_day(day).with_time(time)
   end
 
  end
