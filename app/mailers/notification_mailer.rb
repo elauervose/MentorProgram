@@ -13,5 +13,15 @@ class NotificationMailer < ActionMailer::Base
       subject: 'Thank your for becoming a mentor'
   end
 
+  def introduce_pair_answerer_to_requester(ask)
+    @pair_answerer = ask.answer
+    mail to: ask.email, subject: 'Your pairing request has been answered'
+  end
+
+  def introduce_pair_requester_to_answerer(ask)
+    @pair_requester = ask
+    mail to: ask.answer.email, subject: 'How to contact your pairing partner'
+  end
+
 end
 

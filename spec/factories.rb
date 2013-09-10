@@ -18,9 +18,8 @@ FactoryGirl.define do
   end
 
   factory :answer do
-    sequence(:name) { |n| "mentor #{n}" }
-    sequence(:email) { |n| "mentor_#{n}@example.com" }
-    association :ask
+    sequence(:name) { |n| "answerer #{n}" }
+    sequence(:email) { |n| "answerer_#{n}@example.com" }
   end
 
   factory :location do

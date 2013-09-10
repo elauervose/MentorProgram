@@ -105,11 +105,6 @@ describe Ask do
       ask.reload
       expect(ask.answered?).to eq(true)
     end
-
-    it "should result in introductory email being sent to mentee" do
-      intro_email = ActionMailer::Base.deliveries.last
-      expect(intro_email.to).to include(ask.email)
-    end
   end
 
   describe "scopes" do

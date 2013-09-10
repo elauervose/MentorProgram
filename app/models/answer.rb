@@ -28,8 +28,7 @@ class Answer < ActiveRecord::Base
   end
 
   def send_introduction
-    NotificationMailer.introduce_mentee_to_mentor(self.ask).deliver
-    NotificationMailer.introduce_mentor_to_mentee(self.ask).deliver
+    Introduction.new(self.ask).send_introduction
   end
 
 end
