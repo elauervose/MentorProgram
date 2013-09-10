@@ -119,10 +119,9 @@ describe Ask do
       expect(ask.answered?).to eq(true)
     end
 
-    it "should result in an introductory email being sent" do
+    it "should result in introductory email being sent to mentee" do
       intro_email = ActionMailer::Base.deliveries.last
       expect(intro_email.to).to include(ask.email)
-      expect(intro_email.to).to include(ask.answer.email)
     end
   end
 

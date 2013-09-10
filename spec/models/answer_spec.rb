@@ -38,5 +38,16 @@ describe Answer do
       end
     end
   end
+  describe "on answer creation" do
+    before { answer.save }
+
+    it "the associated ask should be answered" do
+      expect(answer.ask.answered?).to be_true
+    end
+    it "should send an email to introduce mentee to the mentor" do
+      intro_email = ActionMailer::Base.deliveries[-2]
+      expect(intro_email.to).to include(answer.email)
+    end
+  end
 
 end
