@@ -1,0 +1,2 @@
+class PairAsk < Ask
+end

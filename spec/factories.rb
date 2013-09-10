@@ -10,16 +10,11 @@ FactoryGirl.define do
     meetup_times {[FactoryGirl.create(:meetup_time)]}
   end
 
-  factory :mentor_ask do
-    sequence(:name) { |n| "person #{n}" }
-    sequence(:email) { |n| "person_#{n}@example.com" }
-    description "I would like to create a website the allows people new
-      to tech to find mentors interested in helping them go through
-      three 1-2 hour sessions and help them iwth their problems"
-    email_updates true
-    locations {[FactoryGirl.create(:location)]}
-    meetup_times {[FactoryGirl.create(:meetup_time)]}
+  factory :mentor_ask, parent: :ask, class: MentorAsk do
     categories {[FactoryGirl.create(:category)]}
+  end
+
+  factory :pair_ask, parent: :ask, class: PairAsk do
   end
 
   factory :answer do
