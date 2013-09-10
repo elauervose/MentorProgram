@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :ask
-  after_create :answer
+  after_create :answer_request
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -17,13 +17,14 @@ class Answer < ActiveRecord::Base
 
   private
 
-  def answer
+  def answer_request
     ask.answered = true
     ask.save
     send_introduction
   end
 
   def send_introduction
-    NotificationMailer.create_response(self.email, ask.email).deliver
+    NotificationMailer.introduce_mentee_to_mentor(self.ask).deliver
+    NotificationMailer.introduce_mentor_to_mentee(self.ask).deliver
   end
 end

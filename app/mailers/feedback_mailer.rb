@@ -1,5 +1,5 @@
 class FeedbackMailer < ActionMailer::Base
-  default from: 'admin@example.com'
+  default from: 'mentors@hatsnpants.com'
 
   def solicit_feedback
     answers_to_solicit = Answer.where("created_at > ? AND created_at < ?",
