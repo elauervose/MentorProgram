@@ -16,7 +16,7 @@ describe MentorAsk do
   end
 
   describe "when answered" do
-    let(:answer) { FactoryGirl.attributes_for(:answer, mentor_ask: mentor_ask) }
+    let(:answer) { FactoryGirl.attributes_for(:answer, ask: mentor_ask) }
 
     before do
       mentor_ask.save!

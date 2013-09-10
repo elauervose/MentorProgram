@@ -7,13 +7,17 @@ class Answer < ActiveRecord::Base
     length: {maximum: 256}
 
   def self.solicit_feedback
-    answers_to_solicit = where("created_at > ? AND created_at < ?",
-                         1.month.ago - 1.day, 1.month.ago + 1.day)
+    answers_to_solicit = Answer.month_ago
     answers_to_solicit.each do |answer|
-      FeedbackMailer.solicit_feedback_from_mentor(answer).deliver
-      FeedbackMailer.solicit_feedback_from_mentee(answer.ask).deliver
+      if answer.ask.type == 'MentorAsk'
+        FeedbackMailer.solicit_feedback_from_mentor(answer).deliver
+        FeedbackMailer.solicit_feedback_from_mentee(answer.ask).deliver
+      end
     end
   end
+
+  scope :month_ago, -> { where("created_at > ? AND created_at < ?",
+                                1.month.ago - 1.day, 1.month.ago + 1.day) }
 
   private
 
@@ -27,4 +31,5 @@ class Answer < ActiveRecord::Base
     NotificationMailer.introduce_mentee_to_mentor(self.ask).deliver
     NotificationMailer.introduce_mentor_to_mentee(self.ask).deliver
   end
+
 end
