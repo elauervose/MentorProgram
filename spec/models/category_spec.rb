@@ -4,16 +4,16 @@ describe Category do
   subject(:category) { FactoryGirl.build :category }
 
   it { should respond_to :name }
-  it { should respond_to :asks }
+  it { should respond_to :mentor_asks }
   it { should respond_to :official }
   it { should be_valid }
 
-  describe "asks" do
-    let(:ask) { FactoryGirl.create :ask }
+  describe "mentor_asks" do
+    let(:mentor_ask) { FactoryGirl.create :mentor_ask }
 
-    it "can be added to an ask" do
-      ask.categories << category
-      expect(ask.categories).to include(category)
+    it "can be added to an mentor_ask" do
+      mentor_ask.categories << category
+      expect(mentor_ask.categories).to include(category)
     end
   end
 
