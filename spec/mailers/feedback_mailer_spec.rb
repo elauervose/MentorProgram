@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'FeedbackMailer' do
   let(:mentee) { FactoryGirl.create :ask }
   let(:mentor_attr) { FactoryGirl.attributes_for :answer }
-  let(:admin_email) { "admin@example.com" }
+  let(:admin_email) { "mentors@hatsnpants.com" }
 
   describe "soliciting feedback" do
     before do
