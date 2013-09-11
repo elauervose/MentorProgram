@@ -1,0 +1,36 @@
+<div class="row">
+	<h1>Mentee Info</h1>
+	<div class="well span12">
+		<div class="span5">
+      <p><strong>Mentee Name: </strong><%= @ask.name %></p>
+	    	<p><strong>Preferred Meeting Locations: </strong></p>
+        <p class="offset1">
+          <% locations = [] %>
+          <% @ask.locations.each { |location| locations << location.name } %>
+          <%= locations.join(', ') %>
+        </p>
+			<p><strong>Availability by Day: </strong><br></p>
+      <p class="offset1">
+        <%= render 'asks/availability' %>
+      </p>
+      <%= link_to "Return to Mentees List", mentors_sign_up_path,
+        class: "btn btn-info" %>
+      <%= link_to "Become Mentor!", new_answer_path(ask_id: @ask.id),
+        class: "btn btn-success" %> 
+		</div>
+		<div class="span6">
+      <p>
+        <strong>Project Category:</strong>
+        <% if @ask.categories %>
+          <% categories = [] %>
+          <% @ask.categories.each { |category| categories << category.name } %>
+          <%= categories.join(', ') %>
+        <% else %>
+          <%= "none" %>
+        <% end %>
+      </p>
+			<p><strong>Project Description: </strong><br></p>
+      <p class="offset1"><%= @ask.description %></p>
+		</div>
+	</div>
+</div>
