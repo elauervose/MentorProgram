@@ -2,6 +2,7 @@ Mentor::Application.routes.draw do
   
   resources :answers
   resources :mentor_asks, controller: :mentor_asks
+  resources :pair_asks, controller: :pair_asks
   #resources :asks
 
   root to: 'static#index'
@@ -13,6 +14,7 @@ Mentor::Application.routes.draw do
   get "resources", to: 'static#resources'
   get "thank_you_mentor", to: 'static#thank_you_mentor'
   get "thank_you_mentee", to: 'static#thank_you_mentee'
+  get "thank_you_pair_request", to: 'static#thank_you_pair_request'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
