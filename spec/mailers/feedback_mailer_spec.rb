@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'FeedbackMailer' do
-  let(:mentee) { FactoryGirl.create :ask }
+  let(:mentee) { FactoryGirl.create :mentor_ask }
   let(:mentor_attr) { FactoryGirl.attributes_for :answer }
   let(:admin_email) { "mentors@hatsnpants.com" }
 
