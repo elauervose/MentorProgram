@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe "Answers" do
-  let!(:ask) { FactoryGirl.create(:ask) }
 
-  describe "answering a request" do
+  describe "answering a mentoring request" do
+    let!(:ask) { FactoryGirl.create(:mentor_ask) }
     before do
       visit mentors_sign_up_path
       click_link 'answer_ask_1'
     end
+
     it "should take me to the new answer page" do
       expect(page).to have_selector "p",
         text: "You are about to become a mentor for one very lucky mentee"
