@@ -23,7 +23,6 @@ describe MentorAsk do
     end
     context "with valid information" do
       before do
-        save_and_open_page
         fill_in "Name", with: "Test User"
         fill_in "Email", with: "text@example.com"
         check location.name
@@ -66,7 +65,7 @@ describe MentorAsk do
         it "should retain value of user created category" do
           fill_in "Other", with: "new category"
           click_button "Submit Mentor Request Form"
-          expect(page).to have_field "ask_categories_attributes_0_name",
+          expect(page).to have_field "mentor_ask_categories_attributes_0_name",
             with: "new category", visible: true
         end
         specify "there are no additional input fields added" do

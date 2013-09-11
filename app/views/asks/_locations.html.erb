@@ -1,3 +1,4 @@
+<% model = @ask.class.name.underscore.to_sym %>
 <div class="row">
   <div class="span12">
     <p class="lead">
@@ -16,8 +17,8 @@
           <span class="first-icon fui-checkbox-unchecked"></span>
           <span class="second-icon fui-checkbox-checked"></span>
         </span>
-        <% if params[:ask] && params[:ask][:locations] %>
-          <% checked = params[:ask][:locations].include?(location.id.to_s) %>
+        <% if params[model] && params[model][:locations] %>
+          <% checked = params[model][:locations].include?(location.id.to_s) %>
         <% end %>
         <%= f.check_box "locations", {multiple: true,
           "data-toggle" => "checkbox", checked: checked}, location.id, nil %>
