@@ -1,0 +1,38 @@
+<%= form_for @ask, url: { action: 'create', anchor: 'form_anchor' },
+  class: "form-inline col-lg-4" do |f| %>
+  <%= render '/shared/error_messages', object: @ask %>
+  <div class="row">
+    <div class="span12">
+      <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+  <hr>
+  <%= render '/asks/locations', f: f %>
+  <hr>
+  <%= render '/asks/times', f: f %>
+  <div class="row">
+    <%= render 'categories', f: f %>
+ 
+    <div class="span8">
+      <h4>Please write a 2-3 sentence description of your project so mentors can evaluate whether they can help you.</h4>
+      <%= f.text_area "description", class: "span8", rows: "8" %>
+    </div>
+  </div>
+  <br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+  <div class="row">
+    <div class="span4">
+      <%= render '/shared/captcha' %>
+    </div>
+  </div>
+
+  <br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+
+  <div class="row">
+    <div class="span4 lead">
+      <%= f.submit "Submit Mentor Request Form »",
+        class: "btn btn-large btn-block btn-info" %>
+    </div>
+  </div>
+
+<% end %>

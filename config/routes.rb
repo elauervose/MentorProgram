@@ -1,13 +1,14 @@
 Mentor::Application.routes.draw do
+  
   resources :answers
-
-  resources :asks
+  resources :mentor_asks, controller: :mentor_asks
+  #resources :asks
 
   root to: 'static#index'
   get "about", to: 'static#about'
   get "table_test", to: 'static#table_test'
-  get "mentors", to: 'asks#index', as: 'mentors_sign_up'
-  get "mentees", to: 'asks#new'
+  get "mentors", to: 'mentor_asks#index', as: 'mentors_sign_up'
+  get "mentees", to: 'mentor_asks#new'
   get "prep", to: 'static#prep'
   get "resources", to: 'static#resources'
   get "thank_you_mentor", to: 'static#thank_you_mentor'

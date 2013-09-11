@@ -23,12 +23,13 @@ describe MentorAsk do
     end
     context "with valid information" do
       before do
+        save_and_open_page
         fill_in "Name", with: "Test User"
         fill_in "Email", with: "text@example.com"
         check location.name
-        check "ask_meetup_times_#{meetup_time.id}"
+        check "mentor_ask_meetup_times_#{meetup_time.id}"
         check category.name
-        fill_in "ask_description", with: "What I want to learn about"
+        fill_in "mentor_ask_description", with: "What I want to learn about"
         click_button "Submit Mentor Request Form"
       end
 
@@ -50,10 +51,10 @@ describe MentorAsk do
       end
       describe "for meetup times" do
         it "should have selected times still selected" do
-          check "ask_meetup_times_#{meetup_time.id}"
+          check "mentor_ask_meetup_times_#{meetup_time.id}"
           click_button "Submit Mentor Request Form"
           expect(page).to have_checked_field(
-            "ask_meetup_times_#{meetup_time.id}")
+            "mentor_ask_meetup_times_#{meetup_time.id}")
         end
       end
       describe "for categories" do
@@ -89,7 +90,7 @@ describe MentorAsk do
       before do
         fill_in "Name", with: "Test User"
         fill_in "Email", with: "text@example.com"
-        fill_in "ask_description", with: "What I want to learn about"
+        fill_in "mentor_ask_description", with: "What I want to learn about"
       end
 
       it "rerenders the form" do
@@ -113,9 +114,9 @@ describe MentorAsk do
         fill_in "Name", with: "Test User"
         fill_in "Email", with: "text@example.com"
         check location.name
-        check "ask_meetup_times_#{meetup_time.id}"
+        check "mentor_ask_meetup_times_#{meetup_time.id}"
         check category.name
-        fill_in "ask_description", with: "What I want to learn about"
+        fill_in "mentor_ask_description", with: "What I want to learn about"
         fill_in "Other", with: "new category"
       end
       

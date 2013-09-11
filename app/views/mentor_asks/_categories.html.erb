@@ -1,0 +1,27 @@
+<div class="span4">
+  <h4>Select a category for the project you are working on</h4>
+  <% @categories.each do |category| %>
+    <label class="checkbox" for="<%= category.name %>">
+      <span class="icons">
+        <span class="first-icon fui-checkbox-unchecked"></span>
+        <span class="second-icon fui-checkbox-checked"></span>
+      </span>
+      <% if params[:ask] && params[:ask][:categories] %>
+        <% checked = params[:ask][:categories].include?(category.id.to_s) %>
+      <% end %>
+      <%= f.check_box "categories",
+        {multiple: true, "data-toggle" => "checkbox", checked: checked},
+        category.id, nil %>
+      <%= category.name %>
+    </label>
+  <% end %>
+  <% if params[:ask] && params[:ask][:categories_attributes] %>
+    <% custom_category_name = 
+      params[:ask][:categories_attributes]["0"][:name] %>
+  <% end %>
+  <%= f.fields_for :categories,
+    Category.new(name: custom_category_name) do |category_fields| %>
+    <%= category_fields.text_field :name, class: "form-control",
+      placeholder: "Other" %>
+  <% end %>
+</div>
