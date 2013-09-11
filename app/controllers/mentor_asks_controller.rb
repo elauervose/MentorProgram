@@ -11,7 +11,7 @@ class MentorAsksController < ApplicationController
                    params[:time]
                   )
     if params[:location] || params[:category] || params[:day] || params[:time]
-      render '_asks', layout: false
+      render '_mentor_asks', layout: false
     end
   end
 
