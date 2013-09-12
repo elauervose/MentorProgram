@@ -4,11 +4,8 @@ class MentorAsk < Ask
     proc { |attributes| attributes['name'].blank? }
 
   scope :with_category, ->(category) do
-    if category.blank?
-      all
-    else
-      joins(:categories).where('categories.id' => category)
-    end
+    return all if category.blank?
+    joins(:categories).where('categories.id' => category)
   end
   scope :with_filters, ->(location, category, day, time) do
     with_location(location).with_category(category).with_day(day)
