@@ -15,9 +15,11 @@
       options_for_select(times),
       prompt: "Time", name: 'herolist', style: 'display: none;',
       id: 'time_filter', class: 'filter' %>
-    <%= select_tag 'herolist',
-      options_from_collection_for_select(@categories, 'id', 'name'),
-      prompt: "Category", name: 'herolist', style: 'display: none;',
-      id: 'category_filter', class: 'filter' %>
+    <% if type == "mentor" %>
+      <%= select_tag 'herolist',
+        options_from_collection_for_select(@categories, 'id', 'name'),
+        prompt: "Category", name: 'herolist', style: 'display: none;',
+        id: 'category_filter', class: 'filter' %>
+    <% end %>
   </div>
 </div>
