@@ -3,7 +3,7 @@ Mentor::Application.routes.draw do
   resources :answers
   resources :mentor_asks, controller: :mentor_asks
   resources :pair_asks, controller: :pair_asks
-  #resources :asks
+  resources :asks, except: [:new, :create]
 
   root to: 'static#index'
   get "about", to: 'static#about'
