@@ -1,4 +1,4 @@
-<% days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday} %>
+<% days = days_of_week %>
 <% days.each do |day| %>
   <strong><%= day.pluralize%>:</strong>
   <% if meetup_times = @ask.meetup_times.where("day = ?", day) %>
