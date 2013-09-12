@@ -1,22 +1,19 @@
 <%= form_for @ask, url: { action: 'create', anchor: 'form_anchor' },
-  class: "form-inline col-lg-4" do |f| %>
+  class: "form-inline col-lg-4" do |form| %>
   <%= render '/shared/error_messages', object: @ask %>
-  <div class="row">
-    <div class="span12">
-      <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
-      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
-    </div>
-  </div>
+  <%= render '/asks/user_info', form: form %>
   <hr>
-  <%= render '/asks/locations', f: f %>
+  <%= render '/asks/locations', form: form %>
   <hr>
-  <%= render '/asks/times', f: f %>
+  <%= render '/asks/times', form: form %>
   <div class="row">
-    <%= render 'categories', f: f %>
- 
+    <%= render 'categories', form: form %>
     <div class="span8">
-      <h4>Please write a 2-3 sentence description of your project so mentors can evaluate whether they can help you.</h4>
-      <%= f.text_area "description", class: "span8", rows: "8" %>
+      <h4>
+        Please write a 2-3 sentence description of your project so mentors can
+        evaluate whether they can help you.
+      </h4>
+      <%= form.text_area "description", class: "span8", rows: "8" %>
     </div>
   </div>
   <br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
@@ -30,7 +27,7 @@
 
   <div class="row">
     <div class="span4 lead">
-      <%= f.submit "Submit Mentor Request Form »",
+      <%= form.submit "Submit Mentor Request Form »",
         class: "btn btn-large btn-block btn-info" %>
     </div>
   </div>

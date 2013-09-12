@@ -25,7 +25,7 @@
             <% checked = params[model][:meetup_times].
               include?(meetup.id.to_s) %>
           <% end %>
-          <%= f.check_box "meetup_times",
+          <%= form.check_box "meetup_times",
             {multiple: true, "data-toggle" => "checkbox", checked: checked},
             meetup.id, nil %>
           <%= time %>

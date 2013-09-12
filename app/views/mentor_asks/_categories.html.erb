@@ -10,7 +10,7 @@
         <% checked = params[:mentor_ask][:categories].
           include?(category.id.to_s) %>
       <% end %>
-      <%= f.check_box "categories",
+      <%= form.check_box "categories",
         {multiple: true, "data-toggle" => "checkbox", checked: checked},
         category.id, nil %>
       <%= category.name %>
@@ -20,7 +20,7 @@
     <% custom_category_name = 
       params[:mentor_ask][:categories_attributes]["0"][:name] %>
   <% end %>
-  <%= f.fields_for :categories,
+  <%= form.fields_for :categories,
     Category.new(name: custom_category_name) do |category_fields| %>
     <%= category_fields.text_field :name, class: "form-control",
       placeholder: "Other" %>

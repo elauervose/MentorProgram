@@ -20,7 +20,7 @@
         <% if params[model] && params[model][:locations] %>
           <% checked = params[model][:locations].include?(location.id.to_s) %>
         <% end %>
-        <%= f.check_box "locations", {multiple: true,
+        <%= form.check_box "locations", {multiple: true,
           "data-toggle" => "checkbox", checked: checked}, location.id, nil %>
         <%= location.name %>
       </label>
