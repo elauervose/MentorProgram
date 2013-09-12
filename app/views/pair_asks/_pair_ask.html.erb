@@ -1,0 +1,15 @@
+<% @asks.each do |ask| %>
+  <tr id="ask_<%=ask.id %>">
+    <td><%= ask.name %></td>
+    <td><%= ask.description %></td>
+    <td>
+      <%= link_to "See Availability", pair_ask_path(ask),
+        class: "btn btn-info" %>
+    <td>
+      <div>
+        <%= link_to 'Sign Up! »', new_answer_path(ask_id: ask.id),
+          id: "answer_ask_#{ask.id}", class: "btn btn-success btn-large" %>
+      </div>
+    </td>
+  </tr>
+<% end %>

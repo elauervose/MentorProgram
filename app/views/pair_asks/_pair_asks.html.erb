@@ -1,0 +1,13 @@
+ <table class="table table-striped pairs">
+  <tr>
+    <th>Name</th>
+    <th>Project Description</th>
+    <th>Availability</th>
+    <th>Sign Up To Mentor</th>
+  </tr>
+  <% if @asks.empty? %>
+    <tr><td>There are currently no requests that fit your parameters</td></tr>
+  <% else %>
+    <%= render 'pair_ask' %>
+  <% end %>
+</table>
