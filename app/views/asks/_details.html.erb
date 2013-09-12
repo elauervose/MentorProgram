@@ -1,0 +1,11 @@
+<p><strong>Name: </strong><%= @ask.name %></p>
+<p><strong>Preferred Meeting Locations: </strong></p>
+<p class="offset1">
+  <% locations = [] %>
+  <% @ask.locations.each { |location| locations << location.name } %>
+  <%= locations.join(', ') %>
+</p>
+<p><strong>Availability by Day: </strong><br></p>
+<p class="offset1">
+  <%= render 'asks/availability' %>
+</p>
