@@ -1,20 +1,20 @@
 require 'spec_helper'
 describe MentorAsk do
   describe "show page" do
-    let(:mentor_ask) { FactoryGirl.create :mentor_ask }
+    let(:pair_ask) { FactoryGirl.create :pair_ask }
 
-    before { visit mentor_ask_path(mentor_ask) }
+    before { visit pair_ask_path(pair_ask) }
 
-    it "should have information about the mentee request" do
-      expect(page).to have_selector 'p', text: mentor_ask.name
+    it "should have information about the pairing request" do
+      expect(page).to have_selector 'p', text: pair_ask.name
     end
-    it "should have a link to become their mentor" do
-      expect(page).to have_link 'Become Mentor!',
-        href: "/answers/new?ask_id=#{mentor_ask.id}"     
+    it "should have a link to become their partner" do
+      expect(page).to have_link 'Become Partner!',
+        href: "/answers/new?ask_id=#{pair_ask.id}"     
     end
-    it "should have a link to mentors sign up page" do
-      expect(page).to have_link "Return to Mentees List",
-        href: mentors_sign_up_path
+    it "should have a link to pairing sign up page" do
+      expect(page).to have_link "Return to Pairing Requests List",
+        href: pair_asks_path
     end
   end
 end
