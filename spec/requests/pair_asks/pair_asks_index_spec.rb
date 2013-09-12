@@ -94,7 +94,7 @@ describe PairAsk do
           other_pair_ask.save
           visit pair_asks_path
           click_button "time_filter"
-          click_link "#{pair_ask.meetup_times.first.time}"
+          click_link "#{pair_ask.meetup_times.first.period}"
           expect(page).to have_selector "tr#ask_#{other_pair_ask.id}"
           click_button "location_filter"
           click_link "#{pair_ask.locations.first.name}"
