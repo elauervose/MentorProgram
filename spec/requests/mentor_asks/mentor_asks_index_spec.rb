@@ -29,7 +29,12 @@ describe MentorAsk do
     end
 
     describe "filtering mentor_asks" do
-      let!(:other_mentor_ask) { FactoryGirl.create :mentor_ask }
+      let!(:other_mentor_ask) { FactoryGirl.create(:mentor_ask,
+                                                meetup_times: [other_meetup]) }
+      let(:other_meetup) { FactoryGirl.create(:meetup_time,
+                                              day: "other_day",
+                                              period: "other_time"
+                                             ) }
       before { visit mentors_sign_up_path }
       context "by location" do
         it "should have a dropdown menu for locations", js: true do

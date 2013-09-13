@@ -29,7 +29,12 @@ describe PairAsk do
     end
 
     describe "filtering pair_asks" do
-      let!(:other_pair_ask) { FactoryGirl.create :pair_ask }
+      let!(:other_pair_ask) { FactoryGirl.create(:pair_ask,
+                                                meetup_times: [other_meetup]) }
+      let(:other_meetup) { FactoryGirl.create(:meetup_time,
+                                              day: "other_day",
+                                              period: "other_time"
+                                             ) }
       before { visit pair_asks_path }
       context "by location" do
         it "should have a dropdown menu for locations", js: true do
