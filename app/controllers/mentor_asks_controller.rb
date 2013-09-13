@@ -10,7 +10,7 @@ class MentorAsksController < ApplicationController
                    params[:day],
                    params[:time]
                   )
-    if params[:location] || params[:category] || params[:day] || params[:time]
+    if filters_selected?
       render '_mentor_asks', layout: false
     end
   end
@@ -21,29 +21,19 @@ class MentorAsksController < ApplicationController
   def new
     @ask = MentorAsk.new
     @ask.categories.build
-    @locations = Location.all
-    @meetups = MeetupTime.all
-    @categories = Category.admin_created
+    set_assosciation_locals
   end
 
   def create
     @ask = MentorAsk.new(ask_params)
-    if locations = params["mentor_ask"]["locations"]
-      locations.each { |location| @ask.locations << Location.find(location) }
-    end
-    if meetups = params["mentor_ask"]["meetup_times"]
-      meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
-    end
-    if categories = params["mentor_ask"]["categories"]
-      categories.each { |category| @ask.categories << Category.find(category) }
-    end
+    add_locations(params["mentor_ask"]["locations"])
+    add_meetup_times(params["mentor_ask"]["meetup_times"])
+    add_categories(params["mentor_ask"]["categories"])
 
     if  valid_recaptcha? && @ask.save
       redirect_to thank_you_mentee_path
     else
-      @locations = Location.all
-      @meetups = MeetupTime.all
-      @categories = Category.admin_created
+      set_assosciation_locals
       render action: 'new'
     end
   end
@@ -63,4 +53,34 @@ class MentorAsksController < ApplicationController
       verify_recaptcha(model: @ask,
                        message: "Captcha verification failed, please try again")
     end
+
+    def set_assosciation_locals
+      @locations = Location.all
+      @meetups = MeetupTime.all
+      @categories = Category.admin_created
+    end
+
+    def filters_selected?
+      params[:location] || params[:category] || params[:day] || params[:time]
+    end
+
+    def add_locations(locations)
+      if locations
+        locations.each { |location| @ask.locations << Location.find(location) }
+      end
+    end
+
+    def add_meetup_times(meetups)
+      if meetups
+        meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
+      end
+    end
+
+    def add_categories(categories)
+      if categories
+        categories.each { |category| @ask.categories << Category.
+                          find(category) }
+      end
+    end
+
 end

@@ -5,7 +5,7 @@ class PairAsksController < ApplicationController
     @locations = Location.all
     @asks = PairAsk.not_answered.
       with_filters(params[:location], params[:day], params[:time])
-    if params[:location] || params[:day] || params[:time]
+    if filters_selected?
       render '_pair_asks', layout: false
     end
   end
@@ -15,24 +15,18 @@ class PairAsksController < ApplicationController
 
   def new
     @ask = PairAsk.new
-    @locations = Location.all
-    @meetups = MeetupTime.all
+    set_assosciation_locals
   end
 
   def create
     @ask = PairAsk.new(ask_params)
-    if locations = params["pair_ask"]["locations"]
-      locations.each { |location| @ask.locations << Location.find(location) }
-    end
-    if meetups = params["pair_ask"]["meetup_times"]
-      meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
-    end
+    add_locations(params["pair_ask"]["locations"])
+    add_meetup_times(params["pair_ask"]["meetup_times"])
 
     if  valid_recaptcha? && @ask.save
       redirect_to thank_you_pair_request_path
     else
-      @locations = Location.all
-      @meetups = MeetupTime.all
+      set_assosciation_locals
       render action: 'new'
     end
   end
@@ -50,5 +44,26 @@ class PairAsksController < ApplicationController
     def valid_recaptcha?
       verify_recaptcha(model: @ask,
                        message: "Captcha verification failed, please try again")
+    end
+
+    def set_assosciation_locals
+      @locations = Location.all
+      @meetups = MeetupTime.all
+    end
+
+    def filters_selected?
+      params[:location] || params[:day] || params[:time]
+    end
+
+    def add_locations(locations)
+      if locations
+        locations.each { |location| @ask.locations << Location.find(location) }
+      end
+    end
+
+    def add_meetup_times(meetups)
+      if meetups
+        meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
+      end
     end
 end
