@@ -24,6 +24,10 @@ describe Admin do
         admin.email = "a"*245 + "@example.com"
         expect(admin).to_not be_valid
       end
+      it "must have a unique email address" do
+        Admin.create!(email: admin.email)
+        expect(admin).to_not be_valid
+      end
     end
   end
 end
