@@ -37,4 +37,8 @@ FactoryGirl.define do
     sequence(:day) { |n| Days[n % Days.size] }
     sequence(:period) { |n| Periods[n % Periods.size] }
   end
+
+  factory :admin do
+    sequence(:email) { |n| "admin_#{n}@example.com" }
+  end
 end
