@@ -4,6 +4,7 @@ Mentor::Application.routes.draw do
   resources :mentor_asks, controller: :mentor_asks
   resources :pair_asks, controller: :pair_asks
   resources :asks, except: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static#index'
   get "about", to: 'static#about'
@@ -15,6 +16,8 @@ Mentor::Application.routes.draw do
   get "thank_you_mentor", to: 'static#thank_you_mentor'
   get "thank_you_mentee", to: 'static#thank_you_mentee'
   get "thank_you_pair_request", to: 'static#thank_you_pair_request'
+  get 'admin_sign_in', to: 'sessions#new'
+  match 'admin_sign_out', to: 'sessions#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

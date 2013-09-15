@@ -1,0 +1,18 @@
+<h1>Admin sign in:</h1>
+<%= form_tag action: 'create' do %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <p>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </p>
+  <p>
+    <%= label_tag :password %>
+    <%= text_field_tag :password %>
+  </p>
+  <%= submit_tag 'Sign in' %>
+<% end %>
+
+
+
