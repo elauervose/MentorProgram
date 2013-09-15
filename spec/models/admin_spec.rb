@@ -5,6 +5,9 @@ describe Admin do
   subject(:admin) { FactoryGirl.build :admin }
 
   it { should respond_to :email }
+  it { should respond_to :password_digest }
+  it { should respond_to :password }
+  it { should respond_to :password_confirmation }
   it { should be_valid }
 
   describe "validations" do
@@ -25,7 +28,19 @@ describe Admin do
         expect(admin).to_not be_valid
       end
       it "must have a unique email address" do
-        Admin.create!(email: admin.email)
+        Admin.create!(email: admin.email,
+                      password: "foobar", password_confirmation: "foobar")
+        expect(admin).to_not be_valid
+      end
+    end
+    describe "for password" do
+      it "should not be valid without a password" do
+        admin.password = ""
+        admin.password_confirmation = ""
+        expect(admin).to_not be_valid
+      end
+      it "should not be valid with incorrect password confirmation" do
+        admin.password_confirmation = "invalid"
         expect(admin).to_not be_valid
       end
     end

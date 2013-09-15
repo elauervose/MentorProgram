@@ -45,6 +45,7 @@ end
 
 gem 'whenever', require: false
 gem 'recaptcha', require: 'recaptcha/rails'
+gem 'bcrypt-ruby', '3.0.1'
 
 group :development do
   gem 'pry'
