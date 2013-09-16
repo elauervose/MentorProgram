@@ -24,6 +24,11 @@ describe "Authentication" do
       end
       it { should have_content 'Admin Home' }
       it { should have_link('Sign out', href: admin_sign_out_path) }
+      describe "and then signing out" do
+        before { click_link "Sign out" }
+
+        it { should have_content('Admin sign in') }
+      end
     end
 
   end
