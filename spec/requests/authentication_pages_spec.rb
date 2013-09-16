@@ -30,6 +30,14 @@ describe "Authentication" do
         it { should have_content('Admin sign in') }
       end
     end
-
   end
+
+  describe "authorization" do
+    describe "when not signed in" do
+      before { visit admin_home_path }
+      it { should_not have_content "Admin" }
+      it { should have_selector 'h1', text: 'Mentor Program' }
+    end
+  end
+
 end

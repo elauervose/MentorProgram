@@ -27,4 +27,8 @@ class StaticController < ApplicationController
   def thank_you_mentee
     render :thank_you_mentee
   end  
+
+  def admin_home
+    redirect_to root_path unless signed_in?
+  end
 end
