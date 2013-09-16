@@ -8,6 +8,7 @@ describe Admin do
   it { should respond_to :password_digest }
   it { should respond_to :password }
   it { should respond_to :password_confirmation }
+  it { should respond_to :authenticate }
   it { should be_valid }
 
   describe "validations" do
@@ -45,4 +46,20 @@ describe Admin do
       end
     end
   end
+
+  describe "authenticate value" do
+    before { admin.save }
+    let(:found_admin) { Admin.find_by(email: admin.email) }
+
+    describe "with valid password" do
+      it { should eq found_admin.authenticate(admin.password) }
+    end
+    describe "with invalid password" do
+      let(:admin_with_invalid_password) { found_admin.authenticate("invalid") }
+
+      it { should_not eq admin_with_invalid_password }
+      specify { expect(admin_with_invalid_password).to be_false }
+    end
+  end
+
 end
