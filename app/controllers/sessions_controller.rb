@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     admin = Admin.find_by(email: params[:email])
     if admin && admin.authenticate(params[:password])
+      sign_in admin
       redirect_to admin_home_path 
     else
       flash.now[:error] = 'Invalid email/password combination'
