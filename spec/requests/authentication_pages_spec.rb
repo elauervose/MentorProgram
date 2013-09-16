@@ -23,7 +23,7 @@ describe "Authentication" do
         click_button "Sign in"
       end
       it { should have_content 'Admin Home' }
-      it { should have_link('Sign out', href: sign_out_path) }
+      it { should have_link('Sign out', href: admin_sign_out_path) }
     end
 
   end

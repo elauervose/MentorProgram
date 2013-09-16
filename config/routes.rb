@@ -17,7 +17,8 @@ Mentor::Application.routes.draw do
   get "thank_you_mentee", to: 'static#thank_you_mentee'
   get "thank_you_pair_request", to: 'static#thank_you_pair_request'
   get 'admin_sign_in', to: 'sessions#new'
-  match 'admin_sign_out', to: 'sessions#destroy', via: 'delete'
+  match 'admin_sign_out', to: 'sessions#destroy', via: :delete
+  get 'admin_home', to: 'static#admin_home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

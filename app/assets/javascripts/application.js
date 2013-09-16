@@ -1,4 +1,5 @@
 //= require 'jquery-1.8.3.min.js'
+//= require 'jquery_ujs'
 //= require 'jquery-ui-1.10.3.custom.min.js'
 //= require 'jquery.ui.touch-punch.min.js'
 //= require 'bootstrap.min.js'
