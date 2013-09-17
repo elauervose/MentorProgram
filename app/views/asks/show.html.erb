@@ -2,7 +2,8 @@
 	<h1>Mentee Info</h1>
 	<div class="well span12">
 		<div class="span5">
-      <p><strong>Mentee Name: </strong><%= @ask.name %></p>
+      <p><strong>Name: </strong><%= @ask.name %></p>
+      <p><strong>Email: </strong><%= @ask.email %></p>
 	    	<p><strong>Preferred Meeting Locations: </strong></p>
         <p class="offset1">
           <% locations = [] %>
@@ -13,22 +14,25 @@
       <p class="offset1">
         <%= render 'availability' %>
       </p>
-      <%= link_to "Return to Mentees List", mentors_sign_up_path,
+      <%= link_to "Return to Asks List", asks_path,
         class: "btn btn-info" %>
-      <%= link_to "Become Mentor!", new_answer_path(ask_id: @ask.id),
-        class: "btn btn-success" %> 
+      <%= link_to "delete", ask_path(@ask), method: :delete,
+        data: { confirm: "Confirm deletion" }, class: "btn btn-danger" %>
 		</div>
 		<div class="span6">
-      <p>
-        <strong>Project Category:</strong>
-        <% if @ask.categories %>
-          <% categories = [] %>
-          <% @ask.categories.each { |category| categories << category.name } %>
-          <%= categories.join(', ') %>
-        <% else %>
-          <%= "none" %>
-        <% end %>
-      </p>
+      <% if @ask.type == "MentorAsk" %>
+        <p>
+          <strong>Project Category:</strong>
+          <% if @ask.categories %>
+            <% categories = [] %>
+            <% @ask.categories.each { |category|
+              categories << category.name } %>
+            <%= categories.join(', ') %>
+          <% else %>
+            <%= "none" %>
+          <% end %>
+        </p>
+      <% end %>
 			<p><strong>Project Description: </strong><br></p>
       <p class="offset1"><%= @ask.description %></p>
 		</div>
