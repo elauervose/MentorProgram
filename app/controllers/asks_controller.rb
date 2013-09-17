@@ -1,4 +1,5 @@
 class AsksController < ApplicationController
+  before_action :signed_in_admin
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -34,6 +35,10 @@ class AsksController < ApplicationController
 
     def ask_params
       params.require(:ask).permit(:name, :email, :description)
+    end
+
+    def signed_in_admin
+      redirect_to root_path unless signed_in?
     end
 
 end
