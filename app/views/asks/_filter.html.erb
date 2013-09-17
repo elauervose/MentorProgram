@@ -15,7 +15,7 @@
       options_for_select(times),
       prompt: "Time", name: 'herolist', style: 'display: none;',
       id: 'time_filter', class: 'filter' %>
-    <% if type == "mentor" %>
+    <% unless type == "pair" %>
       <%= select_tag 'herolist',
         options_from_collection_for_select(@categories, 'id', 'name'),
         prompt: "Category", name: 'herolist', style: 'display: none;',

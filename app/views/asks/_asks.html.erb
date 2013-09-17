@@ -1,10 +1,14 @@
- <table class="table table-striped mentees">
+ <table class="table table-striped asks">
   <tr>
     <th>Name</th>
+    <th>Email</th>
+    <th>Type</th>
+    <th>Time Created</th>
+    <th>Responded to</th>
     <th>Project Category</th>
-    <th>Project Description</th>
-    <th>Availability</th>
-    <th>Sign Up To Mentor</th>
+    <th>Full Details</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
   <% if @asks.empty? %>
     <tr><td>There are currently no requests that fit your parameters</td></tr>

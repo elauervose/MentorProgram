@@ -3,6 +3,8 @@ class AsksController < ApplicationController
 
   def index
     @asks = Ask.all
+    @locations = Location.all
+    @categories = Category.all
   end
 
   def show
