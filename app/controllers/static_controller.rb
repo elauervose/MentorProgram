@@ -1,4 +1,6 @@
 class StaticController < ApplicationController
+  before_action :is_admin?, only: [:statistics, :admin_home]
+
   def index
   end
 
@@ -29,6 +31,14 @@ class StaticController < ApplicationController
   end  
 
   def admin_home
-    redirect_to root_path unless signed_in?
   end
+
+  def statistics
+  end
+
+  private
+
+    def is_admin?
+      redirect_to root_path unless signed_in?
+    end
 end
