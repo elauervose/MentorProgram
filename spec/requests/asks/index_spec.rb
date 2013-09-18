@@ -31,5 +31,17 @@ describe "ask index" do
     it "will show a PairAsk" do
       expect(page).to have_selector "tr#ask_#{pair_ask.id}"
     end
+
+    describe "destroying an ask" do
+      it "should have a link to destroy the ask" do
+        expect(page).to have_link "Delete"
+      end
+      it "The ask should no longer exist", js: true do
+        click_link 'Delete', href: "/asks/#{mentor_ask.id}"
+        page.driver.browser.switch_to.alert.accept
+        expect(current_path).to eq '/asks'
+        expect(Ask.find_by(id: mentor_ask.id)).to be_nil
+      end
+    end
   end
 end

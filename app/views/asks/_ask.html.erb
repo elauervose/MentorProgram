@@ -17,6 +17,7 @@
       <% end %>
     <td><%= link_to "Show", ask_path(ask) %></td>
     <td><%= link_to "Edit", edit_ask_path(ask) %></td>
-    <td><%= link_to "Delete", ask_path(ask), method: :delete %></td>
+    <td><%= link_to "Delete", ask_path(ask), method: :delete,
+            data: { confirm: "Confirm deletion" }%></td>
   </tr>
 <% end %>
