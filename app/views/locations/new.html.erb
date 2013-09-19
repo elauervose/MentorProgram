@@ -1,0 +1,10 @@
+<h1>New Location</h1>
+<%= render '/shared/error_messages', object: @location %>
+<%= form_for @location, class: "form col-lg-4" do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <div class="row">
+    <div class="span3 lead">
+      <%= form.submit "Create New Location", class: "btn btn-block btn-info" %>
+    </div>
+  </div>
+<% end %>
