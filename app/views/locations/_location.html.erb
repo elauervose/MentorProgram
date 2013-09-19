@@ -1,0 +1,10 @@
+<% @locations.each do |location| %>
+  <tr id="location_<%= "#{location.id}" %>">
+    <td><%= location.name %></td>
+    <td><%= link_to "Edit", edit_location_path(location) %></td>
+    <td>
+      <%= link_to "Delete", location_path(location), method: :delete,
+        data: { confirm: "Confirm deletion" } %>
+    </td>
+  </tr>
+<% end %>
