@@ -1,9 +1,12 @@
 class LocationsController < ApplicationController
   before_action :signed_in_admin
-  before_action :prepare_location, only: [:edit, :destroy]
+  before_action :prepare_location, only: [:edit, :update, :show, :destroy]
 
   def index
     @locations = Location.all
+  end
+
+  def show
   end
 
   def new
@@ -20,6 +23,14 @@ class LocationsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @location.update_attributes(location_params)
+      redirect_to location_path(@location)
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy
