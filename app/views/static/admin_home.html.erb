@@ -1,3 +1,16 @@
 <h1>Admin Home</h1>
-Future home of administration interface
-<%= link_to 'Sign out', admin_sign_out_path, method: :delete %>
+<p><%= link_to 'Sign out', admin_sign_out_path, method: :delete %></p>
+<h2>Requests:</h2>
+<ul>
+  <li><%= link_to 'All Asks Index', asks_path %></li>
+</ul>
+<h2>Categories:</h2>
+<ul>
+  <li><%= link_to 'All Categories', categories_path %></li>
+  <li><%= link_to 'Create New Category', new_category_path %></li>
+</ul>
+<h2>Locations:</h2>
+<ul>
+  <li><%= link_to 'All Locations', locations_path %></li>
+  <li><%= link_to 'Create New Location', new_location_path %></li>
+</ul>
