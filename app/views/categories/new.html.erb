@@ -1,0 +1,17 @@
+<h1>Create New Category</h1>
+<%= render '/shared/error_messages', object: @category %>
+<%= form_for @category, class: "form col-lg-4" do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <label class="checkbox">
+      <span class="icons">
+        <span class="first-icon fui-checkbox-unchecked"></span>
+        <span class="second-icon fui-checkbox-checked"></span>
+      </span>
+      <%= form.check_box :official %> Official
+  </label>
+  <div class="row">
+    <div class="span3 lead">
+      <%= form.submit "Create New Category", class: "btn btn-block btn-info" %>
+    </div>
+  </div>
+<% end %>
