@@ -8,6 +8,7 @@ Mentor::Application.routes.draw do
   resources :locations do
     get 'statistics', on: :collection
   end
+  resources :categories
 
   root to: 'static#index'
   get "about", to: 'static#about'
