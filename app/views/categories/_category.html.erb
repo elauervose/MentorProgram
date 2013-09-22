@@ -1,0 +1,11 @@
+<% @categories.each do |category| %>
+  <tr id="category_<%= "#{category.id}" %>">
+    <td><%= category.name %></td>
+    <td><%= category.official? %></td>
+    <td><%= link_to "Edit", edit_category_path(category) %></td>
+    <td>
+      <%= link_to "Delete", category_path(category), method: :delete,
+        data: { confirm: "Confirm deletion" } %>
+    </td>
+  </tr>
+<% end %>
