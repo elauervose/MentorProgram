@@ -2,6 +2,8 @@
   <tr id="category_<%= "#{category.id}" %>">
     <td><%= category.name %></td>
     <td><%= category.official? %></td>
+    <td><%= category.mentor_asks.count %></td>
+    <td><%= category.mentor_asks.where(answered: true).count %></td>
     <td><%= link_to "Edit", edit_category_path(category) %></td>
     <td>
       <%= link_to "Delete", category_path(category), method: :delete,

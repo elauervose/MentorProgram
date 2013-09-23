@@ -21,9 +21,27 @@ describe "categories index page" do
     it "contains a row for a category" do
       expect(page).to have_selector "tr#category_#{category.id}"
     end
-    it "contains a lik to create a new category" do
+    it "contains a link to create a new category" do
       expect(page).to have_link "Create new category"
     end
+
+    describe "category stats" do
+      let(:ask) { FactoryGirl.create :mentor_ask }
+      before do
+        ask.categories << category
+        visit categories_path
+      end
+
+      it "contains the number of asks made with category" do
+        expect(page).to have_selector "tr#category_#{category.id} td",
+          text: category.mentor_asks.count
+      end
+      it "contains the number of asks answered with a category" do
+        expect(page).to have_selector "tr#category_#{category.id} td",
+          text: category.mentor_asks.where(answered: true).count
+      end
+    end
+      
     context "deleting a category" do
       specify "there should be a link to delete the category" do
         expect(page).to have_link "Delete", href: category_path(category)
