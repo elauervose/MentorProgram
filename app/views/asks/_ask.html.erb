@@ -6,7 +6,7 @@
     <td><%= ask.created_at %></td>
     <td>
       <% if ask.answered? %>
-        <% ask.answer.created_at %>
+        <%= ask.answer.created_at %>
       <% else %>
         not answered
       <% end %>
