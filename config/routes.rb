@@ -5,24 +5,23 @@ Mentor::Application.routes.draw do
   resources :pair_asks, controller: :pair_asks
   resources :asks, except: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
+  get 'admin_sign_in', to: 'sessions#new'
+  match 'admin_sign_out', to: 'sessions#destroy', via: :delete
   resources :locations do
     get 'statistics', on: :collection
   end
   resources :categories
 
   root to: 'static#index'
-  get "about", to: 'static#about'
-  get "table_test", to: 'static#table_test'
   get "mentors", to: 'mentor_asks#index', as: 'mentors_sign_up'
   get "mentees", to: 'mentor_asks#new'
+  get 'admin_home', to: 'static#admin_home'
+  get "about", to: 'static#about'
   get "prep", to: 'static#prep'
   get "resources", to: 'static#resources'
   get "thank_you_mentor", to: 'static#thank_you_mentor'
   get "thank_you_mentee", to: 'static#thank_you_mentee'
   get "thank_you_pair_request", to: 'static#thank_you_pair_request'
-  get 'admin_sign_in', to: 'sessions#new'
-  match 'admin_sign_out', to: 'sessions#destroy', via: :delete
-  get 'admin_home', to: 'static#admin_home'
   get 'statistics', to: 'static#statistics'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
