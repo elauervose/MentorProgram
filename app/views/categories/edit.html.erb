@@ -1,7 +1,7 @@
 <h1>Edit Category</h1>
 <%= render 'shared/error_messages', object: @category %>
 <%= form_for @category, class: "form col-lg-4" do |form| %>
-  <%= form.text_field :name, class: "form-control" %>
+  <%= form.text_field :name, class: "form-control", placeholder: "Name"%>
   <label class="checkbox">
       <span class="icons">
         <span class="first-icon fui-checkbox-unchecked"></span>
