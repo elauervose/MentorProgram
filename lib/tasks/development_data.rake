@@ -11,6 +11,9 @@ namespace :db do
     MaxCategoriesPerRequest = 3
     MaxTimesPerRequest = 21
 
+    DatabaseCleaner.clean_with :truncation,
+        { except: %w[locations categories meetup_times] }
+
     create_admin
 
     NumberMentorRequests.times do |n|
