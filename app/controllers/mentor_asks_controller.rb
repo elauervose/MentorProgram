@@ -1,4 +1,5 @@
 class MentorAsksController < ApplicationController
+  before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -129,5 +130,9 @@ class MentorAsksController < ApplicationController
       else
         @ask.categorys.clear
       end
+    end
+
+    def signed_in_admin
+      redirect_to root_path unless signed_in?
     end
 end
