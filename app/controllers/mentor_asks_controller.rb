@@ -24,9 +24,11 @@ class MentorAsksController < ApplicationController
   end
 
   def update
+    update_assosciations
     if @ask.update(ask_params)
-      format.html { redirect_to @ask, notice: 'Ask was successfully updated.' }
+      redirect_to @ask, notice: 'Ask was successfully updated.'
     else
+      set_assosciation_locals
       render action: 'edit'
     end
   end
@@ -96,4 +98,36 @@ class MentorAsksController < ApplicationController
       end
     end
 
+    def update_assosciations
+      update_locations(params["mentor_ask"]["locations"])
+      update_meetup_times(params["mentor_ask"]["meetup_times"])
+      update_categories(params["mentor_ask"]["categories"])
+    end
+
+    def update_locations(locations)
+      if locations
+        location_ids = locations.collect { |location| location.to_i }
+        @ask.locations = Location.find(location_ids)
+      else
+        @ask.locations.clear
+      end
+    end
+
+    def update_meetup_times(meetups)
+      if meetups
+        meetup_time_ids = meetups.collect { |meetup| meetup.to_i }
+        @ask.meetup_times = MeetupTime.find(meetup_time_ids)
+      else
+        @ask.meetup_times.clear
+      end
+    end
+
+    def update_categories(categories)
+      if categories
+        category_ids = categories.collect { |category| category.to_i }
+        @ask.categories = Category.find(category_ids)
+      else
+        @ask.categorys.clear
+      end
+    end
 end

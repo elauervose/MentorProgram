@@ -70,4 +70,36 @@ describe "Edit Mentor Ask" do
       end
     end
   end
+
+  describe "making changes to the request" do
+    before { visit edit_mentor_ask_path(mentor_ask) }
+    context "with invalid information" do
+      before do
+        fill_in "mentor_ask_description", with: ""
+        click_button "Submit Mentor Request Form"
+      end
+
+      it "rerenders the form" do
+        expect(page).to have_selector "h1", text: "Edit Mentor Request"
+      end
+      it "should display a message about why information was not valid" do
+        expect(page).to have_selector 'div.error_explanation'
+      end
+    end
+    context "with valid information" do
+      it "updates the mentor_ask" do
+        fill_in "mentor_ask_description", with: "new description"
+        click_button "Submit Mentor Request Form"
+        mentor_ask.reload
+        expect(mentor_ask.description).to eq "new description"
+      end
+      it "updates the mentor_ask's relations" do
+        removed_location = mentor_ask.locations.first
+        uncheck "mentor_ask_locations_#{removed_location.id}"
+        click_button "Submit Mentor Request Form"
+        mentor_ask.reload
+        expect(mentor_ask.locations).to_not include(removed_location)
+      end
+    end
+  end
 end
