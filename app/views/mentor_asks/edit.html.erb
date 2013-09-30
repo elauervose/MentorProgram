@@ -1,0 +1,31 @@
+<h1>Edit Mentor Request</h1>
+<%= form_for @ask, class: "form-inline col-lg-4" do |form| %>
+  <%= render '/shared/error_messages', object: @ask %>
+  <div class="row">
+    <div class="span12">
+      <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+  <hr>
+  <%= render 'edit_locations', form: form %>
+  <hr>
+  <%= render 'edit_times', form: form %>
+  <div class="row">
+    <%= render 'edit_categories', form: form %>
+ 
+    <div class="span8">
+      <h4>Edit description</h4>
+      <%= form.text_area "description", class: "span8", rows: "8" %>
+    </div>
+  </div>
+   <br><br><!-- Someday I'll learn how to adjust margin in CSS - in the meantime, please forgive my use of break tags :) -->
+
+  <div class="row">
+    <div class="span4 lead">
+      <%= form.submit "Submit Mentor Request Form »",
+        class: "btn btn-large btn-block btn-info" %>
+    </div>
+  </div>
+
+<% end %>

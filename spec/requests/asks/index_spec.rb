@@ -43,5 +43,13 @@ describe "ask index" do
         expect(Ask.find_by(id: mentor_ask.id)).to be_nil
       end
     end
+    describe "editing an ask" do
+      it "should have a link to edit a MentorAsk" do
+        expect(page).to have_link "Edit", edit_mentor_ask_path(mentor_ask)
+      end
+      it "should have a link to edit a PairAsk" do
+        expect(page).to have_link "Edit", edit_pair_ask_path(pair_ask)
+      end
+    end
   end
 end

@@ -18,6 +18,19 @@ class MentorAsksController < ApplicationController
   def show
   end
 
+  def edit
+    @ask.categories.build
+    set_assosciation_locals
+  end
+
+  def update
+    if @ask.update(ask_params)
+      format.html { redirect_to @ask, notice: 'Ask was successfully updated.' }
+    else
+      render action: 'edit'
+    end
+  end
+
   def new
     @ask = MentorAsk.new
     @ask.categories.build

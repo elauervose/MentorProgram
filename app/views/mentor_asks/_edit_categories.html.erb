@@ -1,0 +1,28 @@
+<div class="span4">
+  <h4>Edit selected categories</h4>
+  <% @categories.each do |category| %>
+    <label class="checkbox" for="<%= category.name %>">
+      <span class="icons">
+        <span class="first-icon fui-checkbox-unchecked"></span>
+        <span class="second-icon fui-checkbox-checked"></span>
+      </span>
+      <% checked = @ask.categories.exists?(category) == 1 %>
+      <%= form.check_box "categories",
+        {multiple: true, "data-toggle" => "checkbox", checked: checked},
+        category.id, nil %>
+      <%= category.name %>
+    </label>
+  <% end %>
+  <% user_category = @ask.categories.where(official: false).first %>
+  <% if user_category %>
+    <%= form.check_box "categories",
+    {multiple: true, "data-toggle" => "checkbox", checked: true},
+    user_category.id, nil %>
+    <%= user_category.name %>
+  <% end %>
+  <%= form.fields_for :categories,
+    Category.new do |category_fields| %>
+    <%= category_fields.text_field :name, class: "form-control",
+      placeholder: "Other" %>
+  <% end %>
+</div>

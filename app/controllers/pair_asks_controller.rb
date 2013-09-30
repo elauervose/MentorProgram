@@ -13,6 +13,18 @@ class PairAsksController < ApplicationController
   def show
   end
 
+  def edit
+    set_assosciation_locals
+  end
+
+  def update
+    if @ask.update(ask_params)
+      format.html { redirect_to @ask, notice: 'Ask was successfully updated.' }
+    else
+      render action: 'edit'
+    end
+  end
+
   def new
     @ask = PairAsk.new
     set_assosciation_locals

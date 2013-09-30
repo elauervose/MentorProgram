@@ -1,6 +1,6 @@
 class AsksController < ApplicationController
   before_action :signed_in_admin
-  before_action :set_ask, only: [:show, :edit, :update, :destroy]
+  before_action :set_ask, only: [:show, :destroy]
 
   def index
     @asks = Ask.all
@@ -9,9 +9,6 @@ class AsksController < ApplicationController
   end
 
   def show
-  end
-
-  def edit
   end
 
   def update

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="span12">
+    <p class="lead">
+      <em>Meeting location(s).</em>
+    </p>
+  </div>
+</div>
+<div class="span12">
+  <div class="row well">
+    <% @locations.each_with_index do |location, i| %>
+      <% if i.even? %>
+        <div class="span3">
+      <% end %>
+      <label class="checkbox" for="<%= location.name %>">
+        <span class="icons">
+          <span class="first-icon fui-checkbox-unchecked"></span>
+          <span class="second-icon fui-checkbox-checked"></span>
+        </span>
+        <% checked = @ask.locations.exists?(location) == 1 %>
+        <%= form.check_box "locations", {multiple: true,
+          "data-toggle" => "checkbox", checked: checked}, location.id, nil %>
+        <%= location.name %>
+      </label>
+      <% if i.odd? %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
