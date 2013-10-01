@@ -1,6 +1,7 @@
 class PairAsksController < ApplicationController
   include Locatable
   include Meetupable
+  include Recaptchable
   before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
 
@@ -58,11 +59,6 @@ class PairAsksController < ApplicationController
       params.require(:pair_ask).permit(:name, :email, :description)
     end
 
-    def valid_recaptcha?
-      verify_recaptcha(model: @ask,
-                       message: "Captcha verification failed, please try again")
-    end
-
     def set_assosciation_locals
       @locations = Location.all
       @meetups = MeetupTime.all
@@ -75,10 +71,6 @@ class PairAsksController < ApplicationController
     def update_assosciations
       update_locations(params["pair_ask"]["locations"])
       update_meetup_times(params["pair_ask"]["meetup_times"])
-    end
-
-    def signed_in_admin
-      redirect_to root_path unless signed_in?
     end
 
 end

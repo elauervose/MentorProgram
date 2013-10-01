@@ -1,6 +1,7 @@
 class MentorAsksController < ApplicationController
   include Locatable
   include Meetupable
+  include Recaptchable
   before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
 
@@ -67,11 +68,6 @@ class MentorAsksController < ApplicationController
                                  categories_attributes: [:name])
     end
 
-    def valid_recaptcha?
-      verify_recaptcha(model: @ask,
-                       message: "Captcha verification failed, please try again")
-    end
-
     def set_assosciation_locals
       @locations = Location.all
       @meetups = MeetupTime.all
@@ -104,7 +100,4 @@ class MentorAsksController < ApplicationController
       end
     end
 
-    def signed_in_admin
-      redirect_to root_path unless signed_in?
-    end
 end

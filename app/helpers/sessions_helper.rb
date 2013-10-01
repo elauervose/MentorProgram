@@ -25,4 +25,8 @@ module SessionsHelper
     @current_admin ||= Admin.find_by(remember_token: remember_token)
   end
 
+  def signed_in_admin
+    redirect_to root_path unless signed_in?
+  end
+
 end
