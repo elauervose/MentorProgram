@@ -1,4 +1,6 @@
 class PairAsksController < ApplicationController
+  include Locatable
+  include Meetupable
   before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
 
@@ -70,39 +72,9 @@ class PairAsksController < ApplicationController
       params[:location] || params[:day] || params[:time]
     end
 
-    def add_locations(locations)
-      if locations
-        locations.each { |location| @ask.locations << Location.find(location) }
-      end
-    end
-
-    def add_meetup_times(meetups)
-      if meetups
-        meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
-      end
-    end
-    
     def update_assosciations
       update_locations(params["pair_ask"]["locations"])
       update_meetup_times(params["pair_ask"]["meetup_times"])
-    end
-
-    def update_locations(locations)
-      if locations
-        location_ids = locations.collect { |location| location.to_i }
-        @ask.locations = Location.find(location_ids)
-      else
-        @ask.locations.clear
-      end
-    end
-
-    def update_meetup_times(meetups)
-      if meetups
-        meetup_time_ids = meetups.collect { |meetup| meetup.to_i }
-        @ask.meetup_times = MeetupTime.find(meetup_time_ids)
-      else
-        @ask.meetup_times.clear
-      end
     end
 
     def signed_in_admin
