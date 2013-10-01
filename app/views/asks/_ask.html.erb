@@ -16,7 +16,7 @@
         <%= ask.categories.map {|category| category.name}.join ', ' %></td>
       <% end %>
     <td><%= link_to "Show", ask_path(ask) %></td>
-    <% if ask.type = "MentorAsk" %>
+    <% if ask.type == "MentorAsk" %>
       <td><%= link_to "Edit", edit_mentor_ask_path(ask) %></td>
     <% else %>
       <td><%= link_to "Edit", edit_pair_ask_path(ask) %></td>

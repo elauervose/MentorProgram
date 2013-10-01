@@ -1,4 +1,5 @@
 class PairAsksController < ApplicationController
+  before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,9 +19,11 @@ class PairAsksController < ApplicationController
   end
 
   def update
+    update_assosciations
     if @ask.update(ask_params)
-      format.html { redirect_to @ask, notice: 'Ask was successfully updated.' }
+      redirect_to @ask, notice: 'Ask was successfully updated.'
     else
+      set_assosciation_locals
       render action: 'edit'
     end
   end
@@ -78,4 +81,32 @@ class PairAsksController < ApplicationController
         meetups.each { |meetup| @ask.meetup_times << MeetupTime.find(meetup) }
       end
     end
+    
+    def update_assosciations
+      update_locations(params["pair_ask"]["locations"])
+      update_meetup_times(params["pair_ask"]["meetup_times"])
+    end
+
+    def update_locations(locations)
+      if locations
+        location_ids = locations.collect { |location| location.to_i }
+        @ask.locations = Location.find(location_ids)
+      else
+        @ask.locations.clear
+      end
+    end
+
+    def update_meetup_times(meetups)
+      if meetups
+        meetup_time_ids = meetups.collect { |meetup| meetup.to_i }
+        @ask.meetup_times = MeetupTime.find(meetup_time_ids)
+      else
+        @ask.meetup_times.clear
+      end
+    end
+
+    def signed_in_admin
+      redirect_to root_path unless signed_in?
+    end
+
 end
