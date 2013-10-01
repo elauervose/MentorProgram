@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <button type="button" class="btn btn-navbar"
+        data-toggle="collapse" data-target="#nav-collapse-01"></button>
+      <div class="nav-collapse collapse" id="nav-collapse-01">
+        <ul class="nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/mentors">Become A Mentor</a></li>
+          <li><a href="/mentees">Find A Mentor</a></li>
+          <li><a href="/pair_asks">Pairing</a></li>
+          <li><a href="/prep">Projects & Session Prep</a></li>
+          <li><a href="/resources">Resources</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% if signed_in? %>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <button type="button" class="btn btn-navbar"
+          data-toggle="collapse" data-target="#nav-collapse-01"></button>
+        <div class="nav-collapse collapse" id="nav-collapse-01">
+          <ul class="nav">
+            <li><%= link_to "Admin Home", admin_home_path %></li>
+            <li>
+              <%= link_to "Sign out", admin_sign_out_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
