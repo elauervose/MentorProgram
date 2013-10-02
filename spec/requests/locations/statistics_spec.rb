@@ -18,7 +18,7 @@ describe "Location statistics" do
     end
     it "should be present for a location" do
       visit statistics_locations_path
-      expect(page).to have_text "#{location.average_response_time} days"
+      expect(page).to have_text "#{location.average_response_time.to_i} days"
     end
   end
 end

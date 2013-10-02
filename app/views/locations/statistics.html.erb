@@ -3,7 +3,7 @@
   <h2><%= location.name %></h2>
   <div id=<%= "location_#{location.id}" %>>
     <p class="avg_response_time" >
-      Average response time: <%= location.average_response_time %> days
+      Average response time: <%= location.average_response_time.to_i %> days
     </p>
   </div>
 <% end %> 
