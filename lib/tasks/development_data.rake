@@ -22,6 +22,7 @@ namespace :db do
       add_categories(request)
       add_meetup_times(request)
       request.save!
+      backdate(request)
       answer_request(request) unless n > NumberMentorAnswers + 1
     end
 
@@ -30,6 +31,7 @@ namespace :db do
       add_locations(request)
       add_meetup_times(request)
       request.save!
+      backdate(request)
       answer_request(request) unless n > NumberPairAnswers + 1
     end
 
@@ -82,6 +84,11 @@ namespace :db do
     random_ids = [*1..max_id].shuffle
     number_of_ids = rand(1..max_ids_to_return)
     random_ids.take(number_of_ids)
+  end
+
+  def backdate(entry)
+    entry.created_at = rand(1..31).days.ago
+    entry.save!
   end
 
 end
