@@ -38,6 +38,10 @@ class LocationsController < ApplicationController
     redirect_to locations_path
   end
 
+  def statistics
+    @locations = Location.all
+  end
+
   private
   
     def signed_in_admin
