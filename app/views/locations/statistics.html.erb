@@ -2,6 +2,16 @@
 <% @locations.each do |location| %>
   <h2><%= location.name %></h2>
   <div id=<%= "location_#{location.id}" %>>
+    <p class="total_requests">
+      <% requests = location.asks.where(type: "MentorAsk").count %>
+      <%= requests.to_s + " " + "request".pluralize(requests) %>
+    </p>
+    <p class="answered_requests">
+      <% answered_requests = location.asks.where(type: "MentorAsk").
+         where(answered: true).count %>
+       <%= answered_requests.to_s + " " + "request".pluralize(requests) +
+           " answered" %>
+    </p>
     <p class="avg_response_time" >
       Average response time: <%= location.average_response_time.to_i %> days
     </p>
