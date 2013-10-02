@@ -29,4 +29,27 @@ describe Location do
     end
   end
 
+  describe "statistics" do
+    let(:location) { FactoryGirl.create :location }
+    context "for mentor asks" do
+      describe "average response" do
+        it "returns difference in ask and answer creations times for one ask" do
+          ask = FactoryGirl.create(:mentor_ask,
+                                   locations: [location], created_at: 1.day.ago)
+          ask.create_answer(FactoryGirl.attributes_for(:answer))
+          expect(location.average_response_time).to be_close(1, 0.01)
+        end
+        it "returns correct value for a set of asks" do
+          3.times do
+            ask = FactoryGirl.create(:mentor_ask,
+                                     locations: [location],
+                                     created_at: 1.day.ago)
+            ask.create_answer(FactoryGirl.attributes_for :answer)
+          end
+          expect(location.average_response_time).to be_close(1, 0.01)
+        end
+      end
+    end
+  end
+
 end
