@@ -12,8 +12,11 @@
        <%= answered_requests.to_s + " " + "request".pluralize(requests) +
            " answered" %>
     </p>
-    <p class="avg_response_time" >
+    <p class="avg_response_time">
       Average response time: <%= location.average_response_time.to_i %> days
+    </p>
+    <p class="median_response_time">
+      Median response time: <%= location.average_response_time.to_i %> days
     </p>
   </div>
 <% end %> 

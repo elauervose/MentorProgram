@@ -7,7 +7,14 @@ class Location < ActiveRecord::Base
   def average_response_time
     answered_requests = MentorAsk.includes(:answer).
       where(answered: true).with_location(self.id)
-    average = average_response_in_days(answered_requests)
+    average_response_in_days(answered_requests)
   end
+
+  def median_response_time
+    answered_requests = MentorAsk.includes(:answer).
+      where(answered: true).with_location(self.id)
+    median_response_in_days(answered_requests)
+  end
+
 
 end
