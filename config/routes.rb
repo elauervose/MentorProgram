@@ -10,7 +10,9 @@ Mentor::Application.routes.draw do
   resources :locations do
     get 'statistics', on: :collection
   end
-  resources :categories
+  resources :categories do
+    get 'statistics', on: :collection
+  end
 
   root to: 'static#index'
   get "mentors", to: 'mentor_asks#index', as: 'mentors_sign_up'

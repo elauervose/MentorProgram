@@ -38,6 +38,10 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def statistics
+    @categories = Category.all
+  end
+
   private
   
     def signed_in_admin
