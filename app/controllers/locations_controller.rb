@@ -44,16 +44,12 @@ class LocationsController < ApplicationController
 
   private
   
-    def signed_in_admin
-      redirect_to root_path unless signed_in?
-    end
+  def prepare_location
+    @location = Location.find(params[:id])
+  end
 
-    def prepare_location
-      @location = Location.find(params[:id])
-    end
-
-    def location_params
-      params.require(:location).permit(:name)
-    end
+  def location_params
+    params.require(:location).permit(:name)
+  end
 
 end

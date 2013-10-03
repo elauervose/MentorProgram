@@ -44,16 +44,12 @@ class CategoriesController < ApplicationController
 
   private
   
-    def signed_in_admin
-      redirect_to root_path unless signed_in?
-    end
+  def prepare_category
+    @category = Category.find(params[:id])
+  end
 
-    def prepare_category
-      @category = Category.find(params[:id])
-    end
-
-    def category_params
-      params.require(:category).permit(:name, :official)
-    end
+  def category_params
+    params.require(:category).permit(:name, :official)
+  end
 
 end

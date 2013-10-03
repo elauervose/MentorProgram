@@ -36,9 +36,4 @@ class StaticController < ApplicationController
   def statistics
   end
 
-  private
-
-    def is_admin?
-      redirect_to root_path unless signed_in?
-    end
 end
