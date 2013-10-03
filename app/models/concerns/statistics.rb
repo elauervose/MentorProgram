@@ -1,6 +1,4 @@
 module Statistics
-  #extend ActiveSupport::Concern
-
   SecondsInDay = 86400
 
   def average_response_in_days(requests)
@@ -8,19 +6,21 @@ module Statistics
   end
 
   def average_response(requests)
-    total_time = 0
-    requests.each do |request|
-      total_time += request.answer.created_at - request.created_at
-    end
-    total_time / requests.count
+    times_array = response_times(requests)
+    mean(times_array)
   end
 
   def median_response(requests)
+    times_array = response_times(requests)
+    median(times_array)
+  end
+
+  def response_times(requests)
     response_times = []
     requests.each do |request|
       response_times << request.answer.created_at - request.created_at
     end
-    median(response_times)
+    response_times
   end
 
   def median_response_in_days(requests)
@@ -35,6 +35,10 @@ module Statistics
     else
       (sorted_values[array_size / 2] + sorted_values[(array_size / 2) - 1]) / 2
     end
+  end
+
+  def mean(values)
+    values.inject(:+) / values.length
   end
       
 end
