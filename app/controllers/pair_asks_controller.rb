@@ -24,7 +24,7 @@ class PairAsksController < ApplicationController
   def update
     update_assosciations
     if @ask.update(ask_params)
-      redirect_to @ask, notice: 'Ask was successfully updated.'
+      redirect_to @ask, notice: 'Pair Ask was successfully updated.'
     else
       set_assosciation_locals
       render action: 'edit'
@@ -51,26 +51,26 @@ class PairAsksController < ApplicationController
 
   private
 
-    def set_ask
-      @ask = Ask.find(params[:id])
-    end
+  def set_ask
+    @ask = Ask.find(params[:id])
+  end
 
-    def ask_params
-      params.require(:pair_ask).permit(:name, :email, :description)
-    end
+  def ask_params
+    params.require(:pair_ask).permit(:name, :email, :description)
+  end
 
-    def set_assosciation_locals
-      @locations = Location.all
-      @meetups = MeetupTime.all
-    end
+  def set_assosciation_locals
+    @locations = Location.all
+    @meetups = MeetupTime.all
+  end
 
-    def filters_selected?
-      params[:location] || params[:day] || params[:time]
-    end
+  def filters_selected?
+    params[:location] || params[:day] || params[:time]
+  end
 
-    def update_assosciations
-      update_locations(params["pair_ask"]["locations"])
-      update_meetup_times(params["pair_ask"]["meetup_times"])
-    end
+  def update_assosciations
+    update_locations(params["pair_ask"]["locations"])
+    update_meetup_times(params["pair_ask"]["meetup_times"])
+  end
 
 end

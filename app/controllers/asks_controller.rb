@@ -11,14 +11,6 @@ class AsksController < ApplicationController
   def show
   end
 
-  def update
-    if @ask.update(ask_params)
-      format.html { redirect_to @ask, notice: 'Ask was successfully updated.' }
-    else
-      render action: 'edit'
-    end
-  end
-
   def destroy
     @ask.destroy
     redirect_to asks_url
@@ -26,16 +18,12 @@ class AsksController < ApplicationController
 
   private
 
-    def set_ask
-      @ask = Ask.find(params[:id])
-    end
+  def set_ask
+    @ask = Ask.find(params[:id])
+  end
 
-    def ask_params
-      params.require(:ask).permit(:name, :email, :description)
-    end
-
-    def signed_in_admin
-      redirect_to root_path unless signed_in?
-    end
+  def ask_params
+    params.require(:ask).permit(:name, :email, :description)
+  end
 
 end
