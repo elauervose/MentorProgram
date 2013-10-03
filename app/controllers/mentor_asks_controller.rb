@@ -97,7 +97,7 @@ class MentorAsksController < ApplicationController
       category_ids = categories.collect { |category| category.to_i }
       @ask.categories = Category.find(category_ids)
     else
-      @ask.categorys.clear
+      @ask.categories.clear
     end
   end
 
