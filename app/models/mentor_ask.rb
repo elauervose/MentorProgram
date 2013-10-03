@@ -7,8 +7,10 @@ class MentorAsk < Ask
     return all if category.blank?
     joins(:categories).where('categories.id' => category)
   end
+
   scope :with_filters, ->(location, category, day, time) do
     with_location(location).with_category(category).with_day(day)
       .with_time(time)
   end
+
 end

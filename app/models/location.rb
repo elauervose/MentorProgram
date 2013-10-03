@@ -16,5 +16,4 @@ class Location < ActiveRecord::Base
     median_response_in_days(answered_requests)
   end
 
-
 end

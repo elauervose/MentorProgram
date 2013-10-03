@@ -16,4 +16,5 @@ class Category < ActiveRecord::Base
       where(answered: true).with_category(self.id)
     median_response_in_days(answered_requests)
   end
+
 end
