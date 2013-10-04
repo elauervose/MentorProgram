@@ -1,6 +1,4 @@
 class PairAsksController < ApplicationController
-  include Locatable
-  include Meetupable
   include Recaptchable
   before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
@@ -22,7 +20,8 @@ class PairAsksController < ApplicationController
   end
 
   def update
-    update_assosciations
+    @ask.location_ids = params["pair_ask"]["locations"]
+    @ask.meetup_time_ids = params["pair_ask"]["meetup_times"]
     if @ask.update(ask_params)
       redirect_to @ask, notice: 'Pair Ask was successfully updated.'
     else
@@ -38,8 +37,8 @@ class PairAsksController < ApplicationController
 
   def create
     @ask = PairAsk.new(ask_params)
-    add_locations(params["pair_ask"]["locations"])
-    add_meetup_times(params["pair_ask"]["meetup_times"])
+    @ask.location_ids = params["pair_ask"]["locations"]
+    @ask.meetup_time_ids = params["pair_ask"]["meetup_times"]
 
     if  valid_recaptcha? && @ask.save
       redirect_to thank_you_pair_request_path
@@ -66,11 +65,6 @@ class PairAsksController < ApplicationController
 
   def filters_selected?
     params[:location] || params[:day] || params[:time]
-  end
-
-  def update_assosciations
-    update_locations(params["pair_ask"]["locations"])
-    update_meetup_times(params["pair_ask"]["meetup_times"])
   end
 
 end
