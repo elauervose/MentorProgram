@@ -13,22 +13,26 @@ class Ask < ActiveRecord::Base
   scope :not_answered, -> { where answered: false }
 
   scope :with_location, ->(location) do
-    return all if location.blank?
-    joins(:locations).where('locations.id' => location)
+    build_join("locations", "id", location)
   end
 
   scope :with_day, ->(day) do
-    return all if day.blank?
-    joins(:meetup_times).where('meetup_times.day' => day).uniq
+    build_join("meetup_times", "day", day).uniq
   end
 
   scope :with_time, ->(time) do
-    return all if time.blank?
-    joins(:meetup_times).where('meetup_times.period' => time).uniq
+    build_join("meetup_times", "period", time).uniq
   end
 
   scope :with_filters, ->(location, day, time) do
     with_location(location).with_day(day).with_time(time)
+  end
+  
+  private
+
+  def self.build_join(table, column, value)
+    return all if value.blank?
+    joins(table.to_sym).where("#{table}.#{column}" => value)
   end
 
  end
