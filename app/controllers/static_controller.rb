@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_action :is_admin?, only: [:statistics, :admin_home]
+  before_action :signed_in_admin, only: [:statistics, :admin_home]
 
   def index
   end
