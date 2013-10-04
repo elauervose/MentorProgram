@@ -1,6 +1,4 @@
 class MentorAsksController < ApplicationController
-  include Locatable
-  include Meetupable
   include Recaptchable
   before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
@@ -76,19 +74,23 @@ class MentorAsksController < ApplicationController
 
   def add_categories(categories)
     if categories
-      categories.each { |category| @ask.categories << Category.find(category) }
+      unless @ask.categories.first.nil?
+        @ask.categories.first.save
+        categories << @ask.categories.first.id
+      end
+      @ask.category_ids = categories
     end
   end
 
   def add_assosciations
-    add_locations(params["mentor_ask"]["locations"])
-    add_meetup_times(params["mentor_ask"]["meetup_times"])
+    @ask.location_ids = params["mentor_ask"]["locations"]
+    @ask.meetup_time_ids = params["mentor_ask"]["meetup_times"]
     add_categories(params["mentor_ask"]["categories"])
   end
 
   def update_assosciations
-    update_locations(params["mentor_ask"]["locations"])
-    update_meetup_times(params["mentor_ask"]["meetup_times"])
+    @ask.location_ids = params["mentor_ask"]["locations"]
+    @ask.meetup_time_ids = params["mentor_ask"]["meetup_times"]
     update_categories(params["mentor_ask"]["categories"])
   end
 
