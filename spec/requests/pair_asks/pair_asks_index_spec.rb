@@ -50,7 +50,7 @@ describe PairAsk do
                                                               js: true do
             click_button "location_filter"
             click_link "#{pair_ask.locations.first.name}"
-            expect(page).to_not have_selector "tr#ask_#{other_pair_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_pair_ask.id}"
           end
         end
       end
@@ -68,7 +68,7 @@ describe PairAsk do
           it "should not show pair_asks without the selected day", js: true do
             click_button "day_filter"
             click_link "#{pair_ask.meetup_times.first.day}"
-            expect(page).to_not have_selector "tr#ask_#{other_pair_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_pair_ask.id}"
           end
         end
       end
@@ -87,7 +87,7 @@ describe PairAsk do
                                                           js: true do
             click_button "time_filter"
             click_link "#{pair_ask.meetup_times.first.period}"
-            expect(page).to_not have_selector "tr#ask_#{other_pair_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_pair_ask.id}"
           end
         end
       end
@@ -103,7 +103,7 @@ describe PairAsk do
           expect(page).to have_selector "tr#ask_#{other_pair_ask.id}"
           click_button "location_filter"
           click_link "#{pair_ask.locations.first.name}"
-          expect(page).to_not have_selector "tr#ask_#{other_pair_ask.id}"
+          expect(page).to have_no_selector "tr#ask_#{other_pair_ask.id}"
           expect(page).to have_selector "tr#ask_#{pair_ask.id}"
         end
       end

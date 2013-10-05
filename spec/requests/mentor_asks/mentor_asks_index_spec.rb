@@ -50,7 +50,7 @@ describe MentorAsk do
                                                               js: true do
             click_button "location_filter"
             click_link "#{mentor_ask.locations.first.name}"
-            expect(page).to_not have_selector "tr#ask_#{other_mentor_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_mentor_ask.id}"
           end
         end
       end
@@ -77,7 +77,7 @@ describe MentorAsk do
                                                               js: true do
             click_button "category_filter"
             click_link "#{mentor_ask.categories.first.name}"
-            expect(page).to_not have_selector "tr#ask_#{other_mentor_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_mentor_ask.id}"
           end
         end
       end
@@ -114,7 +114,7 @@ describe MentorAsk do
                                                           js: true do
             click_button "time_filter"
             click_link "#{mentor_ask.meetup_times.first.period}"
-            expect(page).to_not have_selector "tr#ask_#{other_mentor_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_mentor_ask.id}"
           end
         end
       end

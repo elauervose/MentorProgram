@@ -51,10 +51,11 @@ describe "Edit Mentor Ask" do
           expect(selected_meetup_time_box.checked?).to be_true
         end
         it "does not have meetup times not in the request selected" do
-          unselected_meetup_time = MeetupTime.last
+          included_times = mentor_ask.meetup_time_ids
+          unselected_meetup_times = MeetupTime.ids - included_times
           visit edit_mentor_ask_path(mentor_ask)
           unselected_meetup_time_box = 
-            find "#mentor_ask_meetup_times_#{unselected_meetup_time.id}"
+            find "#mentor_ask_meetup_times_#{unselected_meetup_times[0]}"
           expect(unselected_meetup_time_box.checked?).to be_false
         end
       end
