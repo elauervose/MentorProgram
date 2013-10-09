@@ -16,7 +16,7 @@ $('select.filter').on('change', function() {
 
 // Update remaining characters in description textarea
 $(document).ready(updateCharacterCount());
-$('textarea#pair_ask_description').live('input', updateCharacterCount);
+$('textarea#pair_ask_description').on('input', updateCharacterCount);
 
 function updateCharacterCount() {
   var chars_remaining = 300 - $('textarea#pair_ask_description').val().length;
