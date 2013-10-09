@@ -13,3 +13,12 @@ $('select.filter').on('change', function() {
     contentType: 'application/json'
   });
 });
+
+// Update remaining characters in description textarea
+$(document).ready(updateCharacterCount());
+$('textarea#pair_ask_description').live('input', updateCharacterCount);
+
+function updateCharacterCount() {
+  var chars_remaining = 300 - $('textarea#pair_ask_description').val().length;
+  $('p.characters').text('Characters remaining: ' + chars_remaining);
+}
