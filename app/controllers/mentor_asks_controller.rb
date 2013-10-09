@@ -12,6 +12,12 @@ class MentorAsksController < ApplicationController
                                                 params[:time]
                                                ).includes(:categories)
     if filters_selected?
+      #@asks = @asks.with_filters(params[:location],
+      #                                          params[:category],
+      #                                          params[:day],
+      #                                          params[:time]
+      #                                         )
+
       render '_mentor_asks', layout: false
     end
   end

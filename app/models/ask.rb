@@ -8,7 +8,7 @@ class Ask < ActiveRecord::Base
   validates :locations, presence: true
   validates :meetup_times, presence: true
 
-  default_scope { order "created_at DESC" }
+  default_scope { order "asks.created_at DESC" }
 
   scope :not_answered, -> { where answered: false }
 
