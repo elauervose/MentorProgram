@@ -3,7 +3,7 @@ class AsksController < ApplicationController
   before_action :set_ask, only: [:show, :destroy]
 
   def index
-    @asks = Ask.all
+    @asks = Ask.all.includes(:answer)
     @locations = Location.all
     @categories = Category.all
   end

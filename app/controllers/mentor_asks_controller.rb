@@ -10,7 +10,7 @@ class MentorAsksController < ApplicationController
                                                 params[:category],
                                                 params[:day],
                                                 params[:time]
-                                               )
+                                               ).includes(:categories)
     if filters_selected?
       render '_mentor_asks', layout: false
     end
