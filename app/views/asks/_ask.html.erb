@@ -11,10 +11,6 @@
         not answered
       <% end %>
     </td>
-    <td>
-      <% if ask.type == "MentorAsk" %>
-        <%= ask.categories.map {|category| category.name}.join ', ' %></td>
-      <% end %>
     <td><%= link_to "Show", ask_path(ask) %></td>
     <% if ask.type == "MentorAsk" %>
       <td><%= link_to "Edit", edit_mentor_ask_path(ask) %></td>
