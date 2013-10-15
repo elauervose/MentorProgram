@@ -14,3 +14,4 @@ if Rails.env.development? || Rails.env.test?
 else
   Mentor::Application.config.secret_key_base = ENV['SECRET_TOKEN']
 end
+
