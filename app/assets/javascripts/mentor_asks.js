@@ -16,7 +16,12 @@ $('select.filter').on('change', function() {
 });
 
 // Update remaining characters in description textarea
-$(document).ready(updateCharacterCount());
+$(document).ready(function() {
+  if ($('mentor_ask_description').length) {
+    updateCharacterCount();
+  }
+})
+
 $('textarea#mentor_ask_description').on('input', updateCharacterCount);
 
 function updateCharacterCount() {
