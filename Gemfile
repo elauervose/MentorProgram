@@ -55,6 +55,8 @@ group :development do
   gem 'meta_request'
   gem 'addressable'
   gem 'faker'
+  gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :test do
