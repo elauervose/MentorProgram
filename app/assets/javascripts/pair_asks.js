@@ -8,22 +8,7 @@ $('select.filter').on('change', function() {
     data: { 'location': place, 'day': day, 'time': time },
     dataType: 'html',
     success: function(result) {
-      console.log(result);
       $('#pairs_table').html(result);},
     contentType: 'application/json'
   });
 });
-
-// Update remaining characters in description textarea
-$(document).ready(function() {
-  if ($('#pair_ask_descrition').length) {
-    updateCharacterCount();
-  }
-});
-
-$('textarea#pair_ask_description').on('input', updateCharacterCount);
-
-function updateCharacterCount() {
-  var chars_remaining = 300 - $('textarea#pair_ask_description').val().length;
-  $('p.characters').text('Characters remaining: ' + chars_remaining);
-}

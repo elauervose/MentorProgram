@@ -19,6 +19,21 @@ $('#myModal').on('hidden', function () {
   $(this).removeData('modal');
 });
 
+// Updates count of chracters remaining based on input text_area and limit
+function updateCharacterCount(el, maxChars) {
+  var chars_remaining = maxChars - el.val().length;
+  $('.characters').text('Characters remaining: ' + chars_remaining);
+}
+
+// Set characters left on page load and on an updates to text_area
+$(document).ready(function() {
+  var text_area = $('.description').find('.description_area');
+  if (text_area.length) {
+    updateCharacterCount(text_area, 300);
+    text_area.on('input', function() { updateCharacterCount(text_area, 300);});
+  }
+})
+
 // Some general UI pack related JS
 // Extend JS String with repeat method
 String.prototype.repeat = function(num) {

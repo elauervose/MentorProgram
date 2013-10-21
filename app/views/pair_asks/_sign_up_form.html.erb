@@ -7,12 +7,12 @@
   <hr>
   <%= render '/asks/times', form: form %>
   <div class="row">
-    <div class="span8">
+    <div class="span8 description">
       <h4>
         Please write a 2-3 sentence description of what you would like to
         work on with a potential pair.
       </h4>
-      <%= form.text_area "description", class: "span8", rows: "8" %>
+      <%= form.text_area "description", class: "span8 description_area", rows: "8" %>
       <p class="characters">Characters remaining: 300<p>
     </div>
   </div>

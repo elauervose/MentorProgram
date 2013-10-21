@@ -9,22 +9,7 @@ $('select.filter').on('change', function() {
     data: { 'location': place, 'category': category, 'day': day, 'time': time },
     dataType: 'html',
     success: function(result) {
-      console.log(result);
       $('#mentees_table').html(result);},
     contentType: 'application/json'
   });
 });
-
-// Update remaining characters in description textarea
-$(document).ready(function() {
-  if ($('mentor_ask_description').length) {
-    updateCharacterCount();
-  }
-})
-
-$('textarea#mentor_ask_description').on('input', updateCharacterCount);
-
-function updateCharacterCount() {
-  var chars_remaining = 300 - $('textarea#mentor_ask_description').val().length;
-  $('p.characters').text('Characters remaining: ' + chars_remaining);
-}

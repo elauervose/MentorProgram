@@ -8,12 +8,12 @@
   <%= render '/asks/times', form: form %>
   <div class="row">
     <%= render 'categories', form: form %>
-    <div class="span8">
+    <div class="span8 description">
       <h4>
         Please write a 2-3 sentence description of your project so mentors can
         evaluate whether they can help you.
       </h4>
-      <%= form.text_area "description", class: "span8", rows: "8" %>
+      <%= form.text_area "description", class: "span8 description_area", rows: "8" %>
       <p class="characters">Characters remaining: 300<p>
     </div>
   </div>
