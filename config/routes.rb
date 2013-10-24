@@ -24,6 +24,7 @@ Mentor::Application.routes.draw do
   get "thank_you_mentor", to: 'static#thank_you_mentor'
   get "thank_you_mentee", to: 'static#thank_you_mentee'
   get "thank_you_pair_request", to: 'static#thank_you_pair_request'
+  get "thank_you_pair_answer", to: 'static#thank_you_pair_answer'
   get 'statistics', to: 'static#statistics'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

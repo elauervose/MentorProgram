@@ -20,7 +20,11 @@ class AnswersController < ApplicationController
     @answer = @ask.build_answer(answer_params)
 
     if valid_recaptcha? && @answer.save
-      redirect_to thank_you_mentor_path
+      if @ask.type == "MentorAsk"
+        redirect_to thank_you_mentor_path
+      else
+        redirect_to thank_you_pair_answer_path
+      end
     else
       render action: 'new'
     end

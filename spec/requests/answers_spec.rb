@@ -51,6 +51,26 @@ describe "Answers" do
     end
   end
 
+  describe "answering a pairing request" do
+    let!(:ask) { FactoryGirl.create(:pair_ask) }
+    before do
+      visit pair_asks_path
+      click_link 'answer_ask_1'
+      fill_in "Name", with: "the answerer"
+      fill_in "email address", with: "answerer@example.com"
+    end
+
+    describe "with valid information" do
+      it "should redirect to the pair response thank you page" do
+        click_button "Go! »"
+        save_and_open_page
+        expect(page).to have_selector "h1",
+          text: "Thank you for becoming a pairing partner"
+      end
+    end
+  end
+
+
   describe "answered mentee requests" do
     it "are not present" do
       answered_mentee = FactoryGirl.create(:ask)
