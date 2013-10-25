@@ -17,6 +17,8 @@ Mentor::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   # Do not try real email delivery for now
   config.action_mailer.delivery_method = :test
+  # Uncomment the below line and comment the line above to use letter_opener
+  # gem display sent mail in browser
   #config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger.

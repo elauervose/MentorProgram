@@ -9,9 +9,11 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
+
+# Using an unsecure secret key for development and test only. For production,
+# a proper secure key is stored as an enivronment variable
 if Rails.env.development? || Rails.env.test?
   Mentor::Application.config.secret_key_base = 'a' * 30
 else
   Mentor::Application.config.secret_key_base = ENV['SECRET_TOKEN']
 end
-
