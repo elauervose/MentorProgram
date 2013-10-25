@@ -19,10 +19,10 @@ to get things up and running:
 
 * Project currently uses Ruby 2.0.0 and Rails 4.0.0
 
-* After setting up the database, run <tt>rake db:seed<tt> to add necessary
+* After setting up the database, run <tt>rake db:seed</tt> to add necessary
 initial information to the database
 
-* You can run <tt>rake db:populate<tt> to populate the development environment
+* You can run <tt>rake db:populate</tt> to populate the development environment
 with a set of sample data to experiment with
 
 * reCAPTCHA is used to prevent form spam. This is implemented using ambethia's
