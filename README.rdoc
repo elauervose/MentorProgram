@@ -1,28 +1,30 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Mentor Program is an attempt to match those in Portland looking to learn
+web-oriented programming skills and mentors willing to pass on their knowledge
+through three roughly one hour sessions. We want to make the process easy for
+mentors to get involved, even if they have little teaching experience. We work 
+to provide project ideas, sessions guidelines, and general teaching advice to
+help both sides of the mentoring experience get the maximal benefits from
+the relationship.
 
-Things you may want to cover:
+Helping with the project:
 
-* Ruby version
+We are always looking for input both on the technical side of the project and
+in generating content to help mentors and mentees get the most out of the
+experience.
 
-* System dependencies
+If interested in helping on the technical side, here is what you will need to do
+to get things up and running:
 
-* Configuration
+* Project currently uses Ruby 2.0.0 and Rails 4.0.0
 
-* Database creation
+* After setting up the database, run <tt>rake db:seed<tt> to add necessary
+initial information to the database
 
-* Database initialization
+* You can run <tt>rake db:populate<tt> to populate the development environment
+with a set of sample data to experiment with
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* reCAPTCHA is used to prevent form spam. This is implemented using ambethia's
+recaptcha for rails plugin. See http://github.com/ambethia/recaptcha/ for how
+to set this up for your development environment.
