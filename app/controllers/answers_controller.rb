@@ -17,16 +17,26 @@ class AnswersController < ApplicationController
 
   def create
     @ask = Ask.find(answer_params[:ask_id])
-    @answer = @ask.build_answer(answer_params)
-
-    if valid_recaptcha? && @answer.save
-      if @ask.type == "MentorAsk"
-        redirect_to thank_you_mentor_path
-      else
-        redirect_to thank_you_pair_answer_path
-      end
+    # If already answered, the ask-answer relationship of the ask will be
+    # severed by rails and the ask_id of the answer set to nil (before even
+    # a before_action call). Thus it is necessary to recreate the assosciation
+    # if it already existed, not merely do nothing.
+    if @ask.answered?
+      @ask.answer = Answer.find_by(ask_id: nil)
+      flash[:error] = "Error: sorry, that request has already been answered"
+      redirect_to root_path
     else
-      render action: 'new'
+      @answer = @ask.build_answer(answer_params)
+
+      if valid_recaptcha? && @answer.save
+        if @ask.type == "MentorAsk"
+          redirect_to thank_you_mentor_path
+        else
+          redirect_to thank_you_pair_answer_path
+        end
+      else
+        render action: 'new'
+      end
     end
   end
 

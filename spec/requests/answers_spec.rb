@@ -33,6 +33,24 @@ describe "Answers" do
           expect(page).to have_selector "h1",
             text: "Thank You For Being A Mentor"
         end
+        context "and then trying to reanswer the request" do
+          before do
+            click_button "Go! »"
+            @original_answer = ask.answer
+            visit new_answer_path({ask_id: ask.id})
+            fill_in "Name", with: "the answerer2"
+            fill_in "email address", with: "answerer2@example.com"
+            click_button "Go! »"
+          end
+
+          it "should not replace the existing answer" do
+            ask.reload
+            expect(ask.answer).to eq @original_answer
+          end
+          it "should redirect to the homepage" do
+            expect(page).to have_selector "h1", "Mentor Program"
+          end
+        end
       end
       context "with invalid information" do
         it "should rerender the form" do
