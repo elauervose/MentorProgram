@@ -3,7 +3,7 @@
 The Mentor Program is an attempt to match those in Portland looking to learn
 web-oriented programming skills and mentors willing to pass on their knowledge
 through three roughly one hour sessions. We want to make the process easy for
-mentors to get involved, even if they have little teaching experience. We work 
+mentors to get involved, even if they have little teaching experience. We work
 to provide project ideas, sessions guidelines, and general teaching advice to
 help both sides of the mentoring experience get the maximal benefits from
 the relationship.
@@ -28,3 +28,4 @@ with a set of sample data to experiment with
 * reCAPTCHA is used to prevent form spam. This is implemented using ambethia's
 recaptcha for rails plugin. See http://github.com/ambethia/recaptcha/ for how
 to set this up for your development environment.
+
