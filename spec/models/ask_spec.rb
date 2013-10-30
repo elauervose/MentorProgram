@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Ask do
   subject(:ask) { FactoryGirl.build :ask }
+  let(:answer) { FactoryGirl.attributes_for(:answer, ask: ask) }
 
   it { should respond_to :name }
   it { should respond_to :email }
@@ -91,7 +92,6 @@ describe Ask do
   end
 
   describe "when answered" do
-    let(:answer) { FactoryGirl.attributes_for(:answer, ask: ask) }
 
     before do
       ask.save!
@@ -104,6 +104,22 @@ describe Ask do
     it "should be answered" do
       ask.reload
       expect(ask.answered?).to eq(true)
+    end
+  end
+
+  describe "answered_requests_with" do
+    let(:location) { FactoryGirl.create(:location) }
+
+    before { ask.save! }
+
+    it "should return an array of asks with the provide assosciation" do
+      ask.locations = [location]
+      ask.create_answer(answer)
+      expect(Ask.answered_requests_with(location)).to include(ask)
+    end
+    it "should return an empty array with no asks have the assosciation" do
+      ask.create_answer(answer)
+      expect(Ask.answered_requests_with(location)).to eq []
     end
   end
 

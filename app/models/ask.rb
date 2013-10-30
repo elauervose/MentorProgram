@@ -8,6 +8,11 @@ class Ask < ActiveRecord::Base
   validates :locations, presence: true
   validates :meetup_times, presence: true
 
+  def self.answered_requests_with(assosciation)
+    includes(:answer).where(answered: true).send(
+      "with_#{assosciation.class.name.downcase}", assosciation.id)
+  end
+
   default_scope { order "asks.created_at DESC" }
 
   scope :not_answered, -> { where answered: false }
