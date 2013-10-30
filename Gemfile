@@ -48,10 +48,10 @@ end
 gem 'whenever', require: false
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'pry'
+gem 'pry-doc'
 
 group :development do
-  gem 'pry'
-  gem 'pry-doc'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
