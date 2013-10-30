@@ -1,6 +1,19 @@
 module Statistics
   SecondsInDay = 86400
 
+  def average_response_time
+    answered_requests = MentorAsk.answered_requests_with(self)
+    average_response_in_days(answered_requests)
+  end
+
+  def median_response_time
+    answered_requests = MentorAsk.answered_requests_with(self)
+    median_response_in_days(answered_requests)
+  end
+
+
+  private
+
   def average_response_in_days(requests)
     average_response(requests) / SecondsInDay
   end

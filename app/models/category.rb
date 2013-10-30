@@ -5,14 +5,4 @@ class Category < ActiveRecord::Base
 
   scope :admin_created, -> { where official: true }
 
-  def average_response_time
-    answered_requests = MentorAsk.answered_requests_with(self)
-    average_response_in_days(answered_requests)
-  end
-
-  def median_response_time
-    answered_requests = MentorAsk.answered_requests_with(self)
-    median_response_in_days(answered_requests)
-  end
-
 end
