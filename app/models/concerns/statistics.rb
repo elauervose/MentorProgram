@@ -44,7 +44,7 @@ module Statistics
     return 0 if values.empty?
     sorted_values = values.sort
     array_size = sorted_values.length
-    if array_size % 2 == 1
+    if array_size.odd?
       sorted_values[array_size / 2]
     else
       (sorted_values[array_size / 2] + sorted_values[(array_size / 2) - 1]) / 2
