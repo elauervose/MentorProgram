@@ -12,6 +12,7 @@ describe Ask do
   it { should respond_to :answer }
   it { should respond_to :locations }
   it { should respond_to :meetup_times }
+  it { should respond_to :token }
   it { should be_valid }
 
   describe "validations" do
@@ -71,6 +72,18 @@ describe Ask do
           expect(@ask).to_not be_valid
         end
       end
+    end
+  end
+
+  describe "token" do
+    before do
+      ask.save
+    end
+    
+    it "should be created on save" do
+      secret_token = Rails.application.config.secret_key_base
+      expected_value = Digest::SHA1.hexdigest(secret_token + ask.email)
+      expect(ask.token).to eq expected_value
     end
   end
 

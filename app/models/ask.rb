@@ -7,10 +7,16 @@ class Ask < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 300 }
   validates :locations, presence: true
   validates :meetup_times, presence: true
+  after_save :create_token
 
   def self.answered_requests_with(assosciation)
     includes(:answer).where(answered: true).send(
       "with_#{assosciation.class.name.downcase}", assosciation.id)
+  end
+
+  def create_token
+    app_token = Rails.application.config.secret_key_base
+    self.token = Digest::SHA1.hexdigest(app_token + self.email)
   end
 
   default_scope { order "asks.created_at DESC" }

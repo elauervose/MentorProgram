@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916202248) do
+ActiveRecord::Schema.define(version: 20131031032217) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20130916202248) do
     t.boolean  "email_updates"
     t.boolean  "answered",      default: false
     t.string   "type"
+    t.string   "token"
   end
 
   create_table "asks_categories", force: true do |t|
