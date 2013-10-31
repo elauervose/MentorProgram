@@ -41,6 +41,7 @@ module Statistics
   end
   
   def median(values)
+    return 0 if values.empty?
     sorted_values = values.sort
     array_size = sorted_values.length
     if array_size % 2 == 1
@@ -51,6 +52,7 @@ module Statistics
   end
 
   def mean(values)
+    return 0 if values.empty?
     values.inject(:+) / values.length
   end
       

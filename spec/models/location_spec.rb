@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'models/statistics_concern_spec'
+require 'models/statistics_concern_shared'
 extend StatisticsConcernSpecs
 
 describe Location do

@@ -23,6 +23,11 @@ shared_examples_for Statistics do
           end
           expect(object.average_response_time).to be_within(0.01).of(1)
         end
+        it "returns '0' for an empty set of asks" do
+          ask = FactoryGirl.create(:mentor_ask, created_at: 1.day.ago)
+          ask.create_answer(FactoryGirl.attributes_for(:answer))
+          expect(object.average_response_time).to eq 0
+        end
       end
       describe "median response" do
         it "returns difference in ask and answer creation times for one ask" do
@@ -40,6 +45,11 @@ shared_examples_for Statistics do
             ask.create_answer(FactoryGirl.attributes_for :answer)
           end
           expect(object.median_response_time).to be_within(0.01).of(1)
+        end
+        it "returns '0' for an empty set of asks" do
+          ask = FactoryGirl.create(:mentor_ask, created_at: 1.day.ago)
+          ask.create_answer(FactoryGirl.attributes_for(:answer))
+          expect(object.median_response_time).to eq 0
         end
       end
     end
