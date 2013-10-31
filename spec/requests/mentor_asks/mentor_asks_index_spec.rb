@@ -28,6 +28,19 @@ describe MentorAsk do
       end
     end
 
+    describe "unvalidated asks" do
+      before do
+        mentor_ask.validated_at = nil
+        mentor_ask.save
+      end
+      
+      it "does not display an unvalidated request" do
+        visit mentors_sign_up_path
+        expect(page).to have_no_selector "tr#ask_#{mentor_ask.id}"
+      end
+    end
+
+
     describe "filtering mentor_asks" do
       let!(:other_mentor_ask) { FactoryGirl.create(:mentor_ask,
                                                 meetup_times: [other_meetup]) }

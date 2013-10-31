@@ -6,18 +6,12 @@ class MentorAsksController < ApplicationController
   def index
     @locations = Location.all
     @categories = Category.admin_created
-    @asks = MentorAsk.not_answered.with_filters(params[:location],
-                                                params[:category],
-                                                params[:day],
-                                                params[:time]
-                                               ).includes(:categories)
+    @asks = MentorAsk.not_answered.validated.with_filters(params[:location],
+                                                          params[:category],
+                                                          params[:day],
+                                                          params[:time]
+                                                         ).includes(:categories)
     if filters_selected?
-      #@asks = @asks.with_filters(params[:location],
-      #                                          params[:category],
-      #                                          params[:day],
-      #                                          params[:time]
-      #                                         )
-
       render '_mentor_asks', layout: false
     end
   end

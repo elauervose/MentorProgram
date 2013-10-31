@@ -39,6 +39,8 @@ class Ask < ActiveRecord::Base
 
   scope :not_answered, -> { where answered: false }
 
+  scope :validated, -> { where.not(validated_at: nil) }
+
   scope :with_location, ->(location) do
     build_join("locations", "id", location)
   end
