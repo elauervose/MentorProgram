@@ -1,0 +1,8 @@
+<% if @result %>
+  <p>Your request has been successfully validated</p>
+<% else %>
+  <p>
+    Sorry, we were unable to validate your request. Please contact us at
+    <%= mail_to 'mentors@hatsnpants.com' %> if you require assistance.
+  </p>
+<% end %>

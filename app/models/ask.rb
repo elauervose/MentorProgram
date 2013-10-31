@@ -27,7 +27,10 @@ class Ask < ActiveRecord::Base
 
   def self.validate_request(token)
     record_to_validate = Ask.where(token: token).first
-    record_to_validate.validated_at = Time.now if record_to_validate
+    if record_to_validate
+      record_to_validate.validated_at = Time.now
+      record_to_validate.save
+    end
     record_to_validate
   end
 

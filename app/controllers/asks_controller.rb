@@ -1,5 +1,5 @@
 class AsksController < ApplicationController
-  before_action :signed_in_admin
+  before_action :signed_in_admin, except: :validate
   before_action :set_ask, only: [:show, :destroy]
 
   def index
@@ -14,6 +14,13 @@ class AsksController < ApplicationController
   def destroy
     @ask.destroy
     redirect_to asks_url
+  end
+
+  def validate
+    token = params[:token]
+    @result = false
+    @result = true if Ask.validate_request(token)
+    render 'validate'
   end
 
   private
