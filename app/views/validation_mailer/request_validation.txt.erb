@@ -1,0 +1,6 @@
+<% link = validate_asks_path(token: @ask.token) %> 
+  Hi <%= @ask.name %>! Before we post your request, we need to validate that you
+  are the person who created it. Please the following link to complete the
+  process: <%= link_to link, link %>.
+
+  If you did not make this request, please ignore this email

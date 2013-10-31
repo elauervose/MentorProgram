@@ -3,7 +3,11 @@ Mentor::Application.routes.draw do
   resources :answers
   resources :mentor_asks, controller: :mentor_asks
   resources :pair_asks, controller: :pair_asks
-  resources :asks, only: [:index, :show, :destroy]
+  resources :asks, only: [:index, :show, :destroy] do
+    collection do
+      get 'validate'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   get 'admin_sign_in', to: 'sessions#new'
   match 'admin_sign_out', to: 'sessions#destroy', via: :delete
