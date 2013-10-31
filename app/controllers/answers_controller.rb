@@ -17,12 +17,7 @@ class AnswersController < ApplicationController
 
   def create
     @ask = Ask.find(answer_params[:ask_id])
-    # If already answered, the ask-answer relationship of the ask will be
-    # severed by rails and the ask_id of the answer set to nil (before even
-    # a before_action call). Thus it is necessary to recreate the assosciation
-    # if it already existed, not merely do nothing.
     if @ask.answered?
-      @ask.answer = Answer.find_by(ask_id: nil)
       flash[:error] = "Error: sorry, that request has already been answered"
       redirect_to root_path
     else

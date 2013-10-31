@@ -44,7 +44,6 @@ describe "Answers" do
           end
 
           it "should not replace the existing answer" do
-            ask.reload
             expect(ask.answer).to eq @original_answer
           end
           it "should redirect to the homepage" do
