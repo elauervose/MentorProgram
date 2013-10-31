@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'models/statistics_concern_shared'
+extend StatisticsConcernSpecs
 
 describe Category do
   subject(:category) { FactoryGirl.build :category }
@@ -32,41 +34,7 @@ describe Category do
   end
 
   describe "statistics" do
-    context "for mentor asks" do
-      describe "average response" do
-        it "returns difference in ask and answer creations times for one ask" do
-          ask = FactoryGirl.create(:mentor_ask,
-                                   categories: [category], created_at: 1.day.ago)
-          ask.create_answer(FactoryGirl.attributes_for(:answer))
-          expect(category.average_response_time).to be_within(0.01).of(1)
-        end
-        it "returns correct value for a set of asks" do
-          3.times do
-            ask = FactoryGirl.create(:mentor_ask,
-                                     categories: [category],
-                                     created_at: 1.day.ago)
-            ask.create_answer(FactoryGirl.attributes_for :answer)
-          end
-          expect(category.average_response_time).to be_within(0.01).of(1)
-        end
-      end
-      describe "median response" do
-        it "returns difference in ask and answer creation times for one ask" do
-          ask = FactoryGirl.create(:mentor_ask,
-                                   categories: [category], created_at: 1.day.ago)
-          ask.create_answer(FactoryGirl.attributes_for(:answer))
-          expect(category.median_response_time).to be_within(0.01).of(1)
-        end
-        it "returns correct value for a set of asks" do
-          3.times do
-            ask = FactoryGirl.create(:mentor_ask,
-                                     categories: [category],
-                                     created_at: 1.day.ago)
-            ask.create_answer(FactoryGirl.attributes_for :answer)
-          end
-          expect(category.median_response_time).to be_within(0.01).of(1)
-        end
-      end
-    end
+    it_behaves_like Statistics
   end
+
 end
