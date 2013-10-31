@@ -77,19 +77,31 @@ describe Ask do
     end
   end
 
-  describe "token" do
+  describe "on creation" do
     before { ask.save! }
-    
-    it "should be created on save" do
-      secret_token = Rails.application.config.secret_key_base
-      expected_value = Digest::SHA1.hexdigest(secret_token + ask.email +
-                                              ask.created_at.to_s)
-      expect(ask.token).to eq expected_value
+
+    describe "token" do
+      it "should be created on save" do
+        secret_token = Rails.application.config.secret_key_base
+        expected_value = Digest::SHA1.hexdigest(secret_token + ask.email +
+                                                ask.created_at.to_s)
+        expect(ask.token).to eq expected_value
+      end
+    end
+
+    describe "request validation" do
+      it "should send an email requesting verification" do
+        validation_request = ActionMailer::Base.deliveries.last
+        expect(validation_request.to).to include(ask.email)
+      end
     end
   end
 
   describe "validating request" do
-    before { ask.save! }
+    before do
+     ask.validated_at = nil 
+     ask.save!
+    end
 
     it "should not be validated after save" do
       expect(ask.validated?).to be_false

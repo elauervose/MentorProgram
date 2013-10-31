@@ -7,7 +7,7 @@ class Ask < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 300 }
   validates :locations, presence: true
   validates :meetup_times, presence: true
-  after_create :create_token
+  after_create :create_token, :send_validation_email
 
   def self.answered_requests_with(assosciation)
     includes(:answer).where(answered: true).send(
@@ -19,6 +19,10 @@ class Ask < ActiveRecord::Base
     self.token = Digest::SHA1.hexdigest(app_token + self.email +
                                         self.created_at.to_s)
     self.save
+  end
+
+  def send_validation_email
+    ValidationMailer.request_validation(self).deliver
   end
 
   def self.validate_request(token)
