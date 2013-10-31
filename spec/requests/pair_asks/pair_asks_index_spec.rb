@@ -28,6 +28,18 @@ describe PairAsk do
       end
     end
 
+    describe "unvalidated asks" do
+      before do
+        pair_ask.validated_at = nil
+        pair_ask.save
+      end
+      
+      it "does not display an unvalidated request" do
+        visit pair_asks_path
+        expect(page).to have_no_selector "tr#ask_#{pair_ask.id}"
+      end
+    end
+
     describe "filtering pair_asks" do
       let!(:other_pair_ask) { FactoryGirl.create(:pair_ask,
                                                 meetup_times: [other_meetup]) }

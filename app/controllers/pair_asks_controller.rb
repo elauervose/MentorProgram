@@ -5,7 +5,7 @@ class PairAsksController < ApplicationController
 
   def index
     @locations = Location.all
-    @asks = PairAsk.not_answered.
+    @asks = PairAsk.not_answered.validated.
       with_filters(params[:location], params[:day], params[:time])
     if filters_selected?
       render '_pair_asks', layout: false
