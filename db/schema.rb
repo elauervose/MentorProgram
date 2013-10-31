@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031032217) do
+ActiveRecord::Schema.define(version: 20131031033951) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20131031032217) do
     t.boolean  "answered",      default: false
     t.string   "type"
     t.string   "token"
+    t.datetime "validated_at"
   end
 
   create_table "asks_categories", force: true do |t|

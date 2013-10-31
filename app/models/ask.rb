@@ -7,7 +7,7 @@ class Ask < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 300 }
   validates :locations, presence: true
   validates :meetup_times, presence: true
-  after_save :create_token
+  before_save :create_token
 
   def self.answered_requests_with(assosciation)
     includes(:answer).where(answered: true).send(
@@ -17,6 +17,20 @@ class Ask < ActiveRecord::Base
   def create_token
     app_token = Rails.application.config.secret_key_base
     self.token = Digest::SHA1.hexdigest(app_token + self.email)
+  end
+
+  def self.validate_request(token)
+    record_to_validate = Ask.where(token: token).first
+    record_to_validate.validated_at = Time.now if record_to_validate
+    record_to_validate
+  end
+
+  def validated?
+    if self.validated_at
+       true
+    else
+      false
+    end
   end
 
   default_scope { order "asks.created_at DESC" }

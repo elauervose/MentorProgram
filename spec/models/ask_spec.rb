@@ -13,6 +13,8 @@ describe Ask do
   it { should respond_to :locations }
   it { should respond_to :meetup_times }
   it { should respond_to :token }
+  it { should respond_to :validated_at }
+  it { should respond_to :validated? }
   it { should be_valid }
 
   describe "validations" do
@@ -76,14 +78,31 @@ describe Ask do
   end
 
   describe "token" do
-    before do
-      ask.save
-    end
+    before { ask.save! }
     
     it "should be created on save" do
       secret_token = Rails.application.config.secret_key_base
       expected_value = Digest::SHA1.hexdigest(secret_token + ask.email)
       expect(ask.token).to eq expected_value
+    end
+  end
+
+  describe "validating request" do
+    before { ask.save! }
+
+    it "should not be validated after save" do
+      expect(ask.validated?).to be_false
+    end
+    it "should be validated when correct hash supplied" do
+      secret_token = Rails.application.config.secret_key_base
+      valid_token = Digest::SHA1.hexdigest(secret_token + ask.email)
+      validated_ask = Ask.validate_request(ask.token)
+      expect(validated_ask).to eq ask
+    end
+    it "should not be validated when incorrect hash supplied" do
+      invalid_token = Digest::SHA1.hexdigest("invalid token")
+      Ask.validate_request(invalid_token)
+      expect(ask.validated?).to be_false
     end
   end
 
