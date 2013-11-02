@@ -23,6 +23,7 @@ namespace :db do
       add_meetup_times(request)
       request.save!
       backdate(request)
+      validate(request)
       answer_request(request) unless n > NumberMentorAnswers + 1
     end
 
@@ -32,6 +33,7 @@ namespace :db do
       add_meetup_times(request)
       request.save!
       backdate(request)
+      validate(request)
       answer_request(request) unless n > NumberPairAnswers + 1
     end
 
@@ -88,6 +90,11 @@ namespace :db do
 
   def backdate(entry)
     entry.created_at = rand(1..31).days.ago
+    entry.save!
+  end
+  
+  def validate(entry)
+    entry.validated_at = entry.created_at + 10.minutes
     entry.save!
   end
 
