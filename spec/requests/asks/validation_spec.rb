@@ -11,8 +11,7 @@ describe "Validating ask" do
       expect(ask.validated?).to be_true
     end
     it "has a message confirming validation" do
-      expect(page).to have_selector 'p',
-        text: "Your request has been successfully validated"
+      expect(page).to have_selector 'p#validation_success'
     end
   end
 
@@ -24,8 +23,7 @@ describe "Validating ask" do
       expect(ask.validated?).to be_false
     end
     it "has a message stating failure of validation" do
-      expect(page).to have_selector 'p',
-        text: "Sorry, we were unable to validate your request"
+      expect(page).to have_selector 'p#validation_failure'
     end
   end
 

@@ -18,8 +18,7 @@ class AsksController < ApplicationController
 
   def validate
     token = params[:token]
-    @result = false
-    @result = true if Ask.validate_request(token)
+    @ask = Ask.validate_request(token)
     render 'validate'
   end
 

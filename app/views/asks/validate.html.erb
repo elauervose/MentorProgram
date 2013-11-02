@@ -1,7 +1,7 @@
-<% if @result %>
-  <p>Your request has been successfully validated</p>
+<% if @ask %>
+  <p id="validation_success">Your request has been successfully validated</p>
 <% else %>
-  <p>
+  <p id="validation_failure">
     Sorry, we were unable to validate your request. Please contact us at
     <%= mail_to 'mentors@hatsnpants.com' %> if you require assistance.
   </p>
