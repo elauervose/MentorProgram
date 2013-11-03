@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'models/emailable_concern_shared'
+extend EmailableConcernSpecs
 
 describe Ask do
   subject(:ask) { FactoryGirl.build :ask }
   let(:answer) { FactoryGirl.attributes_for(:answer, ask: ask) }
 
   it { should respond_to :name }
-  it { should respond_to :email }
   it { should respond_to :description }
   it { should respond_to :email_updates }
   it { should respond_to :answered }
@@ -16,6 +17,7 @@ describe Ask do
   it { should respond_to :validated_at }
   it { should respond_to :validated? }
   it { should be_valid }
+  it_behaves_like Emailable
 
   describe "validations" do
     describe "on name" do
@@ -25,23 +27,6 @@ describe Ask do
       end
       it "should prevent too long a name" do
         ask.name = "a"*51
-        expect(ask).to_not be_valid
-      end
-    end
-    describe "on email" do
-      it "should prevent a blank email address" do
-        ask.email = ""
-        expect(ask).to_not be_valid
-      end
-      it "should prevent an valid email address" do
-        %w{ not_an_email @invalid.com personATplaceDOTcom
-          guy@place.123 }.each do |invalid_email|
-          ask.email = invalid_email
-          expect(ask).to_not be_valid
-          end
-      end
-      it "should prevent too long an email address" do
-        ask.email = "a"*245 + "@example.com"
         expect(ask).to_not be_valid
       end
     end
