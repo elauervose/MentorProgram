@@ -5,8 +5,14 @@
       <%= render '/asks/details.html.erb' %>
       <%= link_to "Return to Mentees List", mentors_sign_up_path,
         class: "btn btn-info" %>
-      <%= link_to "Become Mentor!", new_answer_path(ask_id: @ask.id),
-        class: "btn btn-success" %> 
+      <% if @deletable %>
+        <%= link_to "Delete Request",
+          mentor_ask_path(@ask, token: params[:token]),
+          method: :delete, class: "btn btn-danger", id: "delete_mentor_ask" %>
+      <% else %>
+        <%= link_to "Become Mentor!", new_answer_path(ask_id: @ask.id),
+          class: "btn btn-success" %> 
+      <% end %>
 		</div>
 		<div class="span6">
       <p>

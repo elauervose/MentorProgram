@@ -2,6 +2,7 @@ class MentorAsksController < ApplicationController
   include Recaptchable
   before_action :signed_in_admin, only: [:edit, :update]
   before_action :set_ask, only: [:show, :edit, :update, :destroy]
+  before_action :allowed_to_delete, only: [:destroy]
 
   def index
     @locations = Location.all
@@ -17,6 +18,7 @@ class MentorAsksController < ApplicationController
   end
 
   def show
+    @deletable = true if params[:token] == @ask.token
   end
 
   def edit
@@ -50,6 +52,10 @@ class MentorAsksController < ApplicationController
       render action: 'new'
     end
   end
+   def destroy
+     @ask.destroy
+     redirect_to root_path
+   end
 
   private
 
@@ -70,6 +76,10 @@ class MentorAsksController < ApplicationController
 
   def filters_selected?
     params[:location] || params[:category] || params[:day] || params[:time]
+  end
+
+  def allowed_to_delete
+    redirect_to root_path unless params[:token] == @ask.token || signed_in_admin
   end
 
   def add_categories(categories)
