@@ -5,8 +5,14 @@
       <%= render '/asks/details.html.erb' %>
 	  	<%= link_to "Return to Pairing Requests List", pair_asks_path,
         class: "btn btn-info" %>
-      <%= link_to "Become Partner!", new_answer_path(ask_id: @ask.id),
-        class: "btn btn-success" %> 
+      <% if @deletable %>
+        <%= link_to "Delete Request",
+          pair_ask_path(@ask, token: params[:token]),
+          method: :delete, class: "btn btn-danger", id: "delete_pair_ask" %>
+      <% else %>
+        <%= link_to "Become Partner!", new_answer_path(ask_id: @ask.id),
+          class: "btn btn-success" %> 
+      <% end %>
 		</div>
 		<div class="span6">
       <p><strong>Project Description: </strong><br></p>

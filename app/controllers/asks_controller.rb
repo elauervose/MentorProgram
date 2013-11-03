@@ -32,4 +32,8 @@ class AsksController < ApplicationController
     params.require(:ask).permit(:name, :email, :description)
   end
 
+  def allowed_to_delete
+    redirect_to root_path unless params[:token] == @ask.token || signed_in_admin
+  end
+
 end
