@@ -1,6 +1,5 @@
 module StatisticsConcernSpecs
-shared_examples_for Statistics do
-  describe "statistics" do
+  shared_examples_for Statistics do
     let(:object) { subject }
     before do
       object.save
@@ -54,5 +53,4 @@ shared_examples_for Statistics do
       end
     end
   end
-end
 end
