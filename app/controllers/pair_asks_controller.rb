@@ -58,7 +58,7 @@ class PairAsksController < ApplicationController
   private
 
   def set_ask
-    @ask = Ask.find(params[:id])
+    @ask = PairAsk.find(params[:id])
   end
 
   def ask_params
