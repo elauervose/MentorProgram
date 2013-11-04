@@ -1,9 +1,8 @@
 class Admin < ActiveRecord::Base
+  include Emailable
   before_create :create_remember_token
-  has_secure_password  
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-    length: { maximum: 256}, uniqueness: { case_sensitive: false }
+  has_secure_password
+  validates :email, uniqueness: { case_sensitive: false }
 
   def Admin.new_remember_token
     SecureRandom.urlsafe_base64
