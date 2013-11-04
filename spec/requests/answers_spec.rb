@@ -10,8 +10,7 @@ describe "Answers" do
     end
 
     it "should take me to the new answer page" do
-      expect(page).to have_selector "p",
-        text: "You are about to become a mentor for one very lucky mentee"
+      expect(page).to have_selector "p#become_mentor"
     end
     describe "and filling out the form" do
       context "with valid information" do
@@ -30,8 +29,7 @@ describe "Answers" do
         end
         it "should redirect to the mentors thank you page" do
           click_button "Go! »"
-          expect(page).to have_selector "h1",
-            text: "Thank You For Being A Mentor"
+          expect(page).to have_selector "h1#thank_you"
         end
         context "and then trying to reanswer the request" do
           before do
@@ -54,8 +52,7 @@ describe "Answers" do
       context "with invalid information" do
         it "should rerender the form" do
           click_button "Go! »"
-          expect(page).to have_selector "p",
-            text: "You are about to become a mentor for one very lucky mentee"
+          expect(page).to have_selector "p#become_mentor"
         end
         it "should display a message about why information ws not valid" do
           click_button "Go! »"
@@ -80,9 +77,7 @@ describe "Answers" do
     describe "with valid information" do
       it "should redirect to the pair response thank you page" do
         click_button "Go! »"
-        save_and_open_page
-        expect(page).to have_selector "h1",
-          text: "Thank you for becoming a pairing partner"
+        expect(page).to have_selector "h1#thank_you"
       end
     end
   end
