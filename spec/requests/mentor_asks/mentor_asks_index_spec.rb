@@ -78,7 +78,7 @@ describe MentorAsk do
           expect(page).to have_css "button#category_filter"
         end
         it "should not have a link for a user category", js: true do
-          expect(page).to_not have_link "#{user_category.name}"
+          expect(page).to have_no_link "#{user_category.name}"
         end
         describe "selecting a filter" do
           it "should show mentor_asks with the selected category", js: true do
@@ -108,7 +108,7 @@ describe MentorAsk do
           it "should not show mentor_asks without the selected day", js: true do
             click_button "day_filter"
             click_link "#{mentor_ask.meetup_times.first.day}"
-            expect(page).to_not have_selector "tr#ask_#{other_mentor_ask.id}"
+            expect(page).to have_no_selector "tr#ask_#{other_mentor_ask.id}"
           end
         end
       end
@@ -145,7 +145,7 @@ describe MentorAsk do
           expect(page).to have_selector "tr#ask_#{other_mentor_ask.id}"
           click_button "location_filter"
           click_link "#{mentor_ask.locations.first.name}"
-          expect(page).to_not have_selector "tr#ask_#{other_mentor_ask.id}"
+          expect(page).to have_no_selector "tr#ask_#{other_mentor_ask.id}"
           expect(page).to have_selector "tr#ask_#{mentor_ask.id}"
         end
       end
