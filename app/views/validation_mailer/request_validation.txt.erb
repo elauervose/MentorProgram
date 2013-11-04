@@ -3,4 +3,14 @@
   are the person who created it. Please the following link to complete the
   process: <%= link_to link, link %>.
 
+  If you would like to remove this request, either before or after validation,
+  you can do so
+  <% if @ask.type == "MentorAsk" %>
+    <%= link_to "here", mentor_ask_path(@ask, token: @ask.token),
+      id: "delete_request" %>
+  <% else %>
+    <%= link_to "here", pair_ask_path(@ask, token: @ask.token),
+      id: "delete_request" %>
+  <% end %>
+
   If you did not make this request, please ignore this email
