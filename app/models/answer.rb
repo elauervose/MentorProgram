@@ -3,6 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :ask
   after_create :answer_request
   validates :name, presence: true, length: { maximum: 50 }
+  validates :disclaimer, acceptance: true
 
   def self.solicit_feedback
     answers_to_solicit = Answer.month_ago

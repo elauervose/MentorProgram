@@ -7,6 +7,7 @@ describe Answer do
   it { should respond_to :name }
   it { should respond_to :email }
   it { should respond_to :ask }
+  it { should respond_to :disclaimer }
   it { should be_valid }
 
   describe "validations" do
@@ -36,6 +37,12 @@ describe Answer do
         answer.email = "a"*245 + "@example.com"
         expect(answer).to_not be_valid
       end
+    end
+  end
+  describe "agreeing to site disclaimer" do
+    it "should require the user to agree to content of disclaimer" do
+      ask.disclaimer = false
+      expect(ask).to_not be_valid
     end
   end
   describe "on answer creation" do
