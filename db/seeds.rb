@@ -13,6 +13,11 @@ locations = ["Inner SE", "Inner NE", "Downtown", "Old Town & The Pearl",
 categories = ["Basic Web", "HTML/CSS", "Github/Heroku/Command Line",
   "Beginning JavaScript", "Beginning Ruby", "Sinatra", "APIs"]
 
+#Remove any existing values
+MeetupTime.delete_all
+Location.delete_all
+Category.delete_all
+
 #create meetup_times
 days.each do |day|
   periods.each do |period|
