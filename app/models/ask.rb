@@ -7,6 +7,7 @@ class Ask < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 300 }
   validates :locations, presence: true
   validates :meetup_times, presence: true
+  validates :disclaimer, acceptance: true
   after_create :create_token, :send_validation_email
 
   def self.answered_requests_with(assosciation)

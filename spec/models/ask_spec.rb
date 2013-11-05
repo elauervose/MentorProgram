@@ -16,6 +16,7 @@ describe Ask do
   it { should respond_to :token }
   it { should respond_to :validated_at }
   it { should respond_to :validated? }
+  it { should respond_to :disclaimer }
   it { should be_valid }
   it_behaves_like Emailable
 
@@ -37,6 +38,12 @@ describe Ask do
       end
       it "should prevent too long a description" do
         ask.description = "a"*301
+        expect(ask).to_not be_valid
+      end
+    end
+    describe "agreeing to site disclaimer" do
+      it "should require the user to agree to content of disclaimer" do
+        ask.disclaimer = false
         expect(ask).to_not be_valid
       end
     end
