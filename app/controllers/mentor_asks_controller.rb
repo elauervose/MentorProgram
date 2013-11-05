@@ -64,7 +64,7 @@ class MentorAsksController < ApplicationController
   end
 
   def ask_params
-    params.require(:mentor_ask).permit(:name, :email, :description,
+    params.require(:mentor_ask).permit(:name, :email, :description, :disclaimer,
                                        categories_attributes: [:name])
   end
 

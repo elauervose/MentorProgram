@@ -29,6 +29,7 @@ describe MentorAsk do
         check "mentor_ask_meetup_times_#{meetup_time.id}"
         check category.name
         fill_in "mentor_ask_description", with: "What I want to learn about"
+        check "mentor_ask_disclaimer"
         click_button "Submit Mentor Request Form"
       end
 
@@ -85,6 +86,23 @@ describe MentorAsk do
         expect(page).to have_selector 'div.error_explanation'
       end
     end
+    context "without agreeing to disclaimer" do
+      before do 
+        fill_in "Name", with: "Test User"
+        fill_in "Email", with: "text@example.com"
+        check location.name
+        check "mentor_ask_meetup_times_#{meetup_time.id}"
+        check category.name
+        fill_in "mentor_ask_description", with: "What I want to learn about"
+        click_button "Submit Mentor Request Form"
+      end
+      it "should rerender the form" do
+        expect(page).to have_selector 'h1', text: "Mentor Request Form"
+      end
+      it "should display an error message" do
+        expect(page).to have_selector 'div.error_explanation'
+      end
+    end
     context "without checked options" do
       before do
         fill_in "Name", with: "Test User"
@@ -117,6 +135,7 @@ describe MentorAsk do
         check category.name
         fill_in "mentor_ask_description", with: "What I want to learn about"
         fill_in "Other", with: "new category"
+        check "mentor_ask_disclaimer"
       end
       
       it "should create a new category" do
