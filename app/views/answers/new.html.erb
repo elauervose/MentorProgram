@@ -15,5 +15,6 @@
     <%= f.email_field :email, placeholder: "email address" %>
   </div>
   <%= render '/shared/captcha' %>
+  <%= render '/shared/disclaimer', form: f %>
   <%= f.submit "Go! »", class: "btn btn-primary" %>
 <% end %>

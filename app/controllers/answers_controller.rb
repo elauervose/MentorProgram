@@ -55,7 +55,7 @@ class AnswersController < ApplicationController
     end
 
     def answer_params
-      params.require(:answer).permit(:name, :email, :ask_id)
+      params.require(:answer).permit(:name, :email, :ask_id, :disclaimer)
     end
     
     def valid_recaptcha?

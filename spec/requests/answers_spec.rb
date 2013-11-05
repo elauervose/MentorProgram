@@ -17,6 +17,7 @@ describe "Answers" do
         before do
           fill_in "Name", with: "the answerer"
           fill_in "email address", with: "answerer@example.com"
+          check "answer_disclaimer"
         end
 
         it "should create a new answer" do
@@ -49,6 +50,15 @@ describe "Answers" do
           end
         end
       end
+      context "without agreeing to disclaimer" do
+        it "should rerender the form" do
+          click_button "Go! »"
+          expect(page).to have_selector "p#become_mentor"
+        end
+        it "should display a message about why information ws not valid" do
+          click_button "Go! »"
+        end
+      end
       context "with invalid information" do
         it "should rerender the form" do
           click_button "Go! »"
@@ -72,6 +82,7 @@ describe "Answers" do
       click_link 'answer_ask_1'
       fill_in "Name", with: "the answerer"
       fill_in "email address", with: "answerer@example.com"
+      check "answer_disclaimer"
     end
 
     describe "with valid information" do
