@@ -62,7 +62,7 @@ class PairAsksController < ApplicationController
   end
 
   def ask_params
-    params.require(:pair_ask).permit(:name, :email, :description)
+    params.require(:pair_ask).permit(:name, :email, :description, :disclaimer)
   end
 
   def set_assosciation_locals

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MentorAsk do
+describe PairAsk do
 
   before :all do
       days = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday }
@@ -27,6 +27,7 @@ describe MentorAsk do
         check location.name
         check "pair_ask_meetup_times_#{meetup_time.id}"
         fill_in "pair_ask_description", with: "What I want to pair about"
+        check "pair_ask_disclaimer"
         click_button "Submit Pairing Request Form"
       end
 
@@ -61,6 +62,22 @@ describe MentorAsk do
         expect(page).to have_selector 'h1', text: "Pairing Request Form"
       end
       it "should display a message about why information was not valid" do
+        expect(page).to have_selector 'div.error_explanation'
+      end
+    end
+    context "without agreeing to disclaimer" do
+      before do 
+        fill_in "Name", with: "Test User"
+        fill_in "Email", with: "text@example.com"
+        check location.name
+        check "pair_ask_meetup_times_#{meetup_time.id}"
+        fill_in "pair_ask_description", with: "What I want to learn about"
+        click_button "Submit Pairing Request Form"
+      end
+      it "should rerender the form" do
+        expect(page).to have_selector 'h1', text: "Pairing Request Form"
+      end
+      it "should display an error message" do
         expect(page).to have_selector 'div.error_explanation'
       end
     end
