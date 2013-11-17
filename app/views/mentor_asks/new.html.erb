@@ -1,100 +1,43 @@
-<div class="hero-unit">
-  <h1 class="demo-logo">Find a Mentor
-    <small>
-      Get help on projects & learn to code in byte-sized steps!
-    </small>
-  </h1>
-  <a href="#mentee_request" class="btn btn-large btn-success span2 offset8">
-    Sign Me Up! »</a>
-</div>
-
-<div class="row">
+<div class="span12"><!-- Header -->
+  <h1>Find a Mentor in just 3 easy steps:</h1>
+</div><!-- Header -->
+<div class="row"><!-- steps to becoming a mentor-->
   <div class="span12">
-    <h1>How it works ...</h1>
-    <p class="lead">
-      Hey Coders! This program is designed to help you level up, get
-      unstuck, and keep moving forward in your mission to become a coding
-      ninja. Here is what you need to do to get started:
-    </p> 
-    <ol>
-      <li>
-        <h4>Come up with a project:</h4>
-        <ul>
-          <li>
-            The more you know about how you want to use a skill, the more
-            productive your mentoring sessions will be. Come up with a project
-            idea you want to work with your mentor on. 
-          </li>
-          <li>
-            Check out our <strong>
-            <a href="https://docs.google.com/document/d/1-MLCBN6_dhzibhfhE5XI_OETqEmi_MJ9BY27X8MuhDI/edit?usp=sharing">Project Planning Guide</a>
-            </strong> to help focus and shape your idea.
-          </li>
-          <li>
-            Need ideas? Check out some suggestions for
-            <strong><%= link_to "project ideas", '/prep' %></strong> that we
-            have put together.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h4>Sign up:</h4>
-        <ul>
-          <li>
-            Fill out the form below, letting potential mentors know what you are
-            seeking to learn as well as the locations and times work best for
-            you.
-          </li>
-          <li>
-            Submit the form and you are all set! When someone signs up to be
-            your mentor, we will send you an email to introduce you to them.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h4>Meeting with your mentor:</h4>
-        <ul>
-          <li>
-            Once you and your mentor have gotten in touch, you can schedule the
-            first or all of your three roughly one hour sessions.
-          </li>
-          <li>
-            Make sure you prepare for your sessions, so you both can gain the
-            most from the experience. You can use our <strong>
-            <a href="https://docs.google.com/document/d/1-MLCBN6_dhzibhfhE5XI_OETqEmi_MJ9BY27X8MuhDI/edit?usp=sharing">Project Planning Guide</a>
-            </strong> to help you get ready. Also read the <strong><a href="https://docs.google.com/document/d/1AgAqj82sUnD3QzRwLmNBNLPuHqz0jzjWY8Mls9o98Gw/edit?usp=sharing">Mentor Program Guidelines & Code of Conduct</a></strong>
-            for advice on how to make sure you are prepared and can get the most
-            out of your sessions.
-          </li>
-          <li>
-            Once you have completed your three sessions, you can sign up again
-            to find a mentor for a new project or maybe learning a new skill to
-            improve your current project.
-          </li>
-        </ul>
-      </li>
-    </ol>
-    <h2>When Life Happens ...</h2>
-    <p class="lead">If you find that your project changes or you need to
-      update your info, just resubmit your mentor request. We will delete
-      your old posting asap.
-    </p> 
-    <p>Our goal is to keep a steady rotation of matches between mentors and
-      mentees going. It may take a bit to get things moving and your
-      patience it much appreciated! If you find your request goes
-      unanswered for a time, it may be helpful to refresh your request. You
-      can also email <% mail_to "mentors@hatsnpants.com" %> if you
-      have problems or questions.
-    </p>    
-    <a href="/prep" class="btn btn-mini btn-info pull-right">Help Me Find A Project »</a> 
+    <div class="fun-borderline">
+      <ul class="unstyled">
+        <li>
+          <p class="lead lead-inline"><h6><span class="badge badge-attention badge-big">1 </span>Come up with an awesome project that no mentor could resist wanting to help with.</h6>
+        </li>
+        <li>
+          <p class="lead lead-inline"><h6><span class="badge badge-attention badge-big">2 </span>Complete the form below.</h6>
+        </li>
+        <li>
+          <p class="lead lead-inline"><h6><span class="badge badge-attention badge-big">3 </span>Read through the Code of Conduct & Session Outlines to prep for your session.</h6>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="row">
+  <div class="text-center add-space">
+    <a href="https://docs.google.com/document/d/1-MLCBN6_dhzibhfhE5XI_OETqEmi_MJ9BY27X8MuhDI/edit?usp=sharing"><div class="btn btn-large btn-action">Project Planning Guide</div></a>
+    <a href="/prep"><div class="btn btn-large btn-action">Project Ideas</div></a>
+    <a href=" "><div class="btn btn-large btn-action">Code of Conduct</div></a>
+    <a href=" "><div class="btn btn-large btn-action">Session Outlines</div></a>
   </div>
 </div>
-<hr id="mentee_request">
-<div class="row">
+</div><!-- steps to becoming a mentor-->
+
+<div class="row" id="mentee_request">
   <div class="span12">
     <a id="form_anchor"></a>
     <h1>Mentor Request Form</h1>
-    <p class="lead"><em>Please complete the form below with information about what you are working on. <br>The more info you provide, the easier it will be for mentors that are the right match to find you.</em></p>
+    <h6>Before you fill out this form, you should know ...</h6>
+    <p class="lead">
+      <small>Your name, general meeting time and location requests, and your project description are publicly visible. However, your email address is only shared with your mentor and the admin maintaining the site. No other personal data is shared anywhere else.</small>
+    <h6>Patience is a Virtue</h6>
+    <p class="lead">
+      <small>It may take a bit to get enough mentors participating in this project and your patience it much appreciated! If you find your request goes unanswered for a time, it may be helpful to refresh your request. You can also email us at <%= mail_to "mentors@hatsnpants.com" %> if you have problems or questions.</small>
+    </p> 
     <br>
   </div>
 </div>
