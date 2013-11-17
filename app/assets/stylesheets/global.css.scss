@@ -1,0 +1,176 @@
+/*
+#1ABC9C TURQUOISE
+#16A085 GREEN SEA
+#2ECC71 EMERALD
+#27AE60 NEPHRITIS
+#3498DB PETER RIVER
+#2980B9 BELIZE HOLE
+#9B59B6 AMETHYST
+#8E44AD WISTERIA
+#34495E WET ASPHALT
+#2C3E50 MIDNIGHT BLUE
+#F1C40F SUN FLOWER
+#F39C12 ORANGE
+#E67E22 CARROT
+#D35400 PUMPKIN
+#E74C3C ALIZARIN
+#C0392B POMEGRANATE
+#ECF0F1 CLOUDS
+#BDC3C7 SILVER
+#95A5A6 CONCRETE
+#7F8C8D ASBESTO
+*/
+
+.badge-big {
+	font-size: 24.5px;
+	line-height: 40px;
+	font-weight: bold;
+	padding-right: 14px;
+	padding-left: 14px;
+	margin-right: 4px;
+}
+
+.badge-attention {
+	background-color: #D35400; /* pumpkin */
+	background-color: #E67E22; /* carrot */
+	background-color: #F39C12; /* orange */
+}
+
+.lead-inline {
+	margin-right: 8px;
+	margin-top: 8px;
+	margin-bottom: 4px;
+}
+
+.navbar-inverse .navbar-inner {
+	background-color: #E67E22; /* carrot */
+	background-color: #2980B9; /* belize hole */
+	background-color: #3498DB; /* PETER RIVER */
+	margin: 5px;
+}
+
+.navbar-inverse .nav > li > a {
+	border-color: #D35400; /* pumpkin */
+	border-color: #F39C12; /* orange */
+	border-color: #3498DB; /* PETER RIVER */
+	border-color: #258cd1 /* border for PETER RIVER */
+}
+
+.navbar-inverse .nav > li > a:hover {
+	color: #D35400; /* pumpkin */
+	color: #F39C12; /* orange */
+	color: #2980B9; /* belize hole */
+	color: #F1C40F; /* SUN FLOWER */
+	color: #2C3E50; /* MIDNIGHT BLUE */
+}
+
+.btn.btn-info {
+	background-color: #D35400; /* pumpkin */
+	background-color: #E67E22; /* carrot */
+	background-color: #3498DB; /* PETER RIVER */
+	background-color: #258cd1 /* border for PETER RIVER */
+}
+
+.btn.btn-info:hover {
+	background-color: #D35400; /* pumpkin */
+	background-color: #E67E22; /* carrot */
+	background-color: #3498DB; /* PETER RIVER */
+}
+
+.btn.btn-action {
+	background-color: #D35400; /* pumpkin */
+	background-color: #E67E22; /* carrot */
+	background-color: #3498DB; /* PETER RIVER */
+	background-color: #258cd1; /* border for PETER RIVER */
+	background-color: #27AE60; /* NEPHRITIS */ 
+	background-color: #2ECC71; /* EMERALD */
+	border: 2px solid #27AE60;/* NEPHRITIS */
+}
+
+.btn.btn-action:hover {
+	background-color: #D35400; /* pumpkin */
+	background-color: #E67E22; /* carrot */
+	background-color: #3498DB; /* PETER RIVER */
+	background-color: #2ECC71; /* EMERALD */
+	background-color: #F1C40F; /* SUN FLOWER */
+	border: 2px solid #F1C40F; /* SUN FLOWER */ 
+}
+
+.btn.btn-attention {
+	background-color: #D35400; /* pumpkin */
+	background-color: #3498DB; /* PETER RIVER */
+	background-color: #258cd1; /* border for PETER RIVER */
+	background-color: #F1C40F; /* SUN FLOWER */ 
+	background-color: #E67E22; /* carrot */
+	background-color: #F39C12; /* ORANGE */ 
+}
+
+.btn.btn-attention:hover {
+	background-color: #D35400; /* pumpkin */
+	background-color: #E67E22; /* carrot */
+	background-color: #3498DB; /* PETER RIVER */
+	background-color: #F1C40F; /* SUN FLOWER */ 
+}
+.overlay {
+	position: absolute;
+	top: 20px;
+	left: 40px;
+	color: #BDC3C7; /* SILVER */
+	color: #ECF0F1; /* CLOUDS */
+	text-shadow: 0px 0px 16px #222626;
+}
+
+.overlay2 {
+	position: absolute;
+	bottom: 20px;
+	right: 25px;
+	color: #BDC3C7; /* SILVER */
+	color: #ECF0F1; /* CLOUDS */
+	text-shadow: 0px 0px 16px #222626;
+}
+
+.overlay2 a:first-child {
+	margin-right:10px
+}
+
+
+.overlay-wrapper {
+	position: relative;
+}
+
+.add-space {
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+
+footer {
+	background-color: #3498DB; /* PETER RIVER */
+	background-color: #E67E22; /* carrot */
+	background-color: #258cd1; /* border for PETER RIVER */
+	padding: 15px;
+	color: #ECF0F1; /* CLOUDS */
+}
+
+.fun-borderline {
+	margin: 25px 25px 5px 25px;
+	padding: 10px;
+	border-style: dashed; 
+	border-top: 2px dashed #BDC3C7; /* SILVER */
+	border-bottom: 2px dashed #BDC3C7; /* SILVER */
+	border-left: 2px dashed #BDC3C7; /* SILVER */
+	border-right: 2px dashed #BDC3C7; /* SILVER */
+}
+
+.tab-lable {
+	font-weight: 900;
+	font-size: 18px; /* <length> values */
+	line-height: 1.1;
+	color: #16a085; /* MIDNIGHT BLUE */
+	margin: 10px 5px 3px 5px;
+}
+
+.tab-lable:active {
+	color: #2C3E50; /* GREEN SEA */
+	
+}
+
