@@ -1,6 +1,5 @@
 <% @asks.each do |ask| %>
   <tr id="ask_<%=ask.id %>">
-    <td><%= ask.name %></td>
     <td><%= ask.description %></td>
     <td>
       <%= link_to "See Availability", pair_ask_path(ask),

@@ -1,6 +1,5 @@
 <% @asks.each do |ask| %>
   <tr id="ask_<%=ask.id %>">
-    <td><%= ask.name %></td>
     <td><%= ask.categories.map {|category| category.name}.join ', ' %></td>
     <td><%= ask.description %></td>
     <td>
